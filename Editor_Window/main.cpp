@@ -3,6 +3,9 @@
 
 #include "framework.h"
 #include "Editor_Window.h"
+#include "..\\YamYamEngine_SOURCE\\YApplication.h"
+
+Application app;
 
 #define MAX_LOADSTRING 100
 
@@ -17,17 +20,17 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램 인스턴스 핸들
+                     _In_opt_ HINSTANCE hPrevInstance, // 바로 앞에 실행된 현재 프로그램의 인스턴스 핸들
+                     _In_ LPWSTR    lpCmdLine, // 명령행으로 입력된 프로그램 인수
+                     _In_ int       nCmdShow) // 프로그램이 실행될 형태, 보통 모양정보등이 전달
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // TODO: 여기에 코드를 입력합니다.
-
     // Github test
+
+    // TODO: 여기에 코드를 입력합니다.
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -42,17 +45,42 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_EDITORWINDOW));
 
+    app.test();
+
     MSG msg;
 
-    // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    // GetMessage : 프로세스에서 발생한 메세지를 메세지 큐에서 가져오는 함수
+    // PeekMessage : 메세지 큐의 메세지 유무에 상관없이 함수가 리턴된다.
+    //              메세지가 있는 경우 리턴값이 true, 없는 경우 리턴값이 false
+
+    while (true)
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            if (msg.message == WM_QUIT)
+                break;
+
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else // 메세지가 없을 경우
+        {
+
         }
     }
+
+    // 기본 메시지 루프입니다:
+    //while (GetMessage(&msg, nullptr, 0, 0))
+    //{
+    //    if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+    //    {
+    //        TranslateMessage(&msg);
+    //        DispatchMessage(&msg);
+    //    }
+    //}
 
     return (int) msg.wParam;
 }
@@ -149,6 +177,35 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+            
+            // 파랑 브러쉬 생성 및 할당(도형 내부 색)
+            HBRUSH brush = CreateSolidBrush(RGB(0, 0, 255));
+            HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);
+
+            // 사각형 생성
+            Rectangle(hdc, 100, 100, 200, 200);
+
+            (HBRUSH)SelectObject(hdc, oldBrush);
+            DeleteObject(brush);
+
+            // 빨강 선 생성 및 할당(도형 선)
+            HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+            HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
+
+            // 원 생성
+            Ellipse(hdc, 200, 100, 300, 200);
+
+            SelectObject(hdc, oldPen);
+            DeleteObject(redPen);
+
+            // 스톡 오브젝트 : 기본으로 자주 사용되는 GDI 오브젝트들을 미리 만들어둠.
+            HBRUSH grayBrush = (HBRUSH)GetStockObject(GRAY_BRUSH);
+            oldBrush = (HBRUSH)SelectObject(hdc, grayBrush);
+
+            Rectangle(hdc, 400, 400, 500, 500);
+
+            SelectObject(hdc, oldBrush);
+
             EndPaint(hWnd, &ps);
         }
         break;
