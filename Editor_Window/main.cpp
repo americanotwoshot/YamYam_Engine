@@ -5,7 +5,7 @@
 #include "Editor_Window.h"
 #include "..\\YamYamEngine_SOURCE\\YApplication.h"
 
-Application app;
+yam::Application application;
 
 #define MAX_LOADSTRING 100
 
@@ -45,8 +45,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램 인스턴스 핸
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_EDITORWINDOW));
 
-    app.test();
-
     MSG msg;
 
     // GetMessage : 프로세스에서 발생한 메세지를 메세지 큐에서 가져오는 함수
@@ -68,7 +66,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램 인스턴스 핸
         }
         else // 메세지가 없을 경우
         {
-
+            application.Run();
         }
     }
 
@@ -130,6 +128,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
+   application.Initialize(hWnd);
+
    if (!hWnd)
    {
       return FALSE;
@@ -178,34 +178,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             
-            // 파랑 브러쉬 생성 및 할당(도형 내부 색)
-            HBRUSH brush = CreateSolidBrush(RGB(0, 0, 255));
-            HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);
-
-            // 사각형 생성
-            Rectangle(hdc, 100, 100, 200, 200);
-
-            (HBRUSH)SelectObject(hdc, oldBrush);
-            DeleteObject(brush);
-
-            // 빨강 선 생성 및 할당(도형 선)
-            HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-            HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
-
-            // 원 생성
-            Ellipse(hdc, 200, 100, 300, 200);
-
-            SelectObject(hdc, oldPen);
-            DeleteObject(redPen);
-
-            // 스톡 오브젝트 : 기본으로 자주 사용되는 GDI 오브젝트들을 미리 만들어둠.
-            HBRUSH grayBrush = (HBRUSH)GetStockObject(GRAY_BRUSH);
-            oldBrush = (HBRUSH)SelectObject(hdc, grayBrush);
-
-            Rectangle(hdc, 400, 400, 500, 500);
-
-            SelectObject(hdc, oldBrush);
-
             EndPaint(hWnd, &ps);
         }
         break;
