@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
+#include "YGameObject.h"
 
 namespace yam
 {
@@ -20,9 +21,8 @@ namespace yam
 		HWND mHwnd;
 		HDC mHdc;
 
-		float mSpeed;
-		float mX;
-		float mY;
+		// 플레이어
+		GameObject mPlayer;
 	};
 }
 
