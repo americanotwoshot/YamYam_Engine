@@ -38,6 +38,14 @@ namespace yam
 		static bool GetKey(eKeyCode code) { return mKeys[(UINT)code].state == eKeyState::Pressed; }
 
 	private:
+		static void createKeys();
+		static void updateKeys();
+		static bool isKeyDown(eKeyCode code);
+		static void updateKey(Input::Key&);
+		static void updateKeyDown(Input::Key& key);
+		static void updateKeyUp(Input::Key& key);
+
+	private:
 		static std::vector<Key> mKeys;
 	};
 }
