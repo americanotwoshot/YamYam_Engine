@@ -3,7 +3,7 @@
 
 namespace yam
 {
-	std::vector<Input::Key> Input::mKeys = {};
+	std::vector<Input::Key> Input::Keys = {};
 
 	int ASCII[(UINT)eKeyCode::End] = {
 		'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
@@ -30,13 +30,13 @@ namespace yam
 			key.state = eKeyState::None;
 			key.keyCode = (eKeyCode)i;
 
-			mKeys.push_back(key);
+			Keys.push_back(key);
 		}
 	}
 
 	void Input::updateKeys()
 	{
-		std::for_each(mKeys.begin(), mKeys.end(),
+		std::for_each(Keys.begin(), Keys.end(),
 			[](Key& key) -> void 
 			{
 				updateKey(key);

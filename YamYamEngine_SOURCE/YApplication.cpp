@@ -1,5 +1,6 @@
 #include "YApplication.h"
 #include "YInput.h"
+#include "YTime.h"
 
 namespace yam 
 {
@@ -24,6 +25,7 @@ namespace yam
 		mBox.SetPosition(0, 0);
 
 		Input::Initialize();
+		Time::Initialize();
 	}
 
 	void Application::Run()
@@ -36,6 +38,7 @@ namespace yam
 	void Application::Update()
 	{
 		Input::Update();
+		Time::Update();
 
 		mPlayer.Update();
 		mBox.Update();
@@ -48,6 +51,8 @@ namespace yam
 
 	void Application::Render()
 	{
+		Time::Render(mHdc);
+
 		mPlayer.Render(mHdc);
 		mBox.Render(mHdc);
 	}
