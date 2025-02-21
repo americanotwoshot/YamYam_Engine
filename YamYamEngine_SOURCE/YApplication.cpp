@@ -1,4 +1,5 @@
 #include "YApplication.h"
+#include "YInput.h"
 
 namespace yam 
 {
@@ -20,6 +21,9 @@ namespace yam
 		mHdc = GetDC(hwnd);
 
 		mPlayer.SetPosition(0, 0);
+		mBox.SetPosition(0, 0);
+
+		Input::Initialize();
 	}
 
 	void Application::Run()
@@ -31,7 +35,10 @@ namespace yam
 
 	void Application::Update()
 	{
+		Input::Update();
+
 		mPlayer.Update();
+		mBox.Update();
 	}
 
 	void Application::LateUpdate()
@@ -42,5 +49,6 @@ namespace yam
 	void Application::Render()
 	{
 		mPlayer.Render(mHdc);
+		mBox.Render(mHdc);
 	}
 }
