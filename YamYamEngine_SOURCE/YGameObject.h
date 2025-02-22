@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
+#include "YBulletObject.h"
 
 namespace yam 
 {
@@ -24,6 +25,8 @@ namespace yam
 		// 게임 오브젝트의 좌표
 		float mX;
 		float mY;
+
+		std::vector<BulletObject> bulletFactory;
 	};
 }
 

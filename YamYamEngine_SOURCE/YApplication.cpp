@@ -45,7 +45,6 @@ namespace yam
 		DeleteObject(oldBitmap);
 
 		mPlayer.SetPosition(0, 0);
-		mBox.SetPosition(0, 0);
 
 		Input::Initialize();
 		Time::Initialize();
@@ -64,7 +63,6 @@ namespace yam
 		Time::Update();
 
 		mPlayer.Update();
-		mBox.Update();
 	}
 
 	void Application::LateUpdate()
@@ -79,7 +77,6 @@ namespace yam
 		Time::Render(mBackHdc);
 
 		mPlayer.Render(mBackHdc);
-		mBox.Render(mBackHdc);
 
 		BitBlt(mHdc, 0, 0, mWidth, mHeight,
 			mBackHdc, 0, 0, SRCCOPY);

@@ -3,11 +3,11 @@
 
 namespace yam
 {
-	class GameOjbect2
+	class BulletObject
 	{
 	public:
-		GameOjbect2();
-		~GameOjbect2();
+		BulletObject();
+		~BulletObject();
 		void Update();
 		void LateUpdate();
 		void Render(HDC hdc);
@@ -20,6 +20,8 @@ namespace yam
 	private:
 		float mX;
 		float mY;
+
+		float mSpeed;
 	};
 }
 

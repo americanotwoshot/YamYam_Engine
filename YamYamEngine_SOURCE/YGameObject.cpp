@@ -1,6 +1,7 @@
 #include "YGameObject.h"
 #include "YInput.h"
 #include "YTime.h"
+#include "YBulletObject.h"
 
 namespace yam
 {
@@ -38,6 +39,17 @@ namespace yam
 		{
 			mY += speed * Time::DeltaTime();
 		}
+
+		if (Input::GetKeyDown(eKeyCode::Space)) 
+		{
+			BulletObject* newBullet = new BulletObject();
+			newBullet->SetPosition(mX, mY);
+			bulletFactory.emplace_back(*newBullet);
+		}
+
+		for (auto it = bulletFactory.begin(); it != bulletFactory.end(); ++it) {
+			it->Update();
+		}
 	}
 	void GameObject::LateUpdate()
 	{
@@ -54,7 +66,7 @@ namespace yam
 		HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
 
 		// 사각형 생성
-		Rectangle(hdc, 100 + mX, 100 + mY, 200 + mX, 200 + mY);
+		Rectangle(hdc, 500 + mX, 500 + mY, 600 + mX, 600 + mY);
 
 		SelectObject(hdc, oldBrush);
 		DeleteObject(brush);
@@ -69,5 +81,10 @@ namespace yam
 		//oldBrush = (HBRUSH)SelectObject(hdc, grayBrush);
 		//Rectangle(hdc, 400, 400, 500, 500);
 		//SelectObject(hdc, oldBrush);
+
+		for (auto it = bulletFactory.begin(); it != bulletFactory.end(); ++it) {
+			it->Render(hdc);
+		}
+
 	}
 }

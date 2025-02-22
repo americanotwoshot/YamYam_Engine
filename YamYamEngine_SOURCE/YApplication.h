@@ -1,7 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
 #include "YGameObject.h"
-#include "YGameOjbect2.h"
 
 namespace yam
 {
@@ -30,9 +29,6 @@ namespace yam
 
 		// 플레이어
 		GameObject mPlayer;
-
-		// 다른 플레이어
-		GameOjbect2 mBox;
 	};
 }
 
