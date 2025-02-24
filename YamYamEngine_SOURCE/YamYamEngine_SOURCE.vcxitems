@@ -16,16 +16,22 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YBulletObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)YApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YBulletObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YTime.cpp" />
   </ItemGroup>
 </Project>

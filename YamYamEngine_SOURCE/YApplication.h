@@ -18,6 +18,13 @@ namespace yam
 		void Render();
 
 	private:
+		void clearRenderTarget();
+		void copyRenderTarget(HDC src, HDC dst);
+		void adjustWindowRect(HWND hwnd, UINT width, UINT height);
+		void createBuffer(UINT width, UINT height);
+		void initializeEtc();
+
+	private:
 		HWND mHwnd;
 		HDC mHdc;
 
@@ -27,8 +34,8 @@ namespace yam
 		UINT mWidth;
 		UINT mHeight;
 
-		// 플레이어
-		GameObject mPlayer;
+		// std::vector<Scene*> mScenes;
+		//std::vector<GameObject*> mGameObjects;
 	};
 }
 
