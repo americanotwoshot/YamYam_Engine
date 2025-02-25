@@ -29,7 +29,7 @@ namespace yam
 		HBRUSH newBrush = CreateSolidBrush(RGB(255, 0, 0));
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, newBrush);
 
-		Ellipse(hdc, 525 + mX, 475 + mY, 575 + mX, 525 + mY);
+		Ellipse(hdc, 25 + mX, -25 + mY, 75 + mX, 25 + mY);
 
 		SelectObject(hdc, oldBrush);
 		DeleteObject(newBrush);

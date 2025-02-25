@@ -128,11 +128,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="YEndScene.h" />
     <ClInclude Include="YLoadScene.h" />
+    <ClInclude Include="YPlayer.h" />
     <ClInclude Include="YPlayScene.h" />
+    <ClInclude Include="YTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="YEndScene.cpp" />
+    <ClCompile Include="YPlayer.cpp" />
     <ClCompile Include="YPlayScene.cpp" />
+    <ClCompile Include="YTitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
