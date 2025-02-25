@@ -5,8 +5,7 @@
 namespace yam
 {
 	Transform::Transform()
-		: mX(500.0f)
-		, mY(500.0f)
+		: mPosition(math::Vector2(500, 500))
 	{
 	}
 	Transform::~Transform()
@@ -20,22 +19,22 @@ namespace yam
 		const int speed = 100.0f;
 		if (Input::GetKey(eKeyCode::A) || Input::GetKey(eKeyCode::Left))
 		{
-			mX -= speed * Time::DeltaTime();
+			mPosition.x -= speed * Time::DeltaTime();
 		}
 
 		if (Input::GetKey(eKeyCode::D) || Input::GetKey(eKeyCode::Right))
 		{
-			mX += speed * Time::DeltaTime();
+			mPosition.x += speed * Time::DeltaTime();
 		}
 
 		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::Up))
 		{
-			mY -= speed * Time::DeltaTime();
+			mPosition.y -= speed * Time::DeltaTime();
 		}
 
 		if (Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::Down))
 		{
-			mY += speed * Time::DeltaTime();
+			mPosition.y += speed * Time::DeltaTime();
 		}
 	}
 	void Transform::LateUpdate()

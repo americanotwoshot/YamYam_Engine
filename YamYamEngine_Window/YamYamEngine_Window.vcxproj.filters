@@ -4,20 +4,39 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{59babfb8-6279-4481-94e2-8ffa18b55ac4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{9f42c95a-3778-4410-b1f7-5784dba01e06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YLoadScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="YPlayScene.h" />
-    <ClInclude Include="YTitleScene.h" />
-    <ClInclude Include="YEndScene.h" />
-    <ClInclude Include="YPlayer.h" />
+    <ClInclude Include="YEndScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="YPlayScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="YTitleScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="YPlayer.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="YPlayScene.cpp" />
-    <ClCompile Include="YTitleScene.cpp" />
-    <ClCompile Include="YEndScene.cpp" />
-    <ClCompile Include="YPlayer.cpp" />
+    <ClCompile Include="YEndScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="YPlayScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="YTitleScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="YPlayer.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

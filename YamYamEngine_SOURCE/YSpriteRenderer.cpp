@@ -5,6 +5,9 @@
 namespace yam
 {
 	SpriteRenderer::SpriteRenderer()
+		: mImage(nullptr)
+		, mWidth(100.0f)
+		, mHeight(100.0f)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -21,24 +24,30 @@ namespace yam
 	}
 	void SpriteRenderer::Render(HDC hdc)
 	{
-		// 파랑 브러쉬 생성 및 할당(도형 내부 색)
-		HBRUSH brush = CreateSolidBrush(RGB(0, 0, 255));
-		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);
-
-		// 빨강 선 생성 및 할당(도형 선)
-		HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-		HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
-
 		Transform* tr = GetOwner()->GetComponent<Transform>();
+		yam::math::Vector2 pos = tr->GetPosition();
 
-		// 사각형 생성
-		Rectangle(hdc, tr->GetPositionX(), tr->GetPositionY(),
-			tr->GetPositionX() + mWidth, tr->GetPositionY() + mHeight);
+		Gdiplus::Graphics graphics(hdc);
+		graphics.DrawImage(mImage, Gdiplus::Rect(pos.x, pos.y, mWidth, mHeight));
 
-		SelectObject(hdc, oldBrush);
-		DeleteObject(brush);
-		SelectObject(hdc, oldPen);
-		DeleteObject(redPen);
+		//// 파랑 브러쉬 생성 및 할당(도형 내부 색)
+		//HBRUSH brush = CreateSolidBrush(RGB(0, 0, 255));
+		//HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);
+
+		//// 빨강 선 생성 및 할당(도형 선)
+		//HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+		//HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
+
+		//Transform* tr = GetOwner()->GetComponent<Transform>();
+
+		//// 사각형 생성
+		//Rectangle(hdc, tr->GetPositionX(), tr->GetPositionY(),
+		//	tr->GetPositionX() + mWidth, tr->GetPositionY() + mHeight);
+
+		//SelectObject(hdc, oldBrush);
+		//DeleteObject(brush);
+		//SelectObject(hdc, oldPen);
+		//DeleteObject(redPen);
 
 		// 원 생성
 		//Ellipse(hdc, 200, 100, 300, 200);
@@ -50,5 +59,11 @@ namespace yam
 		//SelectObject(hdc, oldBrush);
 
 
+	}
+	void SpriteRenderer::ImageLoad(const std::wstring& path)
+	{
+		mImage = Gdiplus::Image::FromFile(path.c_str());
+		mWidth = mImage->GetWidth();
+		mHeight = mImage->GetHeight();
 	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "YComponent.h"
+#include "CommonInclude.h"
 
 namespace yam
 {
@@ -14,17 +15,15 @@ namespace yam
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void SetPosition(float x, float y)
+		void SetPosition(yam::math::Vector2 pos)
 		{
-			mX = x; mY = y;
+			mPosition.x = pos.x; mPosition.y = pos.y;
 		}
 
-		float GetPositionX() { return mX; }
-		float GetPositionY() { return mY; }
+		yam::math::Vector2 GetPosition() { return mPosition; }
 	private:
 		// 게임 오브젝트의 좌표
-		float mX;
-		float mY;
+		yam::math::Vector2 mPosition;
 	};
 }
 
