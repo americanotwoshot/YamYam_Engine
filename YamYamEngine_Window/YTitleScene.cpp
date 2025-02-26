@@ -2,6 +2,8 @@
 #include "YPlayer.h"
 #include "YTransform.h"
 #include "YSpriteRenderer.h"
+#include "YInput.h"
+#include "YSceneManager.h"
 
 namespace yam
 {
@@ -22,7 +24,7 @@ namespace yam
 		sr->SetName(L"SR");
 		sr->ImageLoad(L"C:\\Users\\User\\source\\repos\\YamYam\\YamYamEngine\\Resources\\TitleImage.jpg");
 
-		Scene::AddGameObject(pl);
+		Scene::AddGameObject(pl, eLayerType::BackGround);
 	}
 	void TitleScene::Update()
 	{
@@ -31,9 +33,16 @@ namespace yam
 	void TitleScene::LateUpdate()
 	{
 		Scene::LateUpdate();
+
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
+			SceneManager::LoadScene(L"PlayScene");
+		}
 	}
 	void TitleScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
+		wchar_t str[50] = L"Title Scene";
+		TextOut(hdc, 0, 0, str, 11);
 	}
 }

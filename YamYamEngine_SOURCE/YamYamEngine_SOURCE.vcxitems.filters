@@ -30,8 +30,15 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YMath.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YSpriteRenderer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)YTransform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YSpriteRenderer.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YTransform.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YLayer.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)YBulletObject.h" />
@@ -66,8 +73,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YMath.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YSpriteRenderer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)YTransform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YSpriteRenderer.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YTransform.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YLayer.h">
+      <Filter>Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YEnums.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -87,6 +104,9 @@
     </Filter>
     <Filter Include="High Level Interface">
       <UniqueIdentifier>{27815bc7-2645-42c1-849a-05f3e4459560}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer">
+      <UniqueIdentifier>{c1334bf6-82bd-48c2-9440-4f558e2d0c7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

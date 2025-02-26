@@ -8,10 +8,10 @@ namespace yam
 {
 	void LoadScenes()
 	{
-		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
+		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 		SceneManager::CreateScene<EndScene>(L"EndScene");
 
-		SceneManager::LoadScene(L"EndScene");
+		SceneManager::LoadScene(L"TitleScene");
 	}
 }

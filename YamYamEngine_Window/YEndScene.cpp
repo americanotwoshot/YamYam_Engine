@@ -22,7 +22,7 @@ namespace yam
 		sr->SetName(L"SR");
 		sr->ImageLoad(L"C:\\Users\\User\\source\\repos\\YamYam\\YamYamEngine\\Resources\\EndImage.jpg");
 
-		Scene::AddGameObject(pl);
+		Scene::AddGameObject(pl, eLayerType::BackGround);
 	}
 	void EndScene::Update()
 	{

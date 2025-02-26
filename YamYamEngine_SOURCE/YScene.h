@@ -1,6 +1,7 @@
 #pragma once
 #include "YEntity.h"
 #include "YGameObject.h"
+#include "YLayer.h"
 
 namespace yam
 {
@@ -15,10 +16,16 @@ namespace yam
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-		void AddGameObject(GameObject* gameObject);
+		virtual void OnEnter();
+		virtual void OnExit();
+
+		void AddGameObject(GameObject* gameObj, const eLayerType type);
 
 	private:
-		std::vector<GameObject*> mGameObjects;
+		void CreateLayers();
+
+	private:
+		std::vector<Layer*> mLayers;
 	};
 }
 

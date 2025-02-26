@@ -19,6 +19,9 @@ namespace yam
 		}
 		static Scene* LoadScene(const std::wstring& name)
 		{
+			if (mActiveScene)
+				mActiveScene->OnExit();
+
 			std::map<std::wstring, Scene*>::iterator iter 
 				= mScene.find(name);
 			
@@ -29,6 +32,8 @@ namespace yam
 
 			mActiveScene = iter->second;
 
+			mActiveScene->OnEnter();
+
 			return iter->second;
 		}
 
@@ -38,7 +43,6 @@ namespace yam
 		static void Render(HDC hdc);
 
 	private:
-		//static std::vector<Scene*> mScene;
 		static std::map<std::wstring, Scene*> mScene;
 		static Scene* mActiveScene;
 	};

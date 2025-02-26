@@ -3,39 +3,76 @@
 namespace yam
 {
 	Scene::Scene()
-		:mGameObjects{}
+		:mLayers{}
 	{
+		CreateLayers();
 	}
-
 	Scene::~Scene()
 	{
 	}
+
 	void Scene::Initialize()
 	{
+		for (Layer* layer : mLayers)
+		{
+			if (layer == nullptr)
+				continue;
+
+			layer->Initialize();
+		}
+
 	}
 	void Scene::Update()
 	{
-		for (GameObject* gameObj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			gameObj->Update();
+			if (layer == nullptr)
+				continue;
+
+			layer->Update();
 		}
 	}
 	void Scene::LateUpdate()
 	{
-		for (GameObject* gameObj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			gameObj->LateUpdate();
+			if (layer == nullptr)
+				continue;
+
+			layer->LateUpdate();
 		}
 	}
 	void Scene::Render(HDC hdc)
 	{
-		for (GameObject* gameObj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			gameObj->Render(hdc);
+			if (layer == nullptr)
+				continue;
+
+			layer->Render(hdc);
 		}
 	}
-	void Scene::AddGameObject(GameObject* gameObject)
+
+	void Scene::AddGameObject(GameObject* gameObj, const eLayerType type)
 	{
-		mGameObjects.push_back(gameObject);
+		mLayers[(UINT)type]->AddGameObject(gameObj);
+	}
+
+	void Scene::OnEnter()
+	{
+
+	}
+	void Scene::OnExit()
+	{
+
+	}
+
+	void Scene::CreateLayers()
+	{
+		mLayers.resize((UINT)eLayerType::Max);
+		std::for_each(mLayers.begin(), mLayers.end(),
+			[](Layer*& layer) {
+				layer = new Layer;
+			});
 	}
 }

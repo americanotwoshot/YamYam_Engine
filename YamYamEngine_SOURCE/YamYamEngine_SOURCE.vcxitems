@@ -18,9 +18,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YEntity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YEnums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YBulletObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YScene.h" />
@@ -36,6 +38,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YBulletObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YScene.cpp" />
