@@ -5,7 +5,7 @@ namespace yam
 	Scene::Scene()
 		:mLayers{}
 	{
-		CreateLayers();
+		createLayers();
 	}
 	Scene::~Scene()
 	{
@@ -53,7 +53,7 @@ namespace yam
 		}
 	}
 
-	void Scene::AddGameObject(GameObject* gameObj, const eLayerType type)
+	void Scene::AddGameObject(GameObject* gameObj, const enums::eLayerType type)
 	{
 		mLayers[(UINT)type]->AddGameObject(gameObj);
 	}
@@ -67,9 +67,9 @@ namespace yam
 
 	}
 
-	void Scene::CreateLayers()
+	void Scene::createLayers()
 	{
-		mLayers.resize((UINT)eLayerType::Max);
+		mLayers.resize((UINT)enums::eLayerType::Max);
 		std::for_each(mLayers.begin(), mLayers.end(),
 			[](Layer*& layer) {
 				layer = new Layer;

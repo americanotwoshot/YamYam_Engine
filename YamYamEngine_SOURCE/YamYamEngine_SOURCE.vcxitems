@@ -24,6 +24,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YSceneManager.h" />

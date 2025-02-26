@@ -13,16 +13,16 @@ namespace yam
 	}
 	void EndScene::Initialize()
 	{
-		Player* pl = new Player();
-		Transform* tr = pl->AddComponent<Transform>();
-		tr->SetPosition(yam::math::Vector2(0.0f, 0.0f));
-		tr->SetName(L"TR");
+		//Player* pl = new Player();
+		//Transform* tr = pl->AddComponent<Transform>();
+		//tr->SetPosition(yam::math::Vector2(0.0f, 0.0f));
+		//tr->SetName(L"TR");
 
-		SpriteRenderer* sr = pl->AddComponent<SpriteRenderer>();
-		sr->SetName(L"SR");
-		sr->ImageLoad(L"C:\\Users\\User\\source\\repos\\YamYam\\YamYamEngine\\Resources\\EndImage.jpg");
+		//SpriteRenderer* sr = pl->AddComponent<SpriteRenderer>();
+		//sr->SetName(L"SR");
+		//sr->ImageLoad(L"C:\\Users\\User\\source\\repos\\YamYam\\YamYamEngine\\Resources\\EndImage.jpg");
 
-		Scene::AddGameObject(pl, eLayerType::BackGround);
+		//Scene::AddGameObject(pl, enums::eLayerType::BackGround);
 	}
 	void EndScene::Update()
 	{

@@ -2,12 +2,13 @@
 #include "YInput.h"
 #include "YTime.h"
 #include "YBulletObject.h"
+#include "YTransform.h"
 
 namespace yam
 {
 	GameObject::GameObject()
 	{
-
+		initializeTransform();
 	}
 	GameObject::~GameObject()
 	{
@@ -45,5 +46,10 @@ namespace yam
 		{
 			comp->Render(hdc);
 		}
+	}
+
+	void GameObject::initializeTransform()
+	{
+		AddComponent<Transform>();
 	}
 }

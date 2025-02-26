@@ -1,6 +1,6 @@
 #pragma once
 
-namespace yam
+namespace yam::enums
 {
 	enum class eLayerType
 	{

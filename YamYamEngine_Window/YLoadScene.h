@@ -12,6 +12,6 @@ namespace yam
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 		SceneManager::CreateScene<EndScene>(L"EndScene");
 
-		SceneManager::LoadScene(L"TitleScene");
+		SceneManager::LoadScene(L"PlayScene");
 	}
 }
