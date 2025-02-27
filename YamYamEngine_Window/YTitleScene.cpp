@@ -4,6 +4,7 @@
 #include "YSpriteRenderer.h"
 #include "YInput.h"
 #include "YSceneManager.h"
+#include "YObject.h"
 
 namespace yam
 {
@@ -15,16 +16,15 @@ namespace yam
 	}
 	void TitleScene::Initialize()
 	{
-		//Player* pl = new Player();
-		//Transform* tr = pl->AddComponent<Transform>();
-		//tr->SetPosition(math::Vector2(0.0f, 0.0f));
-		//tr->SetName(L"TR");
-
-		//SpriteRenderer* sr = pl->AddComponent<SpriteRenderer>();
-		//sr->SetName(L"SR");
+		//Player* bg = object::Instantiate<Player>
+		//	(enums::eLayerType::BackGround, math::Vector2(100.0f, 100.0f));
+		//SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		//sr->ImageLoad(L"C:\\Users\\User\\source\\repos\\YamYam\\YamYamEngine\\Resources\\TitleImage.jpg");
 
-		//Scene::AddGameObject(pl, enums::eLayerType::BackGround);
+		//Player* tx = object::Instantiate<Player>
+		//	(enums::eLayerType::UI);
+		//SpriteRenderer* txSR = tx->AddComponent<SpriteRenderer>();
+		//txSR->SetText(L"Title Scene", 200.0f, 100.0f);
 	}
 	void TitleScene::Update()
 	{
@@ -42,7 +42,5 @@ namespace yam
 	void TitleScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-		wchar_t str[50] = L"Title Scene";
-		TextOut(hdc, 0, 0, str, 11);
 	}
 }

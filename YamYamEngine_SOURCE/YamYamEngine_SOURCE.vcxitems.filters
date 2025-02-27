@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YBulletObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YEntity.cpp">
       <Filter>Common</Filter>
     </ClCompile>
@@ -26,7 +25,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YApplication.cpp">
       <Filter>High Level Interface</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YMath.cpp">
       <Filter>Common</Filter>
     </ClCompile>
@@ -39,9 +37,17 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YLayer.cpp">
       <Filter>Layer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YResource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YTexture.cpp">
+      <Filter>Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YResources.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YBulletObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
       <Filter>Common</Filter>
     </ClInclude>
@@ -69,7 +75,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YApplication.h">
       <Filter>High Level Interface</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YMath.h">
       <Filter>Common</Filter>
     </ClInclude>
@@ -87,6 +92,15 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YObject.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YResource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YTexture.h">
+      <Filter>Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YResources.h">
+      <Filter>Resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +124,12 @@
     </Filter>
     <Filter Include="Layer">
       <UniqueIdentifier>{c1334bf6-82bd-48c2-9440-4f558e2d0c7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{d4e0ea46-fc83-479c-a20d-ead91fae7716}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{a199c7b3-5c37-4a46-ac85-2d492d6b3bbd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

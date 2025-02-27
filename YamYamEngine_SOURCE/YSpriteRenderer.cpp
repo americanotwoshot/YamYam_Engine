@@ -1,13 +1,14 @@
 #include "YSpriteRenderer.h"
 #include "YTransform.h"
 #include "YGameObject.h"
+#include "YTexture.h"
 
 namespace yam
 {
 	SpriteRenderer::SpriteRenderer()
-		: mImage(nullptr)
-		, mWidth(100.0f)
-		, mHeight(100.0f)
+		: Component()
+		, mTexture(nullptr)
+		, mSize(math::Vector2::One)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -24,11 +25,32 @@ namespace yam
 	}
 	void SpriteRenderer::Render(HDC hdc)
 	{
+		if (mTexture == nullptr)
+			assert(false);
+		
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		yam::math::Vector2 pos = tr->GetPosition();
 
-		Gdiplus::Graphics graphics(hdc);
-		graphics.DrawImage(mImage, Gdiplus::Rect(pos.x, pos.y, mWidth, mHeight));
+		if (mTexture->GetTextureType()
+			== graphics::Texture::eTextureType::Bmp)
+		{
+			TransparentBlt(hdc, pos.x, pos.y
+				, mTexture->GetWidth() * mSize.x, mTexture->GetHeight() * mSize.y
+				, mTexture->GetHdc(), 0, 0, mTexture->GetWidth(), mTexture->GetHeight()
+				, RGB(255, 0, 255));
+		}
+		else if (mTexture->GetTextureType()
+			== graphics::Texture::eTextureType::Png)
+		{
+			Gdiplus::Graphics graphics(hdc);
+			graphics.DrawImage(mTexture->GetImage(), 
+				Gdiplus::Rect(pos.x, pos.y
+					, mTexture->GetWidth() * mSize.x, mTexture->GetHeight() * mSize.y));
+		}
+
+		//Gdiplus::Graphics graphics(hdc);
+		//graphics.DrawImage(mImage, Gdiplus::Rect(pos.x, pos.y, mWidth, mHeight));
+
 
 		//// 파랑 브러쉬 생성 및 할당(도형 내부 색)
 		//HBRUSH brush = CreateSolidBrush(RGB(0, 0, 255));
@@ -59,11 +81,5 @@ namespace yam
 		//SelectObject(hdc, oldBrush);
 
 
-	}
-	void SpriteRenderer::ImageLoad(const std::wstring& path)
-	{
-		mImage = Gdiplus::Image::FromFile(path.c_str());
-		mWidth = mImage->GetWidth();
-		mHeight = mImage->GetHeight();
 	}
 }

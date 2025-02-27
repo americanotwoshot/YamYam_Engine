@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="YEndScene.h" />
+    <ClInclude Include="YLoadResources.h" />
     <ClInclude Include="YLoadScene.h" />
     <ClInclude Include="YPlayer.h" />
     <ClInclude Include="YPlayScene.h" />

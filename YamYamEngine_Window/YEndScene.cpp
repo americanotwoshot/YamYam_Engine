@@ -2,6 +2,8 @@
 #include "YPlayer.h"
 #include "YTransform.h"
 #include "YSpriteRenderer.h"
+#include "YInput.h"
+#include "YObject.h"
 
 namespace yam
 {
@@ -13,16 +15,15 @@ namespace yam
 	}
 	void EndScene::Initialize()
 	{
-		//Player* pl = new Player();
-		//Transform* tr = pl->AddComponent<Transform>();
-		//tr->SetPosition(yam::math::Vector2(0.0f, 0.0f));
-		//tr->SetName(L"TR");
-
-		//SpriteRenderer* sr = pl->AddComponent<SpriteRenderer>();
-		//sr->SetName(L"SR");
+		//Player* bg = object::Instantiate<Player>
+		//	(enums::eLayerType::BackGround, math::Vector2(100.0f, 100.0f));
+		//SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		//sr->ImageLoad(L"C:\\Users\\User\\source\\repos\\YamYam\\YamYamEngine\\Resources\\EndImage.jpg");
 
-		//Scene::AddGameObject(pl, enums::eLayerType::BackGround);
+		//Player* tx = object::Instantiate<Player>
+		//	(enums::eLayerType::UI);
+		//SpriteRenderer* txSR = tx->AddComponent<SpriteRenderer>();
+		//txSR->SetText(L"Ending Scene", 200.0f, 100.0f);
 	}
 	void EndScene::Update()
 	{
@@ -31,6 +32,11 @@ namespace yam
 	void EndScene::LateUpdate()
 	{
 		Scene::LateUpdate();
+
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
+			SceneManager::LoadScene(L"TitleScene");
+		}
 	}
 	void EndScene::Render(HDC hdc)
 	{

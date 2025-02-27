@@ -1,6 +1,7 @@
 #pragma once
 #include "YEntity.h"
 #include "YComponent.h"
+#include "YTexture.h"
 
 namespace yam
 {
@@ -15,15 +16,12 @@ namespace yam
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void ImageLoad(const std::wstring& path);
+		void SetTexture(graphics::Texture* texture) { mTexture = texture; }
+		void SetSize(math::Vector2 size) { mSize = size; }
 
 	private:
-		// 배경화면
-		Gdiplus::Image* mImage;
-		
-		// 게임 오브젝트의 크기
-		float mWidth;
-		float mHeight;
+		graphics::Texture* mTexture;
+		math::Vector2 mSize;
 	};
 }
 
