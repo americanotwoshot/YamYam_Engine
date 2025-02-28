@@ -16,14 +16,6 @@ namespace yam
 	void Player::LateUpdate()
 	{
 		GameObject::LateUpdate();
-
-		if (Input::GetKey(eKeyCode::Right))
-		{
-			Transform* tr = GetComponent<Transform>();
-			math::Vector2 pos = tr->GetPosition();
-			pos.x += Time::DeltaTime() * 100.0f;
-			tr->SetPosition(pos);
-		}
 	}
 	void Player::Render(HDC hdc)
 	{

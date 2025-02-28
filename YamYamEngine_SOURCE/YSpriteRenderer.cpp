@@ -2,11 +2,12 @@
 #include "YTransform.h"
 #include "YGameObject.h"
 #include "YTexture.h"
+#include "YRenderer.h"
 
 namespace yam
 {
 	SpriteRenderer::SpriteRenderer()
-		: Component()
+		: Component(enums::eComponentType::SpriteRenderer)
 		, mTexture(nullptr)
 		, mSize(math::Vector2::One)
 	{
@@ -29,7 +30,8 @@ namespace yam
 			assert(false);
 		
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-		yam::math::Vector2 pos = tr->GetPosition();
+		Vector2 pos = tr->GetPosition();
+		pos = renderer::mainCamera->CalculatePosition(pos);
 
 		if (mTexture->GetTextureType()
 			== graphics::Texture::eTextureType::Bmp)

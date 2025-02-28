@@ -2,8 +2,9 @@
 
 namespace yam
 {
-	Component::Component()
-		:mOwner(nullptr)
+	Component::Component(enums::eComponentType type)
+		: mType(type)
+		, mOwner(nullptr)
 	{
 	}
 	Component::~Component()

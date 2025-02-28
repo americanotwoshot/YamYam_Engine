@@ -5,7 +5,8 @@
 namespace yam
 {
 	Transform::Transform()
-		: mPosition(math::Vector2(0, 0))
+		: Component(enums::eComponentType::Transform)
+		, mPosition(math::Vector2(0, 0))
 	{
 	}
 	Transform::~Transform()
