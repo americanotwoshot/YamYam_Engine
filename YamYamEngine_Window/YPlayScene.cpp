@@ -11,6 +11,7 @@
 #include "YPlayerScript.h"
 #include "YCamera.h"
 #include "YRenderer.h"
+#include "YAnimator.h"
 
 namespace yam
 {
@@ -31,12 +32,17 @@ namespace yam
 		// player
 		mPlayer = object::Instantiate<Player>
 			(enums::eLayerType::Player);
-		SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
-		sr->SetSize(Vector2(3.0f, 3.0f));
+		//SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
+		//sr->SetSize(Vector2(3.0f, 3.0f));
 		mPlayer->AddComponent<PlayerScript>();
 
-		graphics::Texture* pacmanTexture = Resources::Find<graphics::Texture>(L"PacMan");
-		sr->SetTexture(pacmanTexture);
+		graphics::Texture* pacmanTexture = Resources::Find<graphics::Texture>(L"Cat");
+		Animator* animator = mPlayer->AddComponent<Animator>();
+		animator->CreateAnimation(L"CatFrontMove", pacmanTexture
+			, Vector2(0.0f, 0.0f), Vector2(32.0f,32.0f), Vector2::Zero, 4, 0.2f);
+		
+		animator->PlayAnimation(L"CatFrontMove", true);
+		//sr->SetTexture(pacmanTexture);
 
 		// background
 		GameObject* bg = object::Instantiate<GameObject>

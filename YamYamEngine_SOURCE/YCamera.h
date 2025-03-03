@@ -18,10 +18,10 @@ namespace yam
 		void Render(HDC hdc) override;
 
 	private:
-		class GameObject* mTarget;
-		Vector2 mDistance;
-		Vector2 mResolution;
-		Vector2 mLookPosition;
+		class GameObject* mTarget;	// 카메라가 따라다니는 대상
+		Vector2 mDistance;			// 카메라까지의 거리
+		Vector2 mResolution;		// 화면 해상도
+		Vector2 mLookPosition;		// 카메라가 보는 방향
 	};
 }
 

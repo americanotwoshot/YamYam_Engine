@@ -15,6 +15,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YAnimation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YComponent.h" />
@@ -37,6 +39,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YAnimation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YComponent.cpp" />
