@@ -34,6 +34,8 @@ namespace yam
 			break;
 		case yam::PlayerScript::eState::Sleep:
 			break;
+		case yam::PlayerScript::eState::GiveWater:
+			break;
 		case yam::PlayerScript::eState::Attack:
 			break;
 		default:

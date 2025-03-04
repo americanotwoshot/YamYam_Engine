@@ -33,38 +33,21 @@ namespace yam
 
 
 		// player
-		mPlayer = object::Instantiate<Player>
-			(enums::eLayerType::Player);
-		//SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
-		//sr->SetSize(Vector2(3.0f, 3.0f));
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
 		mPlayer->AddComponent<PlayerScript>();
 
-		graphics::Texture* pacmanTexture = Resources::Find<graphics::Texture>(L"Cat");
-		Animator* animator = mPlayer->AddComponent<Animator>();
-		animator->CreateAnimation(L"DownWalk", pacmanTexture
-			, Vector2(0.0f, 0.0f), Vector2(32.0f,32.0f), Vector2::Zero, 4, 0.2f);
-		animator->CreateAnimation(L"RightWalk", pacmanTexture
-			, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		animator->CreateAnimation(L"UpWalk", pacmanTexture
-			, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		animator->CreateAnimation(L"LeftWalk", pacmanTexture
-			, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		animator->CreateAnimation(L"SitDown", pacmanTexture
-			, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.5f);
-		animator->CreateAnimation(L"Grooming", pacmanTexture
-			, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.5f);
-		
+		graphics::Texture* playerTexture = Resources::Find<graphics::Texture>(L"Player");
+		Animator* playerAnimator = mPlayer->AddComponent<Animator>();
+		playerAnimator->CreateAnimation(L"Idle", playerTexture
+			, Vector2(2000.0f, 250.0f), Vector2(250.0f,250.0f), Vector2::Zero, 1, 0.2f);
+		playerAnimator->PlayAnimation(L"Idle", false);
 
-		animator->PlayAnimation(L"SitDown", false);
 		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(100.0f,100.0f));
-		mPlayer->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+		mPlayer->GetComponent<Transform>()->SetScale(Vector2(0.5f, 0.5f));
 
 
 		// cat
-		Cat* cat = object::Instantiate<Cat>
-			(enums::eLayerType::Animal);
-		//SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
-		//sr->SetSize(Vector2(3.0f, 3.0f));
+		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
 		cat->AddComponent<CatScript>();
 
 		graphics::Texture* catTexture = Resources::Find<graphics::Texture>(L"Cat");

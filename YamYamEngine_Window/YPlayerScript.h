@@ -11,6 +11,7 @@ namespace yam
 			SitDown,
 			Walk,
 			Sleep,
+			GiveWater,
 			Attack,
 		};
 
