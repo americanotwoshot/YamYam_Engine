@@ -38,10 +38,22 @@ namespace yam
 
 		graphics::Texture* pacmanTexture = Resources::Find<graphics::Texture>(L"Cat");
 		Animator* animator = mPlayer->AddComponent<Animator>();
-		animator->CreateAnimation(L"CatFrontMove", pacmanTexture
+		animator->CreateAnimation(L"DownWalk", pacmanTexture
 			, Vector2(0.0f, 0.0f), Vector2(32.0f,32.0f), Vector2::Zero, 4, 0.2f);
+		animator->CreateAnimation(L"RightWalk", pacmanTexture
+			, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		animator->CreateAnimation(L"UpWalk", pacmanTexture
+			, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		animator->CreateAnimation(L"LeftWalk", pacmanTexture
+			, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		animator->CreateAnimation(L"SitDown", pacmanTexture
+			, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.5f);
+		animator->CreateAnimation(L"Grooming", pacmanTexture
+			, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.5f);
 		
-		animator->PlayAnimation(L"CatFrontMove", true);
+		animator->PlayAnimation(L"SitDown", false);
+		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(100.0f,100.0f));
+		mPlayer->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
 		//sr->SetTexture(pacmanTexture);
 
 		// background

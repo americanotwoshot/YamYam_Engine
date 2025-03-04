@@ -3,10 +3,13 @@
 #include "YTransform.h"
 #include "YTime.h"
 #include "YGameObject.h"
+#include "YAnimator.h"
 
 namespace yam
 {
 	PlayerScript::PlayerScript()
+		: mState(PlayerScript::eState::SitDown)
+		, mAnimator(nullptr)
 	{
 	}
 	PlayerScript::~PlayerScript()
@@ -14,42 +17,117 @@ namespace yam
 	}
 	void PlayerScript::Initialize()
 	{
+		
 	}
 	void PlayerScript::Update()
 	{
-		if (Input::GetKey(eKeyCode::Right))
+		if (mAnimator == nullptr)
+			mAnimator = GetOwner()->GetComponent<Animator>();
+
+		switch (mState)
 		{
-			Transform* tr = GetOwner()->GetComponent<Transform>();
-			math::Vector2 pos = tr->GetPosition();
-			pos.x += Time::DeltaTime() * 100.0f;
-			tr->SetPosition(pos);
+		case yam::PlayerScript::eState::SitDown:
+			sitDown();
+			break;
+		case yam::PlayerScript::eState::Walk:
+			move();
+			break;
+		case yam::PlayerScript::eState::Sleep:
+			break;
+		case yam::PlayerScript::eState::Attack:
+			break;
+		default:
+			break;
 		}
-		if (Input::GetKey(eKeyCode::Left))
-		{
-			Transform* tr = GetOwner()->GetComponent<Transform>();
-			math::Vector2 pos = tr->GetPosition();
-			pos.x -= Time::DeltaTime() * 100.0f;
-			tr->SetPosition(pos);
-		}
-		if (Input::GetKey(eKeyCode::Up))
-		{
-			Transform* tr = GetOwner()->GetComponent<Transform>();
-			math::Vector2 pos = tr->GetPosition();
-			pos.y -= Time::DeltaTime() * 100.0f;
-			tr->SetPosition(pos);
-		}
-		if (Input::GetKey(eKeyCode::Down))
-		{
-			Transform* tr = GetOwner()->GetComponent<Transform>();
-			math::Vector2 pos = tr->GetPosition();
-			pos.y += Time::DeltaTime() * 100.0f;
-			tr->SetPosition(pos);
-		}
+		
+		//if (Input::GetKey(eKeyCode::Right))
+		//{
+		//	Transform* tr = GetOwner()->GetComponent<Transform>();
+		//	math::Vector2 pos = tr->GetPosition();
+		//	pos.x += Time::DeltaTime() * 100.0f;
+		//	tr->SetPosition(pos);
+		//}
+		//if (Input::GetKey(eKeyCode::Left))
+		//{
+		//	Transform* tr = GetOwner()->GetComponent<Transform>();
+		//	math::Vector2 pos = tr->GetPosition();
+		//	pos.x -= Time::DeltaTime() * 100.0f;
+		//	tr->SetPosition(pos);
+		//}
+		//if (Input::GetKey(eKeyCode::Up))
+		//{
+		//	Transform* tr = GetOwner()->GetComponent<Transform>();
+		//	math::Vector2 pos = tr->GetPosition();
+		//	pos.y -= Time::DeltaTime() * 100.0f;
+		//	tr->SetPosition(pos);
+		//}
+		//if (Input::GetKey(eKeyCode::Down))
+		//{
+		//	Transform* tr = GetOwner()->GetComponent<Transform>();
+		//	math::Vector2 pos = tr->GetPosition();
+		//	pos.y += Time::DeltaTime() * 100.0f;
+		//	tr->SetPosition(pos);
+		//}
 	}
 	void PlayerScript::LateUpdate()
 	{
 	}
 	void PlayerScript::Render(HDC hdc)
 	{
+	}
+
+	void PlayerScript::sitDown()
+	{
+		if (Input::GetKey(eKeyCode::D))
+		{
+			mState = PlayerScript::eState::Walk;
+			mAnimator->PlayAnimation(L"RightWalk");
+		}
+		if (Input::GetKey(eKeyCode::A))
+		{
+			mState = PlayerScript::eState::Walk;
+			mAnimator->PlayAnimation(L"LeftWalk");
+		}
+		if (Input::GetKey(eKeyCode::W))
+		{
+			mState = PlayerScript::eState::Walk;
+			mAnimator->PlayAnimation(L"UpWalk");
+		}
+		if (Input::GetKey(eKeyCode::S))
+		{
+			mState = PlayerScript::eState::Walk;
+			mAnimator->PlayAnimation(L"DownWalk");
+		}
+	}
+	void PlayerScript::move()
+	{
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector2 pos = tr->GetPosition();
+
+		if (Input::GetKey(eKeyCode::D))
+		{
+			pos.x += 100.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::A))
+		{
+			pos.x -= 100.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::W))
+		{
+			pos.y -= 100.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::S))
+		{
+			pos.y += 100.0f * Time::DeltaTime();
+		}
+
+		tr->SetPosition(pos);
+
+		if (Input::GetKeyUp(eKeyCode::D) || Input::GetKeyUp(eKeyCode::A)
+			|| Input::GetKeyUp(eKeyCode::W) || Input::GetKeyUp(eKeyCode::S))
+		{
+			mState = PlayerScript::eState::SitDown;
+			mAnimator->PlayAnimation(L"SitDown", false);
+		}
 	}
 }

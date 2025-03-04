@@ -4,6 +4,7 @@
 
 namespace yam
 {
+	using namespace math;
 	class Transform : public Component
 	{
 	public:
@@ -15,15 +16,17 @@ namespace yam
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void SetPosition(yam::math::Vector2 pos)
-		{
-			mPosition.x = pos.x; mPosition.y = pos.y;
-		}
+		void SetPosition(Vector2 pos){ mPosition.x = pos.x; mPosition.y = pos.y; }
+		Vector2 GetPosition() { return mPosition; }
+		void SetRotation(float rotate) { mRotation = rotate; }
+		float GetRotation() { return mRotation; }
+		void SetScale(Vector2 scale) { mScale = scale; }
+		Vector2 GetScale() { return mScale; }
 
-		yam::math::Vector2 GetPosition() { return mPosition; }
 	private:
-		// 게임 오브젝트의 좌표
-		yam::math::Vector2 mPosition;
+		Vector2 mPosition;
+		Vector2 mScale;
+		float mRotation;
 	};
 }
 
