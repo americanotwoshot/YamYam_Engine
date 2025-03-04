@@ -31,6 +31,12 @@
     <ClInclude Include="YPlayerScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="YCat.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="YCatScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YEndScene.cpp">
@@ -46,6 +52,12 @@
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="YPlayerScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YCat.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="YCatScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

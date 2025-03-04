@@ -154,6 +154,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    yam::LoadResources();
    yam::LoadScenes();
 
+   int a = 0;
+   srand((unsigned int)(&a));
+
    return TRUE;
 }
 

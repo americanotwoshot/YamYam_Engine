@@ -39,35 +39,6 @@ namespace yam
 		default:
 			break;
 		}
-		
-		//if (Input::GetKey(eKeyCode::Right))
-		//{
-		//	Transform* tr = GetOwner()->GetComponent<Transform>();
-		//	math::Vector2 pos = tr->GetPosition();
-		//	pos.x += Time::DeltaTime() * 100.0f;
-		//	tr->SetPosition(pos);
-		//}
-		//if (Input::GetKey(eKeyCode::Left))
-		//{
-		//	Transform* tr = GetOwner()->GetComponent<Transform>();
-		//	math::Vector2 pos = tr->GetPosition();
-		//	pos.x -= Time::DeltaTime() * 100.0f;
-		//	tr->SetPosition(pos);
-		//}
-		//if (Input::GetKey(eKeyCode::Up))
-		//{
-		//	Transform* tr = GetOwner()->GetComponent<Transform>();
-		//	math::Vector2 pos = tr->GetPosition();
-		//	pos.y -= Time::DeltaTime() * 100.0f;
-		//	tr->SetPosition(pos);
-		//}
-		//if (Input::GetKey(eKeyCode::Down))
-		//{
-		//	Transform* tr = GetOwner()->GetComponent<Transform>();
-		//	math::Vector2 pos = tr->GetPosition();
-		//	pos.y += Time::DeltaTime() * 100.0f;
-		//	tr->SetPosition(pos);
-		//}
 	}
 	void PlayerScript::LateUpdate()
 	{

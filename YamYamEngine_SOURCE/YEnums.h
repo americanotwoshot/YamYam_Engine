@@ -17,6 +17,7 @@ namespace yam::enums
 		None,
 		BackGround,
 		// tree
+		Animal,
 		Player,
 		UI,
 		Max = 16,

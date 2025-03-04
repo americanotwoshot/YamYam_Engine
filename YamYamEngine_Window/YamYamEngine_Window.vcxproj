@@ -131,6 +131,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="YCat.h" />
+    <ClInclude Include="YCatScript.h" />
     <ClInclude Include="YEndScene.h" />
     <ClInclude Include="YLoadResources.h" />
     <ClInclude Include="YLoadScene.h" />
@@ -140,6 +142,8 @@
     <ClInclude Include="YTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="YCat.cpp" />
+    <ClCompile Include="YCatScript.cpp" />
     <ClCompile Include="YEndScene.cpp" />
     <ClCompile Include="YPlayer.cpp" />
     <ClCompile Include="YPlayerScript.cpp" />
