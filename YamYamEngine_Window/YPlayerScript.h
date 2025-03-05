@@ -8,7 +8,7 @@ namespace yam
 	public:
 		enum class eState
 		{
-			SitDown,
+			Idle,
 			Walk,
 			Sleep,
 			GiveWater,
@@ -24,8 +24,9 @@ namespace yam
 		void Render(HDC hdc) override;
 
 	private:
-		void sitDown();
+		void idle();
 		void move();
+		void giveWater();
 
 	private:
 		eState mState;

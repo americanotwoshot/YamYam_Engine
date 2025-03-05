@@ -8,7 +8,7 @@
 namespace yam
 {
 	PlayerScript::PlayerScript()
-		: mState(PlayerScript::eState::SitDown)
+		: mState(PlayerScript::eState::Idle)
 		, mAnimator(nullptr)
 	{
 	}
@@ -26,8 +26,8 @@ namespace yam
 
 		switch (mState)
 		{
-		case yam::PlayerScript::eState::SitDown:
-			sitDown();
+		case yam::PlayerScript::eState::Idle:
+			idle();
 			break;
 		case yam::PlayerScript::eState::Walk:
 			move();
@@ -35,6 +35,7 @@ namespace yam
 		case yam::PlayerScript::eState::Sleep:
 			break;
 		case yam::PlayerScript::eState::GiveWater:
+			giveWater();
 			break;
 		case yam::PlayerScript::eState::Attack:
 			break;
@@ -49,28 +50,35 @@ namespace yam
 	{
 	}
 
-	void PlayerScript::sitDown()
+	void PlayerScript::idle()
 	{
-		if (Input::GetKey(eKeyCode::D))
+		if (Input::GetKey(eKeyCode::LButton))
 		{
-			mState = PlayerScript::eState::Walk;
-			mAnimator->PlayAnimation(L"RightWalk");
+			mState = PlayerScript::eState::GiveWater;
+			mAnimator->PlayAnimation(L"FrontGiveWater", false);
+
+			Vector2 mousePos = Input::GetMousePosition();
 		}
-		if (Input::GetKey(eKeyCode::A))
-		{
-			mState = PlayerScript::eState::Walk;
-			mAnimator->PlayAnimation(L"LeftWalk");
-		}
-		if (Input::GetKey(eKeyCode::W))
-		{
-			mState = PlayerScript::eState::Walk;
-			mAnimator->PlayAnimation(L"UpWalk");
-		}
-		if (Input::GetKey(eKeyCode::S))
-		{
-			mState = PlayerScript::eState::Walk;
-			mAnimator->PlayAnimation(L"DownWalk");
-		}
+		//if (Input::GetKey(eKeyCode::D))
+		//{
+		//	mState = PlayerScript::eState::Walk;
+		//	mAnimator->PlayAnimation(L"RightWalk");
+		//}
+		//if (Input::GetKey(eKeyCode::A))
+		//{
+		//	mState = PlayerScript::eState::Walk;
+		//	mAnimator->PlayAnimation(L"LeftWalk");
+		//}
+		//if (Input::GetKey(eKeyCode::W))
+		//{
+		//	mState = PlayerScript::eState::Walk;
+		//	mAnimator->PlayAnimation(L"UpWalk");
+		//}
+		//if (Input::GetKey(eKeyCode::S))
+		//{
+		//	mState = PlayerScript::eState::Walk;
+		//	mAnimator->PlayAnimation(L"DownWalk");
+		//}
 	}
 	void PlayerScript::move()
 	{
@@ -99,8 +107,16 @@ namespace yam
 		if (Input::GetKeyUp(eKeyCode::D) || Input::GetKeyUp(eKeyCode::A)
 			|| Input::GetKeyUp(eKeyCode::W) || Input::GetKeyUp(eKeyCode::S))
 		{
-			mState = PlayerScript::eState::SitDown;
+			mState = PlayerScript::eState::Idle;
 			mAnimator->PlayAnimation(L"SitDown", false);
+		}
+	}
+	void PlayerScript::giveWater()
+	{
+		if (mAnimator->IsComplete())
+		{
+			mState = eState::Idle;
+			mAnimator->PlayAnimation(L"Idle", false);
 		}
 	}
 }

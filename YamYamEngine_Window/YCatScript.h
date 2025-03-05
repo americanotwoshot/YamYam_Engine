@@ -9,7 +9,7 @@ namespace yam
 	public:
 		enum class eState
 		{
-			SitDown,
+			Idle,
 			Walk,
 			Sleep,
 			LayDown,
@@ -34,7 +34,7 @@ namespace yam
 		void Render(HDC hdc) override;
 
 	private:
-		void sitDown();
+		void idle();
 		void move();
 		void layDown();
 		void playWalkAnimationByDirection(eDirection dir);

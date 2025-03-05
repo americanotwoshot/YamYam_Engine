@@ -7,7 +7,7 @@
 namespace yam
 {
 	CatScript::CatScript()
-		: mState(CatScript::eState::SitDown)
+		: mState(CatScript::eState::Idle)
 		, mAnimator(nullptr)
 		, mTime(0.0f)
 	{
@@ -27,8 +27,8 @@ namespace yam
 
 		switch (mState)
 		{
-		case yam::CatScript::eState::SitDown:
-			sitDown();
+		case yam::CatScript::eState::Idle:
+			idle();
 			break;
 		case yam::CatScript::eState::Walk:
 			move();
@@ -51,7 +51,7 @@ namespace yam
 	{
 	}
 
-	void CatScript::sitDown()
+	void CatScript::idle()
 	{
 		mTime += Time::DeltaTime();
 		if (mTime > 3.0f)
@@ -77,7 +77,7 @@ namespace yam
 			}
 			else
 			{
-				mState = CatScript::eState::SitDown;
+				mState = CatScript::eState::Idle;
 				mAnimator->PlayAnimation(L"SitDown", false);
 			}
 			mTime = 0.0f;

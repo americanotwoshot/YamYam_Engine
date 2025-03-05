@@ -7,6 +7,7 @@
 #include <string>
 #include <map>
 #include "time.h"
+#include <functional>
 
 #include "YMath.h"
 
