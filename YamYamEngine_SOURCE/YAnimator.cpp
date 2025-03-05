@@ -11,6 +11,17 @@ namespace yam
 	}
 	Animator::~Animator()
 	{
+		for (auto& iter : mAnimations)
+		{
+			delete iter.second;
+			iter.second = nullptr;
+		}
+
+		for (auto& iter : mEvents)
+		{
+			delete iter.second;
+			iter.second = nullptr;
+		}
 	}
 
 	void Animator::Initialize()
@@ -21,10 +32,16 @@ namespace yam
 		if (mActiveAnimation)
 		{
 			mActiveAnimation->Update();
-			if (mActiveAnimation->IsComplete()
-				&& mbLoop)
+
+			Events* events = FindEvents(mActiveAnimation->GetName());
+
+			if (mActiveAnimation->IsComplete())
 			{
-				mActiveAnimation->Reset();
+				if (events->completeEvent.mEvent != nullptr)
+					events->completeEvent();
+
+				if (mbLoop)
+					mActiveAnimation->Reset();
 			}
 		}
 	}
@@ -52,7 +69,11 @@ namespace yam
 		animation = new Animation();
 		animation->CreateAnimation(name, spriteSheet
 			, leftTop, size, offset, spriteLength, duration);
+		animation->SetName(name);
 		animation->SetAnimator(this);
+
+		Events* events = new Events();
+		mEvents.insert(std::make_pair(name, events));
 
 		mAnimations.insert(std::make_pair(name, animation));
 	}
@@ -70,8 +91,46 @@ namespace yam
 		if (animation == nullptr)
 			return;
 
+		if (mActiveAnimation)
+		{
+			Events* currentEvents = FindEvents(mActiveAnimation->GetName());
+			if (currentEvents)
+				currentEvents->endEvent();
+		}
+
 		mActiveAnimation = animation;
 		mActiveAnimation->Reset();
 		mbLoop = loop;
+
+		Events* nextEvents = FindEvents(mActiveAnimation->GetName());
+		if (nextEvents)
+			nextEvents->startEvent();
+	}
+
+	Animator::Events* Animator::FindEvents(const std::wstring& name)
+	{
+		auto iter = mEvents.find(name);
+		if (iter == mEvents.end())
+			return nullptr;
+
+		return iter->second;
+	}
+	std::function<void()>& Animator::GetStartEvent(const std::wstring& name)
+	{
+		// TODO: 여기에 return 문을 삽입합니다.
+		Events* events = FindEvents(name);
+		return events->startEvent.mEvent;
+	}
+	std::function<void()>& Animator::GetCompleteEvent(const std::wstring& name)
+	{
+		// TODO: 여기에 return 문을 삽입합니다.
+		Events* events = FindEvents(name);
+		return events->completeEvent.mEvent;
+	}
+	std::function<void()>& Animator::GetEndEvent(const std::wstring& name)
+	{
+		// TODO: 여기에 return 문을 삽입합니다.
+		Events* events = FindEvents(name);
+		return events->endEvent.mEvent;
 	}
 }

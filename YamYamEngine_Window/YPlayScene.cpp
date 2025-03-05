@@ -34,7 +34,7 @@ namespace yam
 
 		// player
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
-		mPlayer->AddComponent<PlayerScript>();
+		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
 
 		graphics::Texture* playerTexture = Resources::Find<graphics::Texture>(L"Player");
 		Animator* playerAnimator = mPlayer->AddComponent<Animator>();
@@ -43,6 +43,8 @@ namespace yam
 		playerAnimator->CreateAnimation(L"FrontGiveWater", playerTexture
 			, Vector2(0.0f, 2000.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 12, 0.2f);
 		playerAnimator->PlayAnimation(L"Idle", false);
+
+		playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, plScript);
 
 		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(100.0f,100.0f));
 		mPlayer->GetComponent<Transform>()->SetScale(Vector2(0.5f, 0.5f));

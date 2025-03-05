@@ -55,11 +55,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YComponent.cpp">
       <Filter>Component\Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YAnimator.cpp">
-      <Filter>Component\Component</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YAnimation.cpp">
       <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YAnimator.cpp">
+      <Filter>Component\Animator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,11 +126,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YComponent.h">
       <Filter>Component\Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YAnimator.h">
-      <Filter>Component\Component</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YAnimation.h">
       <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YAnimator.h">
+      <Filter>Component\Animator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +178,9 @@
     </Filter>
     <Filter Include="Component\Component">
       <UniqueIdentifier>{e77a7af0-06ab-4ac4-9a1a-d5049d27494a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Animator">
+      <UniqueIdentifier>{7b586e62-2ac3-4224-96a5-95674f3a0853}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

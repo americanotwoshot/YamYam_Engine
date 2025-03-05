@@ -2,6 +2,7 @@
 #include "YInput.h"
 #include "YTime.h"
 #include "YSceneManager.h"
+#include "YResources.h"
 
 namespace yam 
 {
@@ -58,6 +59,12 @@ namespace yam
 		SceneManager::Render(mBackHdc);
 
 		copyRenderTarget(mBackHdc, mHdc);
+	}
+
+	void Application::Release()
+	{
+		SceneManager::Release();
+		Resources::Release();
 	}
 
 	void Application::clearRenderTarget()

@@ -23,6 +23,8 @@ namespace yam
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
+		void AttackEffect();
+
 	private:
 		void idle();
 		void move();

@@ -50,6 +50,11 @@ namespace yam
 	{
 	}
 
+	void PlayerScript::AttackEffect()
+	{
+		int a = 0;
+	}
+
 	void PlayerScript::idle()
 	{
 		if (Input::GetKey(eKeyCode::LButton))
