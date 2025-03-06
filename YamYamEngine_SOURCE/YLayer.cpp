@@ -35,6 +35,11 @@ namespace yam
 			if (gameObj == nullptr)
 				continue;
 
+			GameObject::eState state = gameObj->GetActive();
+			if (state == GameObject::eState::Paused
+				|| state == GameObject::eState::Dead)
+				continue;
+
 			gameObj->Update();
 		}
 	}
@@ -45,6 +50,11 @@ namespace yam
 			if (gameObj == nullptr)
 				continue;
 
+			GameObject::eState state = gameObj->GetActive();
+			if (state == GameObject::eState::Paused
+				|| state == GameObject::eState::Dead)
+				continue;
+
 			gameObj->LateUpdate();
 		}
 	}
@@ -53,6 +63,11 @@ namespace yam
 		for (GameObject* gameObj : mGameObjects)
 		{
 			if (gameObj == nullptr)
+				continue;
+
+			GameObject::eState state = gameObj->GetActive();
+			if (state == GameObject::eState::Paused
+				|| state == GameObject::eState::Dead)
 				continue;
 
 			gameObj->Render(hdc);

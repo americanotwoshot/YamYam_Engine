@@ -24,11 +24,11 @@ namespace yam
 	}
 	void CatScript::Update()
 	{
-		mDeathTime += Time::DeltaTime();
-		if (mDeathTime > 5.0f)
-		{
-			object::Destroy(GetOwner());
-		}
+		//mDeathTime += Time::DeltaTime();
+		//if (mDeathTime > 5.0f)
+		//{
+		//	object::Destroy(GetOwner());
+		//}
 
 		if (mAnimator == nullptr)
 			mAnimator = GetOwner()->GetComponent<Animator>();
