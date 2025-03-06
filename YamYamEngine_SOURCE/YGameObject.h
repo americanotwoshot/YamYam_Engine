@@ -7,6 +7,16 @@ namespace yam
 	class GameObject
 	{
 	public:
+		//friend void object::Destroy(GameObject* obj);
+
+		enum class eState
+		{
+			Active,
+			Paused,
+			Dead,
+			End
+		};
+
 		GameObject();
 		~GameObject();
 
@@ -40,10 +50,19 @@ namespace yam
 			return component;
 		}
 
+		void SetActive(bool power)
+		{
+			if (power == true) mState = eState::Active;
+			if (power == false) mState = eState::Paused;
+		}
+		eState GetActive() { return mState; }
+		void Death() { mState = eState::Dead; }
+
 	private:
 		void initializeTransform();
 
 	private:
+		eState mState;
 		std::vector<Component*> mComponents;
 	};
 }

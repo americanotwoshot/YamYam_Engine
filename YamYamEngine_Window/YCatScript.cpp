@@ -3,6 +3,7 @@
 #include "YTime.h"
 #include "YGameObject.h"
 #include "YAnimator.h"
+#include "YObject.h"
 
 namespace yam
 {
@@ -10,6 +11,7 @@ namespace yam
 		: mState(CatScript::eState::Idle)
 		, mAnimator(nullptr)
 		, mTime(0.0f)
+		, mDeathTime(0.0f)
 	{
 	}
 	CatScript::~CatScript()
@@ -22,6 +24,12 @@ namespace yam
 	}
 	void CatScript::Update()
 	{
+		mDeathTime += Time::DeltaTime();
+		if (mDeathTime > 5.0f)
+		{
+			object::Destroy(GetOwner());
+		}
+
 		if (mAnimator == nullptr)
 			mAnimator = GetOwner()->GetComponent<Animator>();
 

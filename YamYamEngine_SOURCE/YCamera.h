@@ -17,6 +17,8 @@ namespace yam
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
+		void SetTarget(GameObject* target) { mTarget = target; }
+
 	private:
 		class GameObject* mTarget;	// 카메라가 따라다니는 대상
 		Vector2 mDistance;			// 카메라까지의 거리
