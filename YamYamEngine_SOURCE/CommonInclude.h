@@ -9,6 +9,7 @@
 #include "time.h"
 #include <functional>
 #include <filesystem>
+#include <math.h>
 
 #include "YMath.h"
 
