@@ -62,6 +62,11 @@ namespace yam::graphics
 			mWidth = info.bmWidth;
 			mHeight = info.bmHeight;
 
+			if (info.bmBitsPixel == 32)
+				mbAlpha = true;
+			else
+				mbAlpha = false;
+
 			HDC mainDC = application.GetHdc();
 			mHdc = CreateCompatibleDC(mainDC);
 
