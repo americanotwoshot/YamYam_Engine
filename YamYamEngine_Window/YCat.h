@@ -12,6 +12,5 @@ namespace yam
 		void Render(HDC hdc) override;
 
 	private:
-
 	};
 }
