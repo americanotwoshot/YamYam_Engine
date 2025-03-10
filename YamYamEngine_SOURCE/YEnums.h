@@ -5,9 +5,10 @@ namespace yam::enums
 	enum class eComponentType
 	{
 		Transform,
+		Collider,
+		Script,
 		SpriteRenderer,
 		Animator,
-		Script,
 		Camera,
 		End,
 	};

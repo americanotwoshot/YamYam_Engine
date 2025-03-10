@@ -78,17 +78,17 @@ namespace yam
 		//pos += Vector2(1.0f, cosf(mRadian)) * (100.0f * Time::DeltaTime());
 
 		// 마우스 위치 방향으로 회전 후 이동( 벡터의 뺄셈 활용 )
-		Transform* plTr = mPlayer->GetComponent<Transform>();
-		Vector2 dest = mDest - plTr->GetPosition();
-		dest.normarlize();
+		//Transform* plTr = mPlayer->GetComponent<Transform>();
+		//Vector2 dest = mDest - plTr->GetPosition();
+		//dest.normarlize();
 
-		float rotDegree = Vector2::Dot(dest, Vector2::Right);
-		rotDegree = acosf(rotDegree);
-		rotDegree = ConvertRadian(rotDegree);
+		//float rotDegree = Vector2::Dot(dest, Vector2::Right);
+		//rotDegree = acosf(rotDegree);
+		//rotDegree = ConvertRadian(rotDegree);
 
-		pos += dest * (100.0f * Time::DeltaTime());
+		//pos += dest * (100.0f * Time::DeltaTime());
 
-		tr->SetPosition(pos);
+		//tr->SetPosition(pos);
 
 		//if (mTime > 3.0f)
 		//{

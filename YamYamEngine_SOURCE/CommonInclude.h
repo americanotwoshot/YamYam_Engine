@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <string>
 #include <map>
+#include <bitset>
 #include "time.h"
 #include <functional>
 #include <filesystem>

@@ -3,6 +3,7 @@
 #include "YTime.h"
 #include "YSceneManager.h"
 #include "YResources.h"
+#include "YCollisionManager.h"
 
 namespace yam 
 {
@@ -28,6 +29,7 @@ namespace yam
 		createBuffer(width, height);
 		initializeEtc();
 
+		CollisionManager::Initialize();
 		SceneManager::Initialize();
 	}
 
@@ -44,12 +46,13 @@ namespace yam
 	{
 		Input::Update();
 		Time::Update();
-
+		CollisionManager::Update();
 		SceneManager::Update();
 	}
 
 	void Application::LateUpdate()
 	{
+		CollisionManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 
@@ -58,6 +61,7 @@ namespace yam
 		clearRenderTarget();
 
 		Time::Render(mBackHdc);
+		CollisionManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 
 		copyRenderTarget(mBackHdc, mHdc);
@@ -76,7 +80,13 @@ namespace yam
 
 	void Application::clearRenderTarget()
 	{
+		HBRUSH grayBrush = (HBRUSH)CreateSolidBrush(RGB(128,128,128));
+		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHdc, grayBrush);
+
 		Rectangle(mBackHdc, -1, -1, 1601, 901);
+
+		(HBRUSH)SelectObject(mBackHdc, oldBrush);
+		DeleteObject(grayBrush);
 	}
 	void Application::copyRenderTarget(HDC src, HDC dst) {
 		BitBlt(dst, 0, 0, mWidth, mHeight,

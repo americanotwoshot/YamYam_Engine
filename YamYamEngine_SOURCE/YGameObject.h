@@ -55,7 +55,9 @@ namespace yam
 			if (power == true) mState = eState::Active;
 			if (power == false) mState = eState::Paused;
 		}
-		eState GetActive() { return mState; }
+		eState GetState() { return mState; }
+		bool IsActive() { return mState == eState::Active; }
+		bool isDead() { return mState == eState::Dead; }
 		void Death() { mState = eState::Dead; }
 
 	private:
