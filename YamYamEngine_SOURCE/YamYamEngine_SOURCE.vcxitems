@@ -24,6 +24,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YCollider.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YDontDestroyOnLoad.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YEnums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YGameObject.h" />
@@ -52,6 +53,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YCollider.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YDontDestroyOnLoad.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YInput.cpp" />

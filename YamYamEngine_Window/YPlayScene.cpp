@@ -38,6 +38,8 @@ namespace yam
 
 		// player
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
+		object::DontDestroyOnLoad(mPlayer);
+
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
 		//BoxCollider2D* plCollider = mPlayer->AddComponent<BoxCollider2D>();
 		CircleCollider2D* plCollider = mPlayer->AddComponent<CircleCollider2D>();

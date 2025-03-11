@@ -4,6 +4,7 @@
 
 namespace yam 
 {
+	using namespace enums;
 	class GameObject
 	{
 	public:
@@ -57,8 +58,10 @@ namespace yam
 		}
 		eState GetState() { return mState; }
 		bool IsActive() { return mState == eState::Active; }
-		bool isDead() { return mState == eState::Dead; }
+		bool IsDead() { return mState == eState::Dead; }
 		void Death() { mState = eState::Dead; }
+		void SetLayerType(eLayerType type) { mLayerType = type; }
+		eLayerType GetLayerType() { return mLayerType; }
 
 	private:
 		void initializeTransform();
@@ -66,6 +69,7 @@ namespace yam
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
+		eLayerType mLayerType;
 	};
 }
 
