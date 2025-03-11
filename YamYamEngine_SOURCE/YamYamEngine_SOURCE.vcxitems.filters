@@ -70,7 +70,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YCollider.cpp">
       <Filter>Component\Collider</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YCollisionManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YCollisionManager.cpp">
+      <Filter>Component\Collider</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -151,7 +153,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YCircleCollider2D.h">
       <Filter>Component\Collider</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YCollisionManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YCollisionManager.h">
+      <Filter>Component\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">

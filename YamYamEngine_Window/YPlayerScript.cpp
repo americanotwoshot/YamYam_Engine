@@ -8,6 +8,7 @@
 #include "YObject.h"
 #include "YCat.h"
 #include "YCatScript.h"
+#include "YCollider.h"
 
 namespace yam
 {
@@ -19,6 +20,7 @@ namespace yam
 	PlayerScript::~PlayerScript()
 	{
 	}
+
 	void PlayerScript::Initialize()
 	{
 		
@@ -88,6 +90,19 @@ namespace yam
 	
 		Vector2 mousePos = Input::GetMousePosition();
 		catSrc->mDest = mousePos;
+	}
+
+	void PlayerScript::OnCollisionEnter(Collider* other)
+	{
+		int a = 0;
+	}
+	void PlayerScript::OnCollisionStay(Collider* other)
+	{
+		int a = 0;
+	}
+	void PlayerScript::OnCollisionExit(Collider* other)
+	{
+		int a = 0;
 	}
 
 	void PlayerScript::idle()
