@@ -132,9 +132,57 @@ namespace yam
 		Vector2 rightSize = right->GetSize() * 100.0f;
 
 		// AABB Ãæµ¹
-		if (fabs(leftPos.x - rightPos.x) < fabs(leftSize.x / 2.0f + rightSize.x / 2.0f)
-			&& fabs(leftPos.y - rightPos.y) < fabs(leftSize.y / 2.0f + rightSize.y / 2.0f))
-			return true;
+		enums::eColliderType leftType = left->GetColliderType();
+		enums::eColliderType rightType = right->GetColliderType();
+
+		// RECT - RECT
+		if (leftType == enums::eColliderType::Rect2D
+			&& rightType == enums::eColliderType::Rect2D)
+		{
+			if (fabs(leftPos.x - rightPos.x) < fabs(leftSize.x / 2.0f + rightSize.x / 2.0f)
+				&& fabs(leftPos.y - rightPos.y) < fabs(leftSize.y / 2.0f + rightSize.y / 2.0f))
+				return true;
+		}
+
+		// CIRCLE - CIRCLE
+		if (leftType == enums::eColliderType::Circle2D
+			&& rightType == enums::eColliderType::Circle2D)
+		{
+			Vector2 leftCirclePos = leftPos + (leftSize / 2.0f);
+			Vector2 rightCirclePos = rightPos + (rightSize / 2.0f);
+
+			float distance = (leftCirclePos - rightCirclePos).length();
+			if (distance <= (leftSize.x / 2.0f + rightSize.x / 2.0f))
+			{
+				return true;
+			}
+		}
+
+		// CIRCLE - RECT
+		if ((leftType == enums::eColliderType::Rect2D && rightType == enums::eColliderType::Circle2D))
+		{
+			Vector2 boxSize;
+			boxSize.x = leftSize.x + rightSize.x;
+			boxSize.y = leftSize.y + rightSize.y;
+
+			if (rightPos.x < leftPos.x + (boxSize.x / 2.0f) 
+				&& rightPos.x > leftPos.x - (boxSize.x / 2.0f)
+				&& rightPos.y < leftPos.y + (boxSize.y / 2.0f) 
+				&& rightPos.y > leftPos.y - (boxSize.y / 2.0f))
+				return true;
+		}
+		if ((leftType == enums::eColliderType::Circle2D && rightType == enums::eColliderType::Rect2D))
+		{
+			Vector2 boxSize;
+			boxSize.x = leftSize.x + rightSize.x;
+			boxSize.y = leftSize.y + rightSize.y;
+
+			if (leftPos.x < rightPos.x + (boxSize.x / 2.0f)
+				&& leftPos.x > rightPos.x - (boxSize.x / 2.0f)
+				&& leftPos.y < rightPos.y + (boxSize.y / 2.0f)
+				&& leftPos.y > rightPos.y - (boxSize.y / 2.0f))
+				return true;
+		}
 
 		return false;
 	}

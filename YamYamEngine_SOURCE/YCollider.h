@@ -2,10 +2,11 @@
 #include "YComponent.h"
 namespace yam
 {
+	using namespace enums;
 	class Collider : public Component
 	{
 	public:
-		Collider();
+		Collider(eColliderType type);
 		~Collider();
 
 		virtual void Initialize();
@@ -22,12 +23,15 @@ namespace yam
 		UINT GetID() { return mID; }
 		Vector2 GetSize() { return mSize; }
 		void SetSize(Vector2 size) { mSize = size; }
+		eColliderType GetColliderType() { return mType; }
 
 	private:
 		static UINT32 mCollisionID;
 		UINT32 mID;
 		Vector2 mOffset;
 		Vector2 mSize;
+
+		eColliderType mType;
 	};
 }
 

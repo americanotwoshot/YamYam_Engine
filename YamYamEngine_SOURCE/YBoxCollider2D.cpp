@@ -5,6 +5,7 @@
 namespace yam
 {
 	BoxCollider2D::BoxCollider2D()
+		: Collider(eColliderType::Rect2D)
 	{
 	}
 	BoxCollider2D::~BoxCollider2D()

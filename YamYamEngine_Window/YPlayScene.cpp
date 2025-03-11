@@ -16,6 +16,7 @@
 #include "YCatScript.h"
 #include "YBoxCollider2D.h"
 #include "YCollisionManager.h"
+#include "YCircleCollider2D.h"
 
 namespace yam
 {
@@ -38,7 +39,8 @@ namespace yam
 		// player
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
-		BoxCollider2D* plCollider = mPlayer->AddComponent<BoxCollider2D>();
+		//BoxCollider2D* plCollider = mPlayer->AddComponent<BoxCollider2D>();
+		CircleCollider2D* plCollider = mPlayer->AddComponent<CircleCollider2D>();
 		plCollider->SetOffset(Vector2(-50.0f, -50.0f));
 
 		graphics::Texture* playerTexture = Resources::Find<graphics::Texture>(L"Player");
@@ -51,7 +53,7 @@ namespace yam
 
 		//playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, plScript);
 
-		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(300.0f,250.0f));
+		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(400.0f,250.0f));
 		//mPlayer->GetComponent<Transform>()->SetScale(Vector2(0.5f, 0.5f));
 
 
@@ -63,6 +65,7 @@ namespace yam
 		Animator* catAnimator = cat->AddComponent<Animator>();
 
 		BoxCollider2D* catCollider = cat->AddComponent<BoxCollider2D>();
+		//CircleCollider2D* catCollider = cat->AddComponent<CircleCollider2D>();
 		catCollider->SetOffset(Vector2(-50.0f, -50.0f));
 
 		//catAnimator->CreateAnimation(L"DownWalk", catTexture

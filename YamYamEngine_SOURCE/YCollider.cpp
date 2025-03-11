@@ -5,8 +5,9 @@
 namespace yam
 {
 	UINT32 Collider::mCollisionID = 1;
-	Collider::Collider()
+	Collider::Collider(eColliderType type)
 		:Component(enums::eComponentType::Collider)
+		, mType(type)
 		, mID(mCollisionID++)
 		, mSize(Vector2::One)
 		, mOffset(Vector2::Zero)
