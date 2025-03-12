@@ -76,6 +76,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YDontDestroyOnLoad.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YTileMapRenderer.cpp">
+      <Filter>Component\TileMapRenderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -162,6 +165,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YDontDestroyOnLoad.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YTileMapRenderer.h">
+      <Filter>Component\TileMapRenderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -214,6 +220,9 @@
     </Filter>
     <Filter Include="Component\Collider">
       <UniqueIdentifier>{7f9e0e43-0e2e-477c-b015-494bab9108ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\TileMapRenderer">
+      <UniqueIdentifier>{9975d106-aec5-42ee-849b-8a3009baa418}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

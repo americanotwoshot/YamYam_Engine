@@ -139,7 +139,9 @@
     <ClInclude Include="YPlayer.h" />
     <ClInclude Include="YPlayerScript.h" />
     <ClInclude Include="YPlayScene.h" />
+    <ClInclude Include="YTile.h" />
     <ClInclude Include="YTitleScene.h" />
+    <ClInclude Include="YToolScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YCat.cpp" />
@@ -148,7 +150,9 @@
     <ClCompile Include="YPlayer.cpp" />
     <ClCompile Include="YPlayerScript.cpp" />
     <ClCompile Include="YPlayScene.cpp" />
+    <ClCompile Include="YTile.cpp" />
     <ClCompile Include="YTitleScene.cpp" />
+    <ClCompile Include="YToolScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

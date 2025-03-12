@@ -40,6 +40,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YSpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YTexture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YTileMapRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YTransform.h" />
   </ItemGroup>
@@ -67,6 +68,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YSpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YTexture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YTileMapRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YTransform.cpp" />
   </ItemGroup>
