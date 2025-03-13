@@ -1,17 +1,19 @@
 #pragma once
-#include "..\\YamYamEngine_SOURCE\\YGameObject.h"
+#include "..\\YamYamEngine_SOURCE\\YScript.h"
+#include "..\\YamYamEngine_SOURCE\\YTransform.h"
 
 namespace yam
 {
-	class Tile : public GameObject
+	class CameraScript : public Script
 	{
 	public:
+		CameraScript();
+		~CameraScript();
+
 		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
-
-		void SetIndexPosition(int x, int y);
 
 	private:
 

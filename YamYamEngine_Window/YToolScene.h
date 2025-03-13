@@ -1,5 +1,6 @@
 #pragma once
 #include "..\\YamYamEngine_SOURCE\\YScene.h"
+#include "YTile.h"
 
 namespace yam
 {
@@ -16,6 +17,12 @@ namespace yam
 
 		void OnEnter() override;
 		void OnExit() override;
+
+		void Save();
+		void Load();
+
+	private:
+		std::vector<Tile*> mTiles;
 	};
 }
 

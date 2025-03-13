@@ -7,6 +7,8 @@
 namespace yam
 {
 	Vector2 TileMapRenderer::TileSize = Vector2::One;
+	Vector2 TileMapRenderer::OriginTileSize = Vector2::One;
+	Vector2 TileMapRenderer::SelectedIndex = Vector2(-1.0f,-1.0f);
 
 	TileMapRenderer::TileMapRenderer()
 		: Component(enums::eComponentType::SpriteRenderer)
@@ -16,6 +18,7 @@ namespace yam
 		, mTileSize(Vector2(16.0f, 16.0f))
 	{
 		TileSize = mTileSize * mSize;
+		OriginTileSize = mTileSize;
 	}
 	TileMapRenderer::~TileMapRenderer()
 	{

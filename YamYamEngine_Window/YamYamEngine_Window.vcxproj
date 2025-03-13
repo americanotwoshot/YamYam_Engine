@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="YCameraScript.h" />
     <ClInclude Include="YCat.h" />
     <ClInclude Include="YCatScript.h" />
     <ClInclude Include="YEndScene.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="YToolScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="YCameraScript.cpp" />
     <ClCompile Include="YCat.cpp" />
     <ClCompile Include="YCatScript.cpp" />
     <ClCompile Include="YEndScene.cpp" />

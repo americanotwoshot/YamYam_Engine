@@ -43,6 +43,9 @@
     <ClInclude Include="YTile.h">
       <Filter>Contents</Filter>
     </ClInclude>
+    <ClInclude Include="YCameraScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YEndScene.cpp">
@@ -71,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="YTile.cpp">
       <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="YCameraScript.cpp">
+      <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

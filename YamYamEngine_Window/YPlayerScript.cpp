@@ -85,7 +85,7 @@ namespace yam
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 
-		cat->GetComponent<Transform>()->SetPosition(tr->GetPosition());
+		cat->GetComponent<Transform>()->SetIndexPosition(tr->GetPosition());
 		cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
 	
 		Vector2 mousePos = Input::GetMousePosition();
@@ -155,7 +155,7 @@ namespace yam
 			pos.y += 100.0f * Time::DeltaTime();
 		}
 
-		tr->SetPosition(pos);
+		tr->SetIndexPosition(pos);
 	}
 	void PlayerScript::move()
 	{
@@ -179,7 +179,7 @@ namespace yam
 			pos.y += 100.0f * Time::DeltaTime();
 		}
 
-		tr->SetPosition(pos);
+		tr->SetIndexPosition(pos);
 
 		if (Input::GetKeyUp(eKeyCode::D) || Input::GetKeyUp(eKeyCode::A)
 			|| Input::GetKeyUp(eKeyCode::W) || Input::GetKeyUp(eKeyCode::S))
