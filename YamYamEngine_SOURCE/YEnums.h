@@ -22,6 +22,7 @@ namespace yam::enums
 		// tree
 		Animal,
 		Player,
+		Floor,
 		UI,
 		Max = 16,
 	};

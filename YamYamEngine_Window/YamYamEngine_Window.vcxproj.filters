@@ -46,6 +46,12 @@
     <ClInclude Include="YCameraScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="YFloor.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="YFloorScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YEndScene.cpp">
@@ -76,6 +82,12 @@
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="YCameraScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YFloor.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="YFloorScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

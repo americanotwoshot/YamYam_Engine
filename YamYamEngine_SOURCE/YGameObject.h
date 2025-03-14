@@ -5,7 +5,7 @@
 namespace yam 
 {
 	using namespace enums;
-	class GameObject
+	class GameObject : public Entity
 	{
 	public:
 		//friend void object::Destroy(GameObject* obj);

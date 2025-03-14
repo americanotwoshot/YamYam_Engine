@@ -135,6 +135,8 @@
     <ClInclude Include="YCat.h" />
     <ClInclude Include="YCatScript.h" />
     <ClInclude Include="YEndScene.h" />
+    <ClInclude Include="YFloor.h" />
+    <ClInclude Include="YFloorScript.h" />
     <ClInclude Include="YLoadResources.h" />
     <ClInclude Include="YLoadScene.h" />
     <ClInclude Include="YPlayer.h" />
@@ -149,6 +151,8 @@
     <ClCompile Include="YCat.cpp" />
     <ClCompile Include="YCatScript.cpp" />
     <ClCompile Include="YEndScene.cpp" />
+    <ClCompile Include="YFloor.cpp" />
+    <ClCompile Include="YFloorScript.cpp" />
     <ClCompile Include="YPlayer.cpp" />
     <ClCompile Include="YPlayerScript.cpp" />
     <ClCompile Include="YPlayScene.cpp" />

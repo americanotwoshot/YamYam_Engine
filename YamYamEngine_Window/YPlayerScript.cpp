@@ -95,26 +95,25 @@ namespace yam
 
 	void PlayerScript::OnCollisionEnter(Collider* other)
 	{
-		int a = 0;
+		
 	}
 	void PlayerScript::OnCollisionStay(Collider* other)
 	{
-		int a = 0;
+		
 	}
 	void PlayerScript::OnCollisionExit(Collider* other)
 	{
-		int a = 0;
+		
 	}
 
 	void PlayerScript::idle()
 	{
-		if (Input::GetKey(eKeyCode::LButton))
-		{
-			mState = PlayerScript::eState::GiveWater;
-			mAnimator->PlayAnimation(L"FrontGiveWater", false);
-
-			Vector2 mousePos = Input::GetMousePosition();
-		}
+		//if (Input::GetKey(eKeyCode::LButton))
+		//{
+		//	mState = PlayerScript::eState::GiveWater;
+		//	mAnimator->PlayAnimation(L"FrontGiveWater", false);
+		//	Vector2 mousePos = Input::GetMousePosition();
+		//}
 		//if (Input::GetKey(eKeyCode::D))
 		//{
 		//	mState = PlayerScript::eState::Walk;
@@ -154,13 +153,17 @@ namespace yam
 		if (Input::GetKey(eKeyCode::W))
 		{
 			//pos.y -= 100.0f * Time::DeltaTime();
-			rb->AddForce(Vector2(0.0f, -200.0f));
+			//rb->AddForce(Vector2(0.0f, -200.0f));
+			Vector2 velocity = rb->GetVelocity();
+			velocity.y = -500.0f;
+			rb->SetVelocity(velocity);
+			rb->SetGround(false);
 		}
-		if (Input::GetKey(eKeyCode::S))
-		{
-			//pos.y += 100.0f * Time::DeltaTime();
-			rb->AddForce(Vector2(0.0f, 200.0f));
-		}
+		//if (Input::GetKey(eKeyCode::S))
+		//{
+		//	//pos.y += 100.0f * Time::DeltaTime();
+		//	rb->AddForce(Vector2(0.0f, 200.0f));
+		//}
 
 		tr->SetPosition(pos);
 	}
