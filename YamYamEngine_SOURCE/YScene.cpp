@@ -1,4 +1,5 @@
 #include "YScene.h"
+#include "YCollisionManager.h"
 
 namespace yam
 {
@@ -73,7 +74,6 @@ namespace yam
 	{
 		mLayers[(UINT)type]->AddGameObject(gameObj);
 	}
-
 	void Scene::EraseGameObject(GameObject* gameObj)
 	{
 		eLayerType layerType = gameObj->GetLayerType();
@@ -86,7 +86,7 @@ namespace yam
 	}
 	void Scene::OnExit()
 	{
-
+		CollisionManager::Clear();
 	}
 
 	void Scene::createLayers()

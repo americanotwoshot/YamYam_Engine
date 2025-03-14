@@ -34,6 +34,12 @@ namespace yam
 	{
 	}
 
+	void CollisionManager::Clear()
+	{
+		mCollisionMap.clear();
+		mCollisionLayerMatrix->reset();
+	}
+
 	void CollisionManager::CollisionLayerCheck(eLayerType left, eLayerType right, bool enable)
 	{
 		int row = 0;

@@ -30,8 +30,6 @@ namespace yam
 	}
 	void PlayScene::Initialize()
 	{
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
-
 		// main Camera
 		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector2(343.0f, 442.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
@@ -126,6 +124,7 @@ namespace yam
 
 	void PlayScene::OnEnter()
 	{
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
 	}
 	void PlayScene::OnExit()
 	{
