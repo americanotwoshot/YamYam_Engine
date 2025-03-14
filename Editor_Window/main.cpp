@@ -7,6 +7,7 @@
 #include "..\\YamYamEngine_SOURCE\\YApplication.h"
 #include "..\\YamYamEngine_SOURCE\\YResources.h"
 #include "..\\YamYamEngine_SOURCE\\YTexture.h"
+#include "..\\YamYamEngine_SOURCE\\YSceneManager.h"
 
 #include "..\\YamYamEngine_WINDOW\\YLoadScene.h"
 #include "..\\YamYamEngine_WINDOW\\YLoadResources.h"
@@ -133,9 +134,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
-   HWND ToolHWnd = CreateWindowW(L"TILEWINDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
-       0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
-
    application.Initialize(hWnd, width, height);
 
    if (!hWnd)
@@ -158,20 +156,29 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    int a = 0;
    srand((unsigned int)(&a));
 
-   // Tile Window 크기 조정
-   yam::graphics::Texture* texture = 
-       yam::Resources::Find<yam::graphics::Texture>(L"SpringFloor");
+   yam::Scene* activeScene = yam::SceneManager::GetActiveScene();
 
-   RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight()};
-   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+   std::wstring name = activeScene->GetName();
+   if (name == L"ToolScene")
+   {
+       HWND ToolHWnd = CreateWindowW(L"TILEWINDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
+           0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
-   UINT toolWidth = rect.right - rect.left;
-   UINT toolHeight = rect.bottom - rect.top;
+       // Tile Window 크기 조정 -- TOOL
+       yam::graphics::Texture* texture =
+           yam::Resources::Find<yam::graphics::Texture>(L"SpringFloor");
 
-   SetWindowPos(ToolHWnd, nullptr, width, 0,
-       toolWidth, toolHeight, 0);
-   ShowWindow(ToolHWnd, true);
-   UpdateWindow(ToolHWnd);
+       RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight() };
+       AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+       UINT toolWidth = rect.right - rect.left;
+       UINT toolHeight = rect.bottom - rect.top;
+
+       SetWindowPos(ToolHWnd, nullptr, width, 0,
+           toolWidth, toolHeight, 0);
+       ShowWindow(ToolHWnd, true);
+       UpdateWindow(ToolHWnd);
+   }
 
    return TRUE;
 }

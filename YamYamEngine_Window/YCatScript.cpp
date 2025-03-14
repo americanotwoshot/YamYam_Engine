@@ -169,6 +169,6 @@ namespace yam
 			assert(false);
 			break;
 		}
-		tr->SetIndexPosition(pos);
+		tr->SetPosition(pos);
 	}
 }

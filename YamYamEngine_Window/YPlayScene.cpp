@@ -19,6 +19,7 @@
 #include "YCircleCollider2D.h"
 #include "YTileMapRenderer.h"
 #include "YTile.h"
+#include "YRigidbody.h"
 
 namespace yam
 {
@@ -55,8 +56,12 @@ namespace yam
 
 		//playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, plScript);
 
-		mPlayer->GetComponent<Transform>()->SetIndexPosition(Vector2(400.0f,250.0f));
+		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(400.0f,250.0f));
 		//mPlayer->GetComponent<Transform>()->SetScale(Vector2(0.5f, 0.5f));
+
+		mPlayer->AddComponent<Rigidbody>();
+
+
 
 
 		// cat
@@ -89,7 +94,7 @@ namespace yam
 		
 		catAnimator->CreateAnimationByFolder(L"MushroomIdle", L"..\\Resources\\Mushroom", Vector2::Zero, 0.1f);
 		catAnimator->PlayAnimation(L"MushroomIdle", true);
-		cat->GetComponent<Transform>()->SetIndexPosition(Vector2(200.0f, 200.0f));
+		cat->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 200.0f));
 		//cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
 
 

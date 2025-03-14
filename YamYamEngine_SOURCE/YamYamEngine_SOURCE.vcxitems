@@ -35,6 +35,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YRigidbody.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YScript.h" />
@@ -63,6 +64,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YRigidbody.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YScript.cpp" />

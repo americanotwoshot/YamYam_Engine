@@ -79,6 +79,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YTileMapRenderer.cpp">
       <Filter>Component\TileMapRenderer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YRigidbody.cpp">
+      <Filter>Component\Rigidbody</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -168,6 +171,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YTileMapRenderer.h">
       <Filter>Component\TileMapRenderer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YRigidbody.h">
+      <Filter>Component\Rigidbody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -223,6 +229,9 @@
     </Filter>
     <Filter Include="Component\TileMapRenderer">
       <UniqueIdentifier>{9975d106-aec5-42ee-849b-8a3009baa418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Rigidbody">
+      <UniqueIdentifier>{e500ff33-b810-42d5-94b7-d799888bf2e7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

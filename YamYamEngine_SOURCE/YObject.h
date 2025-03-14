@@ -29,7 +29,7 @@ namespace yam::object
 		layer->AddGameObject(gameObject);
 
 		Transform* tr = gameObject->GetComponent<Transform>();
-		tr->SetIndexPosition(position);
+		tr->SetPosition(position);
 
 		return gameObject;
 	}

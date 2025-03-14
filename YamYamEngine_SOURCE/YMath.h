@@ -52,6 +52,10 @@ namespace yam::math
 
 		}
 
+		Vector2 operator-()
+		{
+			return Vector2(-x, -y);
+		}
 		Vector2 operator+(Vector2 other)
 		{
 			return Vector2(x + other.x, y + other.y);
@@ -68,6 +72,10 @@ namespace yam::math
 		Vector2 operator*(Vector2 v)
 		{
 			return Vector2(x * v.x, y * v.y);
+		}
+		bool operator==(Vector2 v)
+		{
+			return (x == v.x) && (y == v.y);
 		}
 		Vector2 operator*(float value)
 		{

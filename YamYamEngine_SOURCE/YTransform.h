@@ -16,7 +16,7 @@ namespace yam
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void SetIndexPosition(Vector2 pos){ mPosition.x = pos.x; mPosition.y = pos.y; }
+		void SetPosition(Vector2 pos){ mPosition.x = pos.x; mPosition.y = pos.y; }
 		Vector2 GetPosition() { return mPosition; }
 		void SetRotation(float rotate) { mRotation = rotate; }
 		float GetRotation() { return mRotation; }

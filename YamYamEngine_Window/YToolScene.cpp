@@ -53,7 +53,7 @@ namespace yam
 				tmr->SetTexture(Resources::Find<graphics::Texture>(L"SpringFloor"));
 				tmr->SetIndex(TileMapRenderer::SelectedIndex);
 
-				tile->SetIndexPosition(idxX, idxY);
+				tile->SetPosition(idxX, idxY);
 				mTiles.push_back(tile);
 			}
 			else

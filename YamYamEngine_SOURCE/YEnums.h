@@ -6,6 +6,7 @@ namespace yam::enums
 	{
 		Transform,
 		Collider,
+		Rigidbody,
 		Script,
 		SpriteRenderer,
 		Animator,
