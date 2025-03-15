@@ -42,4 +42,9 @@ namespace yam::enums
 		Rect2D,
 		End,
 	};
+
+	enum class eUIType
+	{
+		End,
+	};
 }

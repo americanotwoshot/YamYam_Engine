@@ -44,6 +44,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YTileMapRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YTransform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YUIBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YUIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)YAnimation.cpp" />
@@ -73,5 +75,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YTileMapRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YTransform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YUIBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YUIManager.cpp" />
   </ItemGroup>
 </Project>

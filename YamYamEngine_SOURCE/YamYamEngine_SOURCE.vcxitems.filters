@@ -82,6 +82,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YRigidbody.cpp">
       <Filter>Component\Rigidbody</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YUIBase.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YUIManager.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -174,6 +180,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YRigidbody.h">
       <Filter>Component\Rigidbody</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YUIBase.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YUIManager.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -232,6 +244,9 @@
     </Filter>
     <Filter Include="Component\Rigidbody">
       <UniqueIdentifier>{e500ff33-b810-42d5-94b7-d799888bf2e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{233f1f72-e362-4833-a324-99bc2ed2f1a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
