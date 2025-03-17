@@ -23,6 +23,9 @@
 #include "YRigidbody.h"
 #include "YFloor.h"
 #include "YFloorScript.h"
+#include "YAudioClip.h"
+#include "YAudioListener.h"
+#include "YAudioSource.h"
 
 namespace yam
 {
@@ -43,6 +46,7 @@ namespace yam
 		// player
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
 		object::DontDestroyOnLoad(mPlayer);
+		mPlayer->AddComponent<AudioListener>();
 
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
 		BoxCollider2D* plCollider = mPlayer->AddComponent<BoxCollider2D>();
@@ -70,7 +74,12 @@ namespace yam
 		BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>();
 		floorCol->SetSize(Vector2(5.0f, 1.0f));
 		floor->AddComponent<FloorScript>();
+		AudioSource* as = floor->AddComponent<AudioSource>();
 
+		AudioClip* ac = Resources::Load<AudioClip>(L"BGSound", L"..\\Resources\\Sound\\smw_bonus_game_end.wav");
+
+		as->SetClip(ac);
+		//as->Play();
 
 		// cat
 		//Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);

@@ -3,6 +3,7 @@
 #include "YRigidbody.h"
 #include "YCollider.h"
 #include "YTransform.h"
+#include "YAudioSource.h"
 
 namespace yam
 {
@@ -46,6 +47,9 @@ namespace yam
 		}
 
 		playerRb->SetGround(true);
+
+		AudioSource* as = GetOwner()->GetComponent<AudioSource>();
+		as->Play();
 	}
 	void FloorScript::OnCollisionStay(Collider* other)
 	{
