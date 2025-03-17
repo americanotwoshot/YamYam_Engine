@@ -112,6 +112,10 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)\External\Library\Debug\fmodL.dll" "$(SolutionDir)\x64\Debug\"
+copy "$(SolutionDir)\External\Library\Debug\fmodstudioL.dll" "$(SolutionDir)\x64\Debug\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -129,6 +133,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)\External\Library\Release\fmod.dll" "$(SolutionDir)\x64\Release\"
+copy "$(SolutionDir)\External\Library\Release\fmodstudio.dll" "$(SolutionDir)\x64\Release\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="YCameraScript.h" />

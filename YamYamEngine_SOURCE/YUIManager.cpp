@@ -1,4 +1,6 @@
 #include "YUIManager.h"
+#include "YUIHUD.h"
+#include "YUIButton.h"
 
 namespace yam
 {
@@ -9,6 +11,11 @@ namespace yam
 
 	void UIManager::Initialize()
 	{
+		UIHUD* hud = new UIHUD();
+		mUIs.insert(std::make_pair(eUIType::HpBar, hud));
+
+		UIButton* button = new UIButton();
+		mUIs.insert(std::make_pair(eUIType::Button, button));
 	}
 	void UIManager::OnLoad(eUIType type)
 	{
@@ -40,7 +47,6 @@ namespace yam
 		{
 			eUIType requestUI = mRequestUIQueue.front();
 			mRequestUIQueue.pop();
-
 			OnLoad(requestUI);
 		}
 	}
@@ -104,6 +110,15 @@ namespace yam
 		mActiveUI = nullptr;
 	}
 
+	void UIManager::Release()
+	{
+		for (auto iter : mUIs)
+		{
+			delete iter.second; 
+			iter.second = nullptr;
+		}
+	}
+
 	void UIManager::Push(eUIType type)
 	{
 		mRequestUIQueue.push(type);
@@ -113,11 +128,42 @@ namespace yam
 		if (mUIBases.size() <= 0)
 			return;
 
-		UIBase* uiBase = nullptr;
+		std::stack<UIBase*> tempStack;
+
+		UIBase* uibase = nullptr;
 		while (mUIBases.size() > 0)
 		{
-			uiBase = mUIBases.top();
+			uibase = mUIBases.top();
 			mUIBases.pop();
+
+			if (uibase->GetType() != type)
+			{
+				tempStack.push(uibase);
+				continue;
+			}
+
+			if (uibase->IsFullScreen())
+			{
+				std::stack<UIBase*> uiBases = mUIBases;
+				while (!uiBases.empty())
+				{
+					UIBase* uiBase = uiBases.top();
+					uiBases.pop();
+					if (uiBase)
+					{
+						uiBase->Active();
+					}
+				}
+			}
+
+			uibase->UIClear();
+		}
+
+		while (tempStack.size() > 0)
+		{
+			uibase = tempStack.top();
+			tempStack.pop();
+			mUIBases.push(uibase);
 		}
 	}
 }

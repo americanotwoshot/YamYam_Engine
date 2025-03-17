@@ -45,6 +45,8 @@ namespace yam::enums
 
 	enum class eUIType
 	{
+		HpBar,
+		Button,
 		End,
 	};
 }

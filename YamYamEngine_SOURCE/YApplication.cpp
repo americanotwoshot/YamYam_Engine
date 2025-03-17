@@ -4,6 +4,8 @@
 #include "YSceneManager.h"
 #include "YResources.h"
 #include "YCollisionManager.h"
+#include "YUIManager.h"
+#include "YFmod.h"
 
 namespace yam 
 {
@@ -29,7 +31,9 @@ namespace yam
 		createBuffer(width, height);
 		initializeEtc();
 
+		Fmod::Initialize();
 		CollisionManager::Initialize();
+		UIManager::Initialize();
 		SceneManager::Initialize();
 	}
 
@@ -47,12 +51,14 @@ namespace yam
 		Input::Update();
 		Time::Update();
 		CollisionManager::Update();
+		UIManager::Update();
 		SceneManager::Update();
 	}
 
 	void Application::LateUpdate()
 	{
 		CollisionManager::LateUpdate();
+		UIManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 
@@ -62,6 +68,7 @@ namespace yam
 
 		Time::Render(mBackHdc);
 		CollisionManager::Render(mBackHdc);
+		UIManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 
 		copyRenderTarget(mBackHdc, mHdc);
@@ -75,6 +82,7 @@ namespace yam
 	void Application::Release()
 	{
 		SceneManager::Release();
+		UIManager::Release();
 		Resources::Release();
 	}
 

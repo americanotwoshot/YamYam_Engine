@@ -10,6 +10,7 @@
 #include "YCatScript.h"
 #include "YCollider.h"
 #include "YRigidbody.h"
+#include "YUIManager.h"
 
 namespace yam
 {
@@ -166,6 +167,15 @@ namespace yam
 		//}
 
 		tr->SetPosition(pos);
+
+		if (Input::GetKey(eKeyCode::I))
+		{
+			UIManager::Push(eUIType::HpBar);
+		}
+		if (Input::GetKey(eKeyCode::O))
+		{
+			UIManager::Pop(eUIType::HpBar);
+		}
 	}
 	void PlayerScript::move()
 	{

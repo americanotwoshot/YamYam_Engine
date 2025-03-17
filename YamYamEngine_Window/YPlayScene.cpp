@@ -5,6 +5,7 @@
 #include "YSpriteRenderer.h"
 #include "YInput.h"
 #include "YSceneManager.h"
+#include "YUIManager.h"
 #include "YObject.h"
 #include "YTexture.h"
 #include "YResources.h"
@@ -138,10 +139,13 @@ namespace yam
 	{
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
+	
+		UIManager::Push(eUIType::Button);
 	}
 	void PlayScene::OnExit()
 	{
 		//Transform* tr = bg->GetComponent<Transform>();
 		//tr->SetPosition(math::Vector2(500, 500));
+		UIManager::Pop(eUIType::Button);
 	}
 }

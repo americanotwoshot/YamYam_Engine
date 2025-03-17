@@ -18,7 +18,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YAudioClip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YAudioListener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YAudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YBoxCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YFmod.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YUIButton.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YCircleCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YCollider.h" />
@@ -45,13 +50,19 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YTransform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YUIBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YUIHUD.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YUIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)YAnimation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YAudioClip.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YAudioListener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YAudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YBoxCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YFmod.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YUIButton.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YCircleCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YCollider.cpp" />
@@ -76,6 +87,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YTransform.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YUIBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YUIHUD.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YUIManager.cpp" />
   </ItemGroup>
 </Project>
