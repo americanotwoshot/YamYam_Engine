@@ -1,5 +1,6 @@
 #pragma once
 #include "..\\YamYamEngine_SOURCE\\YScript.h"
+#include "..\\YamYamEngine_SOURCE\\YTexture.h"
 
 namespace yam
 {
@@ -29,6 +30,7 @@ namespace yam
 		void OnCollisionStay(class Collider* other) override;
 		void OnCollisionExit(class Collider* other) override;
 
+		void SetPixelMapTexture(graphics::Texture* texture) { mPixelMap = texture; }
 
 	private:
 		void idle();
@@ -38,6 +40,7 @@ namespace yam
 	private:
 		eState mState;
 		class Animator* mAnimator;
+		graphics::Texture* mPixelMap;
 	};
 }
 

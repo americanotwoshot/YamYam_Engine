@@ -70,15 +70,19 @@ namespace yam
 
 
 		// floor
-		Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(100.0f, 600.0f));
-		BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>();
-		floorCol->SetSize(Vector2(5.0f, 1.0f));
-		floor->AddComponent<FloorScript>();
-		AudioSource* as = floor->AddComponent<AudioSource>();
+		Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(0.0f, 0.0f));
+		SpriteRenderer* floorSR = floor->AddComponent<SpriteRenderer>();
+		floorSR->SetTexture(Resources::Find<graphics::Texture>(L"PixelMap"));
 
-		AudioClip* ac = Resources::Load<AudioClip>(L"BGSound", L"..\\Resources\\Sound\\smw_bonus_game_end.wav");
+		plScript->SetPixelMapTexture(Resources::Find<graphics::Texture>(L"PixelMap"));
+		//BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>();
+		//floorCol->SetSize(Vector2(5.0f, 1.0f));
+		//floor->AddComponent<FloorScript>();
+		//AudioSource* as = floor->AddComponent<AudioSource>();
 
-		as->SetClip(ac);
+		//AudioClip* ac = Resources::Load<AudioClip>(L"BGSound", L"..\\Resources\\Sound\\smw_bonus_game_end.wav");
+
+		//as->SetClip(ac);
 		//as->Play();
 
 		// cat
