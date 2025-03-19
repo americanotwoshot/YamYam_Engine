@@ -31,6 +31,9 @@ namespace yam
 		createBuffer(width, height);
 		initializeEtc();
 
+		mGraphicDevice = std::make_unique<graphics::GraphicDevice_DX11>();
+		mGraphicDevice->Initialize();
+
 		Fmod::Initialize();
 		CollisionManager::Initialize();
 		UIManager::Initialize();
@@ -64,14 +67,15 @@ namespace yam
 
 	void Application::Render()
 	{
-		clearRenderTarget();
+		//clearRenderTarget();
+		mGraphicDevice->Draw();
 
 		Time::Render(mBackHdc);
 		CollisionManager::Render(mBackHdc);
 		UIManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 
-		copyRenderTarget(mBackHdc, mHdc);
+		//copyRenderTarget(mBackHdc, mHdc);
 	}
 
 	void Application::Destroy()
@@ -91,7 +95,7 @@ namespace yam
 		HBRUSH grayBrush = (HBRUSH)CreateSolidBrush(RGB(128,128,128));
 		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHdc, grayBrush);
 
-		Rectangle(mBackHdc, -1, -1, 1601, 901);
+		::Rectangle(mBackHdc, -1, -1, 1601, 901);
 
 		(HBRUSH)SelectObject(mBackHdc, oldBrush);
 		DeleteObject(grayBrush);

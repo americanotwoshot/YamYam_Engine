@@ -22,9 +22,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YApplication.cpp">
       <Filter>High Level Interface</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YMath.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YLayer.cpp">
       <Filter>Layer</Filter>
     </ClCompile>
@@ -106,6 +103,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YAnimation.cpp">
       <Filter>Resource\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YMath.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YGraphicDevice_DX11.cpp">
+      <Filter>GraphicDevice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -131,9 +134,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YApplication.h">
       <Filter>High Level Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YMath.h">
-      <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YLayer.h">
       <Filter>Layer</Filter>
@@ -222,6 +222,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YAnimation.h">
       <Filter>Resource\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YMath.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YGraphicDevice_DX11.h">
+      <Filter>GraphicDevice</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -301,6 +307,9 @@
     </Filter>
     <Filter Include="Resource\Animation">
       <UniqueIdentifier>{7362210b-0026-4b80-8909-d0689dc1d227}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GraphicDevice">
+      <UniqueIdentifier>{df0b7ac0-a2a6-4622-96d4-36acf4a1060c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

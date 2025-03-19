@@ -36,9 +36,9 @@ namespace yam
 		{
 			// 땅에 있을 때
 			Vector2 gravity = mGravity;
-			gravity.normarlize();
+			gravity.Normalize();
 
-			float dot = Vector2::Dot(mVelocity, gravity);
+			float dot = mVelocity.Dot(gravity);
 			mVelocity -= gravity * dot;
 		}
 		else
@@ -49,20 +49,20 @@ namespace yam
 
 		// 최대 속도 제한
 		Vector2 gravity = mGravity;
-		gravity.normarlize();
-		float dot = Vector2::Dot(mVelocity, gravity);
+		gravity.Normalize();
+		float dot = mVelocity.Dot(gravity);
 		gravity = gravity * dot;
 
 		Vector2 sideVelocity = mVelocity - gravity;
-		if (mLimitedVelocity.y < gravity.length())
+		if (mLimitedVelocity.y < gravity.Length())
 		{
-			gravity.normarlize();
+			gravity.Normalize();
 			gravity *= mLimitedVelocity.y;
 		}
 
-		if (mLimitedVelocity.x < sideVelocity.length())
+		if (mLimitedVelocity.x < sideVelocity.Length())
 		{
-			sideVelocity.normarlize();
+			sideVelocity.Normalize();
 			sideVelocity *= mLimitedVelocity.x;
 		}
 
@@ -72,10 +72,11 @@ namespace yam
 		{
 			// 속도 반대 방향으로 마찰력 작용
 			Vector2 friction = -mVelocity;
-			friction = friction.normarlize() * mFriction * mMass * Time::DeltaTime();
+			friction.Normalize();
+			friction = friction * mFriction * mMass * Time::DeltaTime();
 
 			// 마찰력으로 인한 속도 감소량이 현재 속도보다 큰 경우
-			if (mVelocity.length() <= friction.length())
+			if (mVelocity.Length() <= friction.Length())
 			{
 				mVelocity = Vector2::Zero;
 			}
@@ -90,7 +91,7 @@ namespace yam
 		pos = pos + mVelocity * Time::DeltaTime();
 		tr->SetPosition(pos);
 
-		mForce.clear();
+		mForce = Vector2::One;
 	}
 	void Rigidbody::LateUpdate()
 	{

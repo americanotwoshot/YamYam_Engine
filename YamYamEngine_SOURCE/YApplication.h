@@ -1,6 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
 #include "YGameObject.h"
+#include "YGraphicDevice_DX11.h"
 
 namespace yam
 {
@@ -32,6 +33,8 @@ namespace yam
 		void initializeEtc();
 
 	private:
+		std::unique_ptr<graphics::GraphicDevice_DX11> mGraphicDevice;
+
 		HWND mHwnd;
 		HDC mHdc;
 

@@ -26,3 +26,5 @@
 #pragma comment(lib, "gdiplus.lib")
 
 #include "YEnums.h"
+#include "YMath.h"
+#include <wrl.h>

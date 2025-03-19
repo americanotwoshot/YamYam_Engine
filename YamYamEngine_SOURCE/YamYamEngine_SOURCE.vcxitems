@@ -23,6 +23,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YAudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YBoxCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YFmod.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YGraphicDevice_DX11.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YUIButton.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YCircleCollider2D.h" />
@@ -35,7 +37,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YLayer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)YMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YResource.h" />
@@ -62,6 +63,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YAudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YBoxCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YFmod.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YGraphicDevice_DX11.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YUIButton.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YCircleCollider2D.cpp" />
@@ -73,7 +76,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YLayer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)YMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YResources.cpp" />
