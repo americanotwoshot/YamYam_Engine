@@ -1,6 +1,7 @@
 #include "YApplication.h"
 #include "YInput.h"
 #include "YTime.h"
+#include "YRenderer.h"
 #include "YSceneManager.h"
 #include "YResources.h"
 #include "YCollisionManager.h"
@@ -32,6 +33,7 @@ namespace yam
 		initializeEtc();
 
 		mGraphicDevice = std::make_unique<graphics::GraphicDevice_DX11>();
+		renderer::Initialize();
 		mGraphicDevice->Initialize();
 
 		Fmod::Initialize();
@@ -88,6 +90,8 @@ namespace yam
 		SceneManager::Release();
 		UIManager::Release();
 		Resources::Release();
+
+		renderer::Release();
 	}
 
 	void Application::clearRenderTarget()
