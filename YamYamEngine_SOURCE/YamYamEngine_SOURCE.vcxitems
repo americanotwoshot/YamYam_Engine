@@ -24,6 +24,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YBoxCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YFmod.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YGraphicDevice_DX11.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YUIButton.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YCamera.h" />

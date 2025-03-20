@@ -8,6 +8,7 @@ namespace yam::renderer
 	std::vector<UINT> indices;
 	ID3D11Buffer* vertexBuffer = nullptr;
 	ID3D11Buffer* indexBuffer = nullptr;
+	ID3D11Buffer* constantBuffer = nullptr;
 	ID3DBlob* vsBlob = nullptr;
 	ID3D11VertexShader* vsShader = nullptr;
 	ID3DBlob* psBlob = nullptr;

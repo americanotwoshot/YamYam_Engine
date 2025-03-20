@@ -228,6 +228,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YGraphicDevice_DX11.h">
       <Filter>GraphicDevice</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YGraphics.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
