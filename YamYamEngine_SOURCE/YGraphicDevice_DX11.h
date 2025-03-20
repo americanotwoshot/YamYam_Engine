@@ -44,7 +44,7 @@ namespace yam::graphics
 		Microsoft::WRL::ComPtr<ID3D11SamplerState> mSamplers;
 	};
 
-	inline GraphicDevice_DX11*& GetGraphicDevice()
+	inline GraphicDevice_DX11*& GetDevice()
 	{
 		static GraphicDevice_DX11* device = nullptr;
 		return device;
