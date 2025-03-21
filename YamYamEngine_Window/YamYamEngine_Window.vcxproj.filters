@@ -27,7 +27,6 @@
     <ClInclude Include="YPlayer.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="YLoadResources.h" />
     <ClInclude Include="YPlayerScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
@@ -51,6 +50,9 @@
     </ClInclude>
     <ClInclude Include="YFloorScript.h">
       <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="YLoadingScene.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="YFloorScript.cpp">
       <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YLoadingScene.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

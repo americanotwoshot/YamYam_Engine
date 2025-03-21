@@ -10,7 +10,6 @@
 #include "..\\YamYamEngine_SOURCE\\YSceneManager.h"
 
 #include "..\\YamYamEngine_WINDOW\\YLoadScene.h"
-#include "..\\YamYamEngine_WINDOW\\YLoadResources.h"
 #include "..\\YamYamEngine_WINDOW\\YToolScene.h"
 
 yam::Application application;
@@ -150,7 +149,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
 
    //load scene
-   yam::LoadResources();
+   //yam::LoadResources(); -> loadingScene에서 로딩
    yam::LoadScenes();
 
    int a = 0;

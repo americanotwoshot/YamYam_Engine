@@ -37,44 +37,44 @@ namespace yam
 	}
 	void PlayScene::Initialize()
 	{
-		// main Camera
-		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector2(343.0f, 442.0f));
-		Camera* cameraComp = camera->AddComponent<Camera>();
-		renderer::mainCamera = cameraComp;
-		//camera->AddComponent<PlayerScript>();
+		//// main Camera
+		//GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector2(343.0f, 442.0f));
+		//Camera* cameraComp = camera->AddComponent<Camera>();
+		//renderer::mainCamera = cameraComp;
+		////camera->AddComponent<PlayerScript>();
 
-		// player
-		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
-		object::DontDestroyOnLoad(mPlayer);
-		mPlayer->AddComponent<AudioListener>();
+		//// player
+		//mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
+		//object::DontDestroyOnLoad(mPlayer);
+		//mPlayer->AddComponent<AudioListener>();
 
-		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
-		BoxCollider2D* plCollider = mPlayer->AddComponent<BoxCollider2D>();
+		//PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
+		//BoxCollider2D* plCollider = mPlayer->AddComponent<BoxCollider2D>();
 		//CircleCollider2D* plCollider = mPlayer->AddComponent<CircleCollider2D>();
-		plCollider->SetOffset(Vector2(-50.0f, -50.0f));
+		//plCollider->SetOffset(Vector2(-50.0f, -50.0f));
 
-		graphics::Texture* playerTexture = Resources::Find<graphics::Texture>(L"Player");
-		Animator* playerAnimator = mPlayer->AddComponent<Animator>();
-		playerAnimator->CreateAnimation(L"Idle", playerTexture
-			, Vector2(2000.0f, 250.0f), Vector2(250.0f,250.0f), Vector2::Zero, 1, 0.2f);
-		playerAnimator->CreateAnimation(L"FrontGiveWater", playerTexture
-			, Vector2(0.0f, 2000.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 12, 0.2f);
-		playerAnimator->PlayAnimation(L"Idle", false);
+		//graphics::Texture* playerTexture = Resources::Find<graphics::Texture>(L"Player");
+		//Animator* playerAnimator = mPlayer->AddComponent<Animator>();
+		//playerAnimator->CreateAnimation(L"Idle", playerTexture
+		//	, Vector2(2000.0f, 250.0f), Vector2(250.0f,250.0f), Vector2::Zero, 1, 0.2f);
+		//playerAnimator->CreateAnimation(L"FrontGiveWater", playerTexture
+		//	, Vector2(0.0f, 2000.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 12, 0.2f);
+		//playerAnimator->PlayAnimation(L"Idle", false);
 
 		//playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, plScript);
 
-		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(400.0f,250.0f));
+		//mPlayer->GetComponent<Transform>()->SetPosition(Vector2(400.0f,250.0f));
 		//mPlayer->GetComponent<Transform>()->SetScale(Vector2(0.5f, 0.5f));
 
-		mPlayer->AddComponent<Rigidbody>();
+		//mPlayer->AddComponent<Rigidbody>();
 
 
 		// floor
-		Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(0.0f, 0.0f));
-		SpriteRenderer* floorSR = floor->AddComponent<SpriteRenderer>();
-		floorSR->SetTexture(Resources::Find<graphics::Texture>(L"PixelMap"));
+		//Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(0.0f, 0.0f));
+		//SpriteRenderer* floorSR = floor->AddComponent<SpriteRenderer>();
+		//floorSR->SetTexture(Resources::Find<graphics::Texture>(L"PixelMap"));
 
-		plScript->SetPixelMapTexture(Resources::Find<graphics::Texture>(L"PixelMap"));
+		//plScript->SetPixelMapTexture(Resources::Find<graphics::Texture>(L"PixelMap"));
 		//BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>();
 		//floorCol->SetSize(Vector2(5.0f, 1.0f));
 		//floor->AddComponent<FloorScript>();
@@ -150,15 +150,15 @@ namespace yam
 
 	void PlayScene::OnEnter()
 	{
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
+		//CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
+		//CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
 	
-		UIManager::Push(eUIType::Button);
+		//UIManager::Push(eUIType::Button);
 	}
 	void PlayScene::OnExit()
 	{
 		//Transform* tr = bg->GetComponent<Transform>();
 		//tr->SetPosition(math::Vector2(500, 500));
-		UIManager::Pop(eUIType::Button);
+		//UIManager::Pop(eUIType::Button);
 	}
 }
