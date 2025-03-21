@@ -1,6 +1,8 @@
 #include "YGraphicDevice_DX11.h"
 #include "YApplication.h"
 #include "YRenderer.h"
+#include "YResources.h"
+#include "YShader.h"
 
 extern yam::Application application;
 
@@ -9,6 +11,9 @@ namespace yam::graphics
 	GraphicDevice_DX11::GraphicDevice_DX11()
 	{
 		yam::graphics::GetDevice() = this;
+
+		if (!(CreateDevice()))
+			assert(NULL && "Create Device Failed!");
 	}
 	GraphicDevice_DX11::~GraphicDevice_DX11()
 	{
@@ -90,21 +95,21 @@ namespace yam::graphics
 		DWORD shaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
 		shaderFlags |= D3DCOMPILE_DEBUG;
 		shaderFlags |= D3DCOMPILE_SKIP_OPTIMIZATION;
-
+	
 		ID3DBlob* errorBlob = nullptr;
 		const std::wstring shaderFilePath = L"..\\Shaders_SOURCE\\";
-		D3DCompileFromFile((shaderFilePath + fileName).c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+		D3DCompileFromFile((shaderFilePath + fileName + L"VS.hlsl").c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
 			, "main", "vs_5_0", shaderFlags, 0, ppCode, &errorBlob);
-
+	
 		if (errorBlob)
 		{
 			OutputDebugStringA((char*)errorBlob->GetBufferPointer());
 			errorBlob->Release();
 			assert(NULL && "hlsl file have problem check message!");
-
+	
 			return false;
 		}
-
+	
 		if (FAILED(mDevice->CreateVertexShader((*ppCode)->GetBufferPointer()
 			, (*ppCode)->GetBufferSize(), nullptr, ppVertexShader)))
 			return false;
@@ -117,21 +122,21 @@ namespace yam::graphics
 		DWORD shaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
 		shaderFlags |= D3DCOMPILE_DEBUG;
 		shaderFlags |= D3DCOMPILE_SKIP_OPTIMIZATION;
-
+	
 		ID3DBlob* errorBlob = nullptr;
 		const std::wstring shaderFilePath = L"..\\Shaders_SOURCE\\";
-		D3DCompileFromFile((shaderFilePath + fileName).c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+		D3DCompileFromFile((shaderFilePath + fileName + L"PS.hlsl").c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
 			, "main", "ps_5_0", shaderFlags, 0, ppCode, &errorBlob);
-
+	
 		if (errorBlob)
 		{
 			OutputDebugStringA((char*)errorBlob->GetBufferPointer());
 			errorBlob->Release();
 			assert(NULL && "hlsl file have problem check message!");
-
+	
 			return false;
 		}
-
+	
 		if (FAILED(mDevice->CreatePixelShader((*ppCode)->GetBufferPointer()
 			, (*ppCode)->GetBufferSize(), nullptr, ppPixelShader)))
 			return false;
@@ -157,6 +162,16 @@ namespace yam::graphics
 			return false;
 		
 		return true;
+	}
+
+	void GraphicDevice_DX11::BindVS(ID3D11VertexShader* pVertexShader)
+	{
+		mContext->VSSetShader(pVertexShader, 0, 0);
+	}
+
+	void GraphicDevice_DX11::BindPS(ID3D11PixelShader* pPixelShader)
+	{
+		mContext->PSSetShader(pPixelShader, 0, 0);
 	}
 
 	void GraphicDevice_DX11::BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer)
@@ -197,9 +212,6 @@ namespace yam::graphics
 
 	void GraphicDevice_DX11::Initialize()
 	{
-		if (!(CreateDevice()))
-			assert(NULL && "Create Device Failed!");
-		
 #pragma region swapchain desc
 		DXGI_SWAP_CHAIN_DESC swapChainDesc = {};
 
@@ -254,12 +266,6 @@ namespace yam::graphics
 		if (!(CreateDepthStencilView(mDepthStencil.Get(), nullptr, mDepthStencilView.GetAddressOf())))
 			assert(NULL && "Create depthstencilview Failed!");
 
-		if (!(CreateVertexShader(L"TriangleVS.hlsl", &renderer::vsBlob, &renderer::vsShader)))
-			assert(NULL && "Create vertex shader Failed!");
-
-		if (!(CreatePixelShader(L"TrianglePS.hlsl", &renderer::psBlob, &renderer::psShader)))
-			assert(NULL && "Create pixel shader Failed!");
-
 #pragma region inputlayout desc
 		D3D11_INPUT_ELEMENT_DESC inputLayoutDesces[2] = {};
 
@@ -278,9 +284,11 @@ namespace yam::graphics
 		inputLayoutDesces[1].SemanticIndex = 0;
 #pragma endregion
 
+		graphics::Shader* triangle = Resources::Find<graphics::Shader>(L"TriangleShader");
+
 		if (!(CreateInputLayout(inputLayoutDesces, 2
-				, renderer::vsBlob->GetBufferPointer()
-				, renderer::vsBlob->GetBufferSize()
+				, triangle->GetVSBlob()->GetBufferPointer()
+				, triangle->GetVSBlob()->GetBufferSize()
 				, &renderer::inputLayouts)))
 			assert(NULL && "Create input layout Failed!");
 		
@@ -355,8 +363,8 @@ namespace yam::graphics
 		mContext->IASetVertexBuffers(0, 1, &renderer::vertexBuffer, &vertexSize, &offset);
 		mContext->IASetIndexBuffer(renderer::indexBuffer, DXGI_FORMAT_R32_UINT, 0);
 
-		mContext->VSSetShader(renderer::vsShader, 0, 0);
-		mContext->PSSetShader(renderer::psShader, 0, 0);
+		graphics::Shader* triangle = Resources::Find<graphics::Shader>(L"TriangleShader");
+		triangle->Bind();
 
 		mContext->Draw(3, 0);
 

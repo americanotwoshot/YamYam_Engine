@@ -1,4 +1,6 @@
 #include "YRenderer.h"
+#include "YResources.h"
+#include "YShader.h"
 
 namespace yam::renderer
 {
@@ -9,10 +11,6 @@ namespace yam::renderer
 	ID3D11Buffer* vertexBuffer = nullptr;
 	ID3D11Buffer* indexBuffer = nullptr;
 	ID3D11Buffer* constantBuffer = nullptr;
-	ID3DBlob* vsBlob = nullptr;
-	ID3D11VertexShader* vsShader = nullptr;
-	ID3DBlob* psBlob = nullptr;
-	ID3D11PixelShader* psShader = nullptr;
 	ID3D11InputLayout* inputLayouts = nullptr;
 	
 	void LoadTriangleMesh()
@@ -36,18 +34,21 @@ namespace yam::renderer
 		LoadTriangleMesh();
 	}
 
+	void LoadShaders()
+	{
+		yam::Resources::Load<graphics::Shader>(L"TriangleShader"
+			, L"..\\Shaders_SOURCE\\Triangle");
+	}
+
 	void Initialize()
 	{
 		LoadMeshes();
+		LoadShaders();
 	}
 
 	void Release()
 	{
 		vertexBuffer->Release();
-		vsBlob->Release();
-		vsShader->Release();
-		psBlob->Release();
-		psShader->Release();
 		inputLayouts->Release();
 		indexBuffer->Release();
 		constantBuffer->Release();
