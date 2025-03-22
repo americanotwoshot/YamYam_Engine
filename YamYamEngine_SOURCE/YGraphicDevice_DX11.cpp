@@ -3,7 +3,6 @@
 #include "YRenderer.h"
 #include "YResources.h"
 #include "YShader.h"
-#include "YVertexBuffer.h"
 
 extern yam::Application application;
 
