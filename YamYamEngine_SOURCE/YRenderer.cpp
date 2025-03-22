@@ -11,7 +11,7 @@ namespace yam::renderer
 	std::vector<graphics::Vertex> vertexes = {};
 	std::vector<UINT> indices;
 	graphics::VertexBuffer vertexBuffer;
-	ID3D11Buffer* indexBuffer = nullptr;
+	graphics::IndexBuffer indexBuffer;
 	ID3D11Buffer* constantBuffer = nullptr;
 	ID3D11InputLayout* inputLayouts = nullptr;
 	
@@ -52,7 +52,6 @@ namespace yam::renderer
 	void Release()
 	{
 		inputLayouts->Release();
-		indexBuffer->Release();
 		constantBuffer->Release();
 	}
 }

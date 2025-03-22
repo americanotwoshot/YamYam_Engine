@@ -36,8 +36,8 @@ namespace yam::graphics
 
 	struct GpuBuffer
 	{
-		Microsoft::WRL::ComPtr<ID3D11Buffer> buffer;
-		D3D11_BUFFER_DESC desc;
+		Microsoft::WRL::ComPtr<ID3D11Buffer> buffer = nullptr;
+		D3D11_BUFFER_DESC desc = { };
 
 		GpuBuffer() = default;
 		virtual ~GpuBuffer() = default;

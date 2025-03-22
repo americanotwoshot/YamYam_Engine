@@ -25,6 +25,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YFmod.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YGraphicDevice_DX11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YGraphics.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YIndexBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YMaterial.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YMesh.h" />
@@ -69,6 +70,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YBoxCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YFmod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YGraphicDevice_DX11.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YIndexBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YMaterial.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YMesh.cpp" />

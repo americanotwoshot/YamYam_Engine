@@ -118,7 +118,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YMesh.cpp">
       <Filter>Resource\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YVertexBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YVertexBuffer.cpp">
+      <Filter>Graphics\GpuBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YIndexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -250,7 +253,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YMesh.h">
       <Filter>Resource\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YVertexBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YVertexBuffer.h">
+      <Filter>Graphics\GpuBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YIndexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -348,6 +354,9 @@
     </Filter>
     <Filter Include="Resource\Graphics\Shader">
       <UniqueIdentifier>{e83c9de2-1a03-43dc-9f5b-b90650720f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GpuBuffer">
+      <UniqueIdentifier>{b95badf7-bc17-4284-b5c8-e30fffdeaed8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

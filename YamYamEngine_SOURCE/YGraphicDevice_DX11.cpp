@@ -180,6 +180,11 @@ namespace yam::graphics
 		mContext->IASetVertexBuffers(StartSlot, NumBuffers, ppVertexBuffers, pStrides, pOffsets);
 	}
 
+	void GraphicDevice_DX11::BindIndexBuffer(ID3D11Buffer* pIndexBuffer, DXGI_FORMAT format, UINT offset)
+	{
+		mContext->IASetIndexBuffer(pIndexBuffer, format, offset);
+	}
+
 	void GraphicDevice_DX11::BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer)
 	{
 		UINT slot = (UINT)type;
@@ -300,21 +305,9 @@ namespace yam::graphics
 		
 		// vertex buffer
 		renderer::vertexBuffer.Create(renderer::vertexes);
-		
-#pragma region index buffer desc
-		D3D11_BUFFER_DESC indexBufferDesc = {};
 
-		indexBufferDesc.ByteWidth = sizeof(UINT) * renderer::indices.size();
-		indexBufferDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_INDEX_BUFFER;
-		indexBufferDesc.Usage = D3D11_USAGE::D3D11_USAGE_DEFAULT;
-		indexBufferDesc.CPUAccessFlags = 0;
-
-		D3D11_SUBRESOURCE_DATA indicesData = {};
-		indicesData.pSysMem = renderer::indices.data();
-#pragma endregion
-
-		if (!(graphics::GetDevice()->CreateBuffer(&indexBufferDesc, &indicesData, &renderer::indexBuffer)))
-			assert(NULL && "Create indices buffer Failed!");
+		// index buffer
+		renderer::indexBuffer.Create(renderer::indices);
 
 #pragma region constant buffer desc
 		D3D11_BUFFER_DESC constantBufferDesc = {};
@@ -354,7 +347,7 @@ namespace yam::graphics
 		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		renderer::vertexBuffer.Bind();
-		mContext->IASetIndexBuffer(renderer::indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+		renderer::indexBuffer.Bind();
 
 		graphics::Shader* triangle = Resources::Find<graphics::Shader>(L"TriangleShader");
 		triangle->Bind();
