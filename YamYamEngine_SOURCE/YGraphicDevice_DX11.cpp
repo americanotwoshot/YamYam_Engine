@@ -164,6 +164,14 @@ namespace yam::graphics
 		return true;
 	}
 
+	void GraphicDevice_DX11::SetDataBuffer(ID3D11Buffer* buffer, void* data, UINT size)
+	{
+		D3D11_MAPPED_SUBRESOURCE sub = {};
+		mContext->Map(buffer, 0, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0, &sub);
+		memcpy(sub.pData, data, size);
+		mContext->Unmap(buffer, 0);
+	}
+
 	void GraphicDevice_DX11::BindVS(ID3D11VertexShader* pVertexShader)
 	{
 		mContext->VSSetShader(pVertexShader, 0, 0);
@@ -308,23 +316,6 @@ namespace yam::graphics
 
 		// index buffer
 		renderer::indexBuffer.Create(renderer::indices);
-
-#pragma region constant buffer desc
-		D3D11_BUFFER_DESC constantBufferDesc = {};
-
-		constantBufferDesc.ByteWidth = sizeof(Vector4);
-		constantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-		constantBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-		constantBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-
-		Vector4 pos(0.5f, 0.5f, 0.0f, 1.0f);
-		D3D11_SUBRESOURCE_DATA constantBufferData = {};
-		constantBufferData.pSysMem = &pos;
-#pragma endregion
-
-		if (!(graphics::GetDevice()->CreateBuffer(&constantBufferDesc, &constantBufferData, &renderer::constantBuffer)))
-			assert(NULL && "Create constant buffer Failed!");
-		
 	}
 
 	void GraphicDevice_DX11::Draw() 
@@ -341,13 +332,15 @@ namespace yam::graphics
 		mContext->RSSetViewports(1, &viewPort);
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
 
-		BindConstantBuffer(eShaderStage::VS, eCBType::Transform, renderer::constantBuffer);
-
 		mContext->IASetInputLayout(renderer::inputLayouts);
 		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		renderer::vertexBuffer.Bind();
 		renderer::indexBuffer.Bind();
+
+		Vector4 pos(0.2f, 0.2f, 0.0f, 1.0f);
+		renderer::constantBuffer[(UINT)eCBType::Transform].SetData(&pos);
+		renderer::constantBuffer[(UINT)eCBType::Transform].Bind(eShaderStage::VS);
 
 		graphics::Shader* triangle = Resources::Find<graphics::Shader>(L"TriangleShader");
 		triangle->Bind();

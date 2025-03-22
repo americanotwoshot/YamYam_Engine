@@ -22,6 +22,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YAudioListener.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YAudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YBoxCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YFmod.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YGraphicDevice_DX11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YGraphics.h" />
@@ -68,6 +69,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YAudioListener.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YAudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YBoxCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YFmod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YGraphicDevice_DX11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YIndexBuffer.cpp" />

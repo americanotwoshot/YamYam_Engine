@@ -8,11 +8,13 @@ namespace yam::renderer
 {
 	Camera* mainCamera = nullptr;
 
-	std::vector<graphics::Vertex> vertexes = {};
+	std::vector<Vertex> vertexes = {};
 	std::vector<UINT> indices;
-	graphics::VertexBuffer vertexBuffer;
-	graphics::IndexBuffer indexBuffer;
-	ID3D11Buffer* constantBuffer = nullptr;
+
+	VertexBuffer vertexBuffer;
+	IndexBuffer indexBuffer;
+	ConstantBuffer constantBuffer[(UINT)eCBType::End] = {};
+
 	ID3D11InputLayout* inputLayouts = nullptr;
 	
 	void LoadTriangleMesh()
@@ -43,15 +45,20 @@ namespace yam::renderer
 			, L"..\\Shaders_SOURCE\\Triangle");
 	}
 
+	void LoadConstantBuffers()
+	{
+		constantBuffer[(UINT)eCBType::Transform].Create(eCBType::Transform, sizeof(Vector4));
+	}
+
 	void Initialize()
 	{
 		LoadMeshes();
 		LoadShaders();
+		LoadConstantBuffers();
 	}
 
 	void Release()
 	{
 		inputLayouts->Release();
-		constantBuffer->Release();
 	}
 }

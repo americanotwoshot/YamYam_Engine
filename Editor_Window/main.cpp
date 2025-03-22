@@ -94,7 +94,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램 인스턴스 핸
 //
 ATOM MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc)
 {
-    WNDCLASSEXW wcex;
+    WNDCLASSEXW wcex = { };
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
