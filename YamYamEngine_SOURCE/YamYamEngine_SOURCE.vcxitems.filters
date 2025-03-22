@@ -118,6 +118,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YMesh.cpp">
       <Filter>Resource\Mesh</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YVertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -249,6 +250,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YMesh.h">
       <Filter>Resource\Mesh</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YVertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">

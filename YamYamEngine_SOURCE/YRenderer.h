@@ -1,21 +1,16 @@
 #pragma once
 #include "YCamera.h"
 #include "YGraphicDevice_DX11.h"
+#include "YVertexBuffer.h"
 
 namespace yam::renderer
 {
 	extern Camera* mainCamera;
 
-	struct Vertex
-	{
-		Vector3 pos;
-		Vector4 color;
-	};
-
-	extern Vertex vertexes[3];
+	extern std::vector<graphics::Vertex> vertexes;
 	extern std::vector<UINT> indices;
 	
-	extern ID3D11Buffer* vertexBuffer;
+	extern graphics::VertexBuffer vertexBuffer;
 	extern ID3D11Buffer* indexBuffer;
 	extern ID3D11Buffer* constantBuffer;
 

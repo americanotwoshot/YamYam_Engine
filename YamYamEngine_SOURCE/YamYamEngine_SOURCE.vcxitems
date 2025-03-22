@@ -57,6 +57,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YUIBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YUIHUD.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YUIManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YVertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)YAnimation.cpp" />
@@ -98,5 +99,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YUIBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YUIHUD.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YUIManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YVertexBuffer.cpp" />
   </ItemGroup>
 </Project>
