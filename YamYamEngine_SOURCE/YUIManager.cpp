@@ -64,7 +64,7 @@ namespace yam
 		}
 
 	}
-	void UIManager::Render(HDC hdc)
+	void UIManager::Render()
 	{
 		std::stack<UIBase*> uiBases = mUIBases;
 		while (!uiBases.empty())
@@ -72,7 +72,7 @@ namespace yam
 			UIBase* uiBase = uiBases.top();
 			if (uiBase)
 			{
-				uiBase->Render(hdc);
+				uiBase->Render();
 				uiBases.pop();
 			}
 		}

@@ -31,6 +31,7 @@ namespace yam::graphics
 	enum class eCBType
 	{
 		Transform,
+		None,
 		End,
 	};
 

@@ -12,12 +12,12 @@ namespace yam
 		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
-		void Render(HDC hdc) override;
+		void Render() override;
 
+		Vector2 GetVelocity() const { return mVelocity; }
 		void SetMass(float mass) { mMass = mass; }
 		void AddForce(Vector2 force) { mForce = force; }
 		void SetGround(bool ground) { mbGround = ground; }
-		Vector2 GetVelocity() { return mVelocity; }
 		void SetVelocity(Vector2 velocity) { mVelocity = velocity; }
 
 	private:

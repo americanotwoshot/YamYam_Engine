@@ -28,7 +28,7 @@ namespace yam
 		void Initialize();
 		void Update();
 		void LateUpdate();
-		void Render(HDC hdc);
+		void Render();
 
 		void Active();
 		void InActive();
@@ -40,7 +40,7 @@ namespace yam
 		virtual void OnInActive();
 		virtual void OnUpdate();
 		virtual void OnLateUpdate();
-		virtual void OnRender(HDC hdc);
+		virtual void OnRender();
 		virtual void OnClear();
 
 		eUIType GetType() { return mType; }

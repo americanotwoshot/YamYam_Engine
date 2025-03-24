@@ -26,7 +26,7 @@ namespace yam
 	void Collider::LateUpdate()
 	{
 	}
-	void Collider::Render(HDC hdc)
+	void Collider::Render()
 	{
 	}
 

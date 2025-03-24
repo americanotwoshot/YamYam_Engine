@@ -72,10 +72,10 @@ namespace yam
 		//clearRenderTarget();
 		mGraphicDevice->Draw();
 
-		Time::Render(mBackHdc);
-		CollisionManager::Render(mBackHdc);
-		UIManager::Render(mBackHdc);
-		SceneManager::Render(mBackHdc);
+		Time::Render();
+		CollisionManager::Render();
+		UIManager::Render();
+		SceneManager::Render();
 
 		//copyRenderTarget(mBackHdc, mHdc);
 	}

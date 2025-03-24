@@ -152,8 +152,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    //yam::LoadResources(); -> loadingScene에서 로딩
    yam::LoadScenes();
 
-   int a = 0;
-   srand((unsigned int)(&a));
+   //int a = 0;
+   //srand((unsigned int)(&a));
 
    yam::Scene* activeScene = yam::SceneManager::GetActiveScene();
 

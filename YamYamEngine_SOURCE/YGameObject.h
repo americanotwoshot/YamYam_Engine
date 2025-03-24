@@ -24,7 +24,7 @@ namespace yam
 		virtual void Initialize();
 		virtual void Update();
 		virtual void LateUpdate();
-		virtual void Render(HDC hdc);
+		virtual void Render();
 
 		template <typename T>
 		T* AddComponent()
@@ -51,17 +51,19 @@ namespace yam
 			return component;
 		}
 
+		eState GetState() const { return mState; }
+		eLayerType GetLayerType() const { return mLayerType; }
+
+		bool IsActive() const { return mState == eState::Active; }
+		bool IsDead() const { return mState == eState::Dead; }
+
 		void SetActive(bool power)
 		{
 			if (power == true) mState = eState::Active;
 			if (power == false) mState = eState::Paused;
 		}
-		eState GetState() { return mState; }
-		bool IsActive() { return mState == eState::Active; }
-		bool IsDead() { return mState == eState::Dead; }
 		void Death() { mState = eState::Dead; }
 		void SetLayerType(eLayerType type) { mLayerType = type; }
-		eLayerType GetLayerType() { return mLayerType; }
 
 	private:
 		void initializeTransform();

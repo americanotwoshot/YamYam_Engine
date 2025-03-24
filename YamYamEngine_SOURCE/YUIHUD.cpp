@@ -27,17 +27,17 @@ namespace yam
 	void UIHUD::OnLateUpdate()
 	{
 	}
-	void UIHUD::OnRender(HDC hdc)
+	void UIHUD::OnRender()
 	{
-		TransparentBlt(hdc
-			, 0, 0
-			, mTexture->GetWidth()
-			, mTexture->GetHeight()
-			, mTexture->GetHdc()
-			, 0, 0
-			, mTexture->GetWidth()
-			, mTexture->GetHeight()
-			, RGB(255, 0, 255));
+		//TransparentBlt(hdc
+		//	, 0, 0
+		//	, mTexture->GetWidth()
+		//	, mTexture->GetHeight()
+		//	, mTexture->GetHdc()
+		//	, 0, 0
+		//	, mTexture->GetWidth()
+		//	, mTexture->GetHeight()
+		//	, RGB(255, 0, 255));
 	}
 	void UIHUD::OnClear()
 	{

@@ -18,9 +18,9 @@ namespace yam
 	{
 		GameObject::LateUpdate();
 	}
-	void Tile::Render(HDC hdc)
+	void Tile::Render()
 	{
-		GameObject::Render(hdc);
+		GameObject::Render();
 	}
 
 	void Tile::SetPosition(int x, int y)

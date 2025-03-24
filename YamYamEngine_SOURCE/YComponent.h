@@ -13,11 +13,11 @@ namespace yam
 		virtual void Initialize();
 		virtual void Update();
 		virtual void LateUpdate();
-		virtual void Render(HDC hdc);
+		virtual void Render();
 
+		GameObject* GetOwner() const { return mOwner; }
+		enums::eComponentType GetType() const { return mType; }
 		void SetOwner(GameObject* onwer) { mOwner = onwer; }
-		GameObject* GetOwner() { return mOwner; }
-		enums::eComponentType GetType() { return mType; }
 
 	private:
 		GameObject* mOwner;

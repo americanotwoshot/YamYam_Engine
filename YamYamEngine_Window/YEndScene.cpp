@@ -38,8 +38,8 @@ namespace yam
 			SceneManager::LoadScene(L"TitleScene");
 		}
 	}
-	void EndScene::Render(HDC hdc)
+	void EndScene::Render()
 	{
-		Scene::Render(hdc);
+		Scene::Render();
 	}
 }

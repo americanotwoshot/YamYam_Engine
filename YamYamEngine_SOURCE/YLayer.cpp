@@ -53,7 +53,7 @@ namespace yam
 			gameObj->LateUpdate();
 		}
 	}
-	void Layer::Render(HDC hdc)
+	void Layer::Render()
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
@@ -62,7 +62,7 @@ namespace yam
 			if (gameObj->IsActive() == false)
 				continue;
 
-			gameObj->Render(hdc);
+			gameObj->Render();
 		}
 	}
 

@@ -5,6 +5,8 @@
 
 yam::LoadingScene::LoadingScene()
 	: mbLoadCompleted(false)
+	, mResourceLoad()
+	, mMutex()
 {
 }
 
@@ -38,7 +40,7 @@ void yam::LoadingScene::LateUpdate()
 {
 }
 
-void yam::LoadingScene::Render(HDC hdc)
+void yam::LoadingScene::Render()
 {
 }
 

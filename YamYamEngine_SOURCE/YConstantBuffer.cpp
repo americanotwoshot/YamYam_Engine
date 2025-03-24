@@ -4,6 +4,7 @@ namespace yam::graphics
 {
 	ConstantBuffer::ConstantBuffer()
 		: mSize(0)
+		, mType(eCBType::None)
 	{
 	}
 	ConstantBuffer::~ConstantBuffer()
@@ -33,12 +34,12 @@ namespace yam::graphics
 		return false;
 	}
 
-	void ConstantBuffer::SetData(void* data)
+	void ConstantBuffer::SetData(void* data) const
 	{
 		GetDevice()->SetDataBuffer(buffer.Get(), data, mSize);
 	}
 
-	void ConstantBuffer::Bind(eShaderStage stage)
+	void ConstantBuffer::Bind(eShaderStage stage) const
 	{
 		GetDevice()->BindConstantBuffer(stage, mType, buffer.Get());
 	}

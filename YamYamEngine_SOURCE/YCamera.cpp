@@ -20,8 +20,8 @@ namespace yam
 	}
 	void Camera::Initialize()
 	{
-		mResolution.x = application.GetWidth();
-		mResolution.y = application.GetHeight();
+		mResolution.x = (float)application.GetWidth();
+		mResolution.y = (float)application.GetHeight();
 	}
 	void Camera::Update()
 	{
@@ -41,7 +41,7 @@ namespace yam
 	void Camera::LateUpdate()
 	{
 	}
-	void Camera::Render(HDC hdc)
+	void Camera::Render()
 	{
 	}
 }

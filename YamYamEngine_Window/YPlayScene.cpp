@@ -30,6 +30,7 @@
 namespace yam
 {
 	PlayScene::PlayScene()
+		: mPlayer(nullptr)
 	{
 	}
 	PlayScene::~PlayScene()
@@ -43,9 +44,9 @@ namespace yam
 		//renderer::mainCamera = cameraComp;
 		////camera->AddComponent<PlayerScript>();
 
-		//// player
-		//mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
-		//object::DontDestroyOnLoad(mPlayer);
+		// player
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
+		object::DontDestroyOnLoad(mPlayer);
 		//mPlayer->AddComponent<AudioListener>();
 
 		//PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
@@ -143,9 +144,9 @@ namespace yam
 			SceneManager::LoadScene(L"EndScene");
 		}
 	}
-	void PlayScene::Render(HDC hdc)
+	void PlayScene::Render()
 	{
-		Scene::Render(hdc);
+		Scene::Render();
 	}
 
 	void PlayScene::OnEnter()
