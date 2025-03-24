@@ -49,6 +49,12 @@ namespace yam::graphics
 	{
 
 	}
+
+	HRESULT Texture::Save(const std::wstring& path)
+	{
+		return E_NOTIMPL;
+	}
+
 	HRESULT Texture::Load(const std::wstring& path)
 	{
 		std::wstring ext

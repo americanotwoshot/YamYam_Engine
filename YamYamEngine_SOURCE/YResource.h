@@ -9,6 +9,7 @@ namespace yam
 		Resource(enums::eResourceType mType);
 		virtual ~Resource();
 
+		virtual HRESULT Save(const std::wstring& path) = 0;
 		virtual HRESULT Load(const std::wstring& path) = 0;
 
 		const std::wstring& GetPath() { return mPath; }

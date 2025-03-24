@@ -32,6 +32,7 @@ namespace yam::enums
 	enum class eResourceType
 	{
 		Texture,
+		Mesh,
 		Animation,
 		AudioClip,
 		Shader,

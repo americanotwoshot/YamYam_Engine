@@ -2,8 +2,7 @@
 #include "YCamera.h"
 #include "YGraphicDevice_DX11.h"
 
-#include "YVertexBuffer.h"
-#include "YIndexBuffer.h"
+#include "YMesh.h"
 #include "YConstantBuffer.h"
 
 using namespace yam::math;
@@ -16,8 +15,7 @@ namespace yam::renderer
 	extern std::vector<Vertex> vertexes;
 	extern std::vector<UINT> indices;
 	
-	extern VertexBuffer vertexBuffer;
-	extern IndexBuffer indexBuffer;
+	extern Mesh* mesh;
 	extern ConstantBuffer constantBuffer[(UINT)eCBType::End];
 
 	extern ID3D11InputLayout* inputLayouts;

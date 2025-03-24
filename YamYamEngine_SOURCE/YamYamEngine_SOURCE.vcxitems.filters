@@ -113,10 +113,10 @@
       <Filter>Resource\Graphics\Shader</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YMaterial.cpp">
-      <Filter>Resource\Material</Filter>
+      <Filter>Resource\Graphics\Material</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YMesh.cpp">
-      <Filter>Resource\Mesh</Filter>
+      <Filter>Resource\Graphics\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YVertexBuffer.cpp">
       <Filter>Graphics\GpuBuffer</Filter>
@@ -253,10 +253,10 @@
       <Filter>Resource\Graphics\Shader</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YMaterial.h">
-      <Filter>Resource\Material</Filter>
+      <Filter>Resource\Graphics\Material</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YMesh.h">
-      <Filter>Resource\Mesh</Filter>
+      <Filter>Resource\Graphics\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YVertexBuffer.h">
       <Filter>Graphics\GpuBuffer</Filter>
@@ -356,17 +356,17 @@
     <Filter Include="Resource\Graphics">
       <UniqueIdentifier>{209ebbea-1665-4f36-b6ea-d040269e60d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource\Material">
-      <UniqueIdentifier>{4700edce-3d5c-4da7-98b2-fe67270985f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource\Mesh">
-      <UniqueIdentifier>{63d4171e-f8b4-4290-aeb1-10b596e4fca9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource\Graphics\Shader">
       <UniqueIdentifier>{e83c9de2-1a03-43dc-9f5b-b90650720f4a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Graphics\GpuBuffer">
       <UniqueIdentifier>{b95badf7-bc17-4284-b5c8-e30fffdeaed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Graphics\Material">
+      <UniqueIdentifier>{4700edce-3d5c-4da7-98b2-fe67270985f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Graphics\Mesh">
+      <UniqueIdentifier>{63d4171e-f8b4-4290-aeb1-10b596e4fca9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

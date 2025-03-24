@@ -3,6 +3,7 @@
 #include "YRenderer.h"
 #include "YResources.h"
 #include "YShader.h"
+#include "YMesh.h"
 
 extern yam::Application application;
 
@@ -194,6 +195,11 @@ namespace yam::graphics
 		mContext->IASetIndexBuffer(pIndexBuffer, format, offset);
 	}
 
+	void GraphicDevice_DX11::BindPrimitiveTopology(const D3D11_PRIMITIVE_TOPOLOGY topology)
+	{
+		mContext->IASetPrimitiveTopology(topology);
+	}
+
 	void GraphicDevice_DX11::BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer)
 	{
 		UINT slot = (UINT)type;
@@ -312,11 +318,6 @@ namespace yam::graphics
 				, &renderer::inputLayouts)))
 			assert(NULL && "Create input layout Failed!");
 		
-		// vertex buffer
-		renderer::vertexBuffer.Create(renderer::vertexes);
-
-		// index buffer
-		renderer::indexBuffer.Create(renderer::indices);
 	}
 
 	void GraphicDevice_DX11::Draw() 
@@ -334,10 +335,7 @@ namespace yam::graphics
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
 
 		mContext->IASetInputLayout(renderer::inputLayouts);
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
-		renderer::vertexBuffer.Bind();
-		renderer::indexBuffer.Bind();
+		renderer::mesh->Bind();
 
 		Vector4 pos(0.2f, 0.2f, 0.0f, 1.0f);
 		renderer::constantBuffer[(UINT)eCBType::Transform].SetData(&pos);
