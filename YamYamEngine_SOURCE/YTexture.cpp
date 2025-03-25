@@ -2,46 +2,13 @@
 #include "YApplication.h"
 #include "YResources.h"
 
-// 해당 전역변수가 존재함을 알린다.
 extern yam::Application application;
 
 namespace yam::graphics
 {
-	Texture* Texture::Create(const std::wstring& name, UINT width, UINT height)
-	{
-		Texture* image = Resources::Find<Texture>(name);
-		if (image)
-			return image;
-
-		image = new Texture();
-		image->SetName(name);
-		image->SetWidth(width);
-		image->SetWidth(height);
-
-		//HDC hdc = application.GetHdc();
-
-		//image->mBitmap = CreateCompatibleBitmap(hdc, width, height);
-		//image->mHdc = CreateCompatibleDC(hdc);
-
-		//HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
-		//HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);
-
-		//::Rectangle(image->mHdc, -1, -1
-		//	, image->GetWidth() + 1
-		//	, image->GetHeight() + 1);
-		//SelectObject(hdc, oldBrush);
-
-		//HBITMAP oldBitmap = (HBITMAP)SelectObject(image->mHdc, image->mBitmap);
-		//DeleteObject(oldBitmap);
-
-		Resources::Insert(name + L"image", image);
-
-		return image;
-	}
-
 	Texture::Texture()
 		: Resource(enums::eResourceType::Texture)
-		, mbAlpha(false)
+		, mDesc{}
 	{
 
 	}
@@ -60,53 +27,45 @@ namespace yam::graphics
 		std::wstring ext
 			= path.substr(path.find_last_of(L".") + 1);
 
-		//// bmp 일 때
-		//if (ext == L"bmp")
-		//{
-		//	mType = eTextureType::Bmp;
-		//	mBitmap = (HBITMAP)LoadImageW(nullptr, path.c_str(), IMAGE_BITMAP,
-		//		0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+		if (ext == L".dds" || ext == L".DDS")
+		{
+			if (FAILED(LoadFromDDSFile(path.c_str()
+				, DDS_FLAGS::DDS_FLAGS_NONE, nullptr, mImage)))
+				return S_FALSE;
+		}
+		else if (ext == L".tga" || ext == L".TGA")
+		{
+			if (FAILED(LoadFromTGAFile(path.c_str(), nullptr, mImage)))
+				return S_FALSE;
+		}
+		else // WIC (png, jpg, jpeg, bmp)
+		{
+			HRESULT hr = LoadFromWICFile(path.c_str()
+				, WIC_FLAGS::WIC_FLAGS_NONE, nullptr, mImage);
+			if (FAILED(hr)) {
+				std::wcerr << L"Failed to load image! HRESULT: " << std::hex << hr << std::endl;
+				return S_FALSE;
+			}
+		}
 
-		//	if (mBitmap == nullptr)
-		//		return S_FALSE;
+		HRESULT hr = CreateShaderResourceView(graphics::GetDevice()->GetID3D11Device().Get()
+			, mImage.GetImages()
+			, mImage.GetImageCount()
+			, mImage.GetMetadata()
+			, mSRV.GetAddressOf());
 
-		//	BITMAP info = {};
-		//	GetObject(mBitmap, sizeof(BITMAP), &info);
+		if (hr == S_FALSE)
+			assert(NULL && "Load Texture Failed!");
 
-		//	mWidth = info.bmWidth;
-		//	mHeight = info.bmHeight;
-
-		//	if (info.bmBitsPixel == 32)
-		//		mbAlpha = true;
-		//	else
-		//		mbAlpha = false;
-
-		//	HDC mainDC = application.GetHdc();
-		//	mHdc = CreateCompatibleDC(mainDC);
-
-		//	HBITMAP oldBitmap = (HBITMAP)SelectObject(mHdc, mBitmap);
-		//	DeleteObject(oldBitmap);
-		//}
-		//else if (ext == L"png" || ext == L"jpeg" || ext == L"jpg")
-		//{
-		//	mType = eTextureType::Png;
-		//	mImage = Gdiplus::Image::FromFile(path.c_str());
-		//	if (mImage == nullptr)
-		//		return S_FALSE;
-
-		//	mWidth = mImage->GetWidth();
-		//	mHeight = mImage->GetHeight();
-		//}
-
-		//mImage = Gdiplus::Image::FromFile(path.c_str());
-		//mWidth = mImage->GetWidth();
-		//mHeight = mImage->GetHeight();
+		mSRV->GetResource((ID3D11Resource**)mTexture.GetAddressOf());
 
 		return S_OK;
 	}
 
-	//COLORREF Texture::GetPixel(int x, int y)
-	//{
-	//	return ::GetPixel(mHdc, x, y);
-	//}
+	void Texture::Bind(eShaderStage stage, UINT startSlot)
+	{
+		graphics::GetDevice()->SetShaderResource(stage, startSlot
+			, mSRV.GetAddressOf());
+	}
+
 }

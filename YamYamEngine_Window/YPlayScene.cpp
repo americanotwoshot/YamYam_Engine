@@ -26,6 +26,7 @@
 #include "YAudioClip.h"
 #include "YAudioListener.h"
 #include "YAudioSource.h"
+#include "YGraphicDevice_DX11.h"
 
 namespace yam
 {
@@ -147,6 +148,8 @@ namespace yam
 	void PlayScene::Render()
 	{
 		Scene::Render();
+
+		graphics::GetDevice()->Draw();
 	}
 
 	void PlayScene::OnEnter()

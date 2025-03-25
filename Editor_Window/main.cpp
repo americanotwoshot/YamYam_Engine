@@ -12,6 +12,11 @@
 #include "..\\YamYamEngine_WINDOW\\YLoadScene.h"
 #include "..\\YamYamEngine_WINDOW\\YToolScene.h"
 
+#include <wincodec.h>
+#include <wrl/client.h>
+
+using namespace Microsoft::WRL;
+
 yam::Application application;
 
 ULONG_PTR gpToken;
@@ -42,6 +47,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램 인스턴스 핸
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     //_CrtSetBreakAlloc(667);
 
+    if (FAILED(CoInitializeEx(nullptr, COINITBASE_MULTITHREADED)))
+        assert(NULL && "WIC Interface Error");
+
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_EDITORWINDOW, szWindowClass, MAX_LOADSTRING);
@@ -62,6 +70,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램 인스턴스 핸
     // PeekMessage : 메세지 큐의 메세지 유무에 상관없이 함수가 리턴된다.
     //              메세지가 있는 경우 리턴값이 true, 없는 경우 리턴값이 false
 
+    yam::LoadScenes();
+
     while (true)
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
@@ -81,8 +91,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램 인스턴스 핸
         }
     }
 
-    Gdiplus::GdiplusShutdown(gpToken);
+    //Gdiplus::GdiplusShutdown(gpToken);
     application.Release();
+
+    CoUninitialize();
 
     return (int) msg.wParam;
 }
@@ -133,7 +145,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
-   application.Initialize(hWnd, width, height);
 
    if (!hWnd)
    {
@@ -146,38 +157,37 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    //ShowWindow(ToolHWnd, nCmdShow);
    //UpdateWindow(ToolHWnd);
 
-   Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
+   //Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
 
    //load scene
    //yam::LoadResources(); -> loadingScene에서 로딩
-   yam::LoadScenes();
 
    //int a = 0;
    //srand((unsigned int)(&a));
+   application.Initialize(hWnd, width, height);
 
-   yam::Scene* activeScene = yam::SceneManager::GetActiveScene();
+   //yam::Scene* activeScene = yam::SceneManager::GetActiveScene();
+   //std::wstring name = activeScene->GetName();
+   //if (name == L"ToolScene")
+   //{
+   //    HWND ToolHWnd = CreateWindowW(L"TILEWINDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
+   //        0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
-   std::wstring name = activeScene->GetName();
-   if (name == L"ToolScene")
-   {
-       HWND ToolHWnd = CreateWindowW(L"TILEWINDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
-           0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
+   //    // Tile Window 크기 조정 -- TOOL
+   //    yam::graphics::Texture* texture =
+   //        yam::Resources::Find<yam::graphics::Texture>(L"SpringFloor");
 
-       // Tile Window 크기 조정 -- TOOL
-       yam::graphics::Texture* texture =
-           yam::Resources::Find<yam::graphics::Texture>(L"SpringFloor");
+   //    RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight() };
+   //    AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
-       RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight() };
-       AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+   //    UINT toolWidth = rect.right - rect.left;
+   //    UINT toolHeight = rect.bottom - rect.top;
 
-       UINT toolWidth = rect.right - rect.left;
-       UINT toolHeight = rect.bottom - rect.top;
-
-       SetWindowPos(ToolHWnd, nullptr, width, 0,
-           toolWidth, toolHeight, 0);
-       ShowWindow(ToolHWnd, true);
-       UpdateWindow(ToolHWnd);
-   }
+   //    SetWindowPos(ToolHWnd, nullptr, width, 0,
+   //        toolWidth, toolHeight, 0);
+   //    ShowWindow(ToolHWnd, true);
+   //    UpdateWindow(ToolHWnd);
+   //}
 
    return TRUE;
 }

@@ -11,9 +11,6 @@ using namespace yam::graphics;
 namespace yam::renderer
 {
 	extern Camera* mainCamera;
-
-	extern std::vector<Vertex> vertexes;
-	extern std::vector<UINT> indices;
 	
 	extern Mesh* mesh;
 	extern ConstantBuffer constantBuffer[(UINT)eCBType::End];

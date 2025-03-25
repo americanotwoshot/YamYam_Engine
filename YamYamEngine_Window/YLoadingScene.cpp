@@ -2,6 +2,9 @@
 #include "YResources.h"
 #include "YTexture.h"
 #include "YSceneManager.h"
+#include "YApplication.h"
+
+extern yam::Application application;
 
 yam::LoadingScene::LoadingScene()
 	: mbLoadCompleted(false)
@@ -24,6 +27,15 @@ void yam::LoadingScene::Initialize()
 
 void yam::LoadingScene::Update()
 {
+
+}
+
+void yam::LoadingScene::LateUpdate()
+{
+}
+
+void yam::LoadingScene::Render()
+{
 	if (mbLoadCompleted)
 	{
 		// 자식 쓰레드를 메인쓰레드에 편입시켜 메인쓰레드가 종료되기 전까지 block
@@ -36,14 +48,6 @@ void yam::LoadingScene::Update()
 	}
 }
 
-void yam::LoadingScene::LateUpdate()
-{
-}
-
-void yam::LoadingScene::Render()
-{
-}
-
 void yam::LoadingScene::OnEnter()
 {
 }
@@ -54,20 +58,16 @@ void yam::LoadingScene::OnExit()
 
 void yam::LoadingScene::resourcesLoad(std::mutex& m)
 {
+	while (true)
+	{
+		if (application.IsLoaded() == true)
+			break;
+	}
+
 	m.lock();
 	{
-		Resources::Load<graphics::Texture>(L"Map",
-			L"..\\Resources\\img\\map\\map_pure.png");
 		Resources::Load<graphics::Texture>(L"Player",
-			L"..\\Resources\\Player.bmp");
-		Resources::Load<graphics::Texture>(L"Cat",
-			L"..\\Resources\\ChickenAlpha.bmp");
-		Resources::Load<graphics::Texture>(L"SpringFloor",
-			L"..\\Resources\\SpringFloor.bmp");
-		Resources::Load<graphics::Texture>(L"HPBAR",
-			L"..\\Resources\\HPBAR.bmp");
-		Resources::Load<graphics::Texture>(L"PixelMap",
-			L"..\\Resources\\PixelMap.bmp");
+			L"..\\Resources\\CloudOcean.png");
 	}
 	m.unlock();
 
