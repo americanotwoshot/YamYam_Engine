@@ -5,6 +5,7 @@ namespace yam
 	Material::Material()
 		:Resource(enums::eResourceType::Material)
 		, mMode(graphics::eRenderingMode::Opaque)
+		, mAlbedoTexture(nullptr)
 		, mShader(nullptr)
 	{
 	}
@@ -21,6 +22,10 @@ namespace yam
 	}
 	void Material::Bind()
 	{
-		mShader->Bind();
+		if (mShader)
+			mShader->Bind();
+
+		if (mAlbedoTexture)
+			mAlbedoTexture->Bind(graphics::eShaderStage::PS, (UINT)graphics::eTextureType::Albedo);
 	}
 }

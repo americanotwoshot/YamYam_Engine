@@ -387,11 +387,9 @@ namespace yam::graphics
 		renderer::constantBuffer[(UINT)eCBType::Transform].Bind(eShaderStage::VS);
 
 		Material* material = yam::Resources::Find<Material>(L"SpriteMaterial");
-		material->Bind();
-
 		graphics::Texture* texture = Resources::Find<graphics::Texture>(L"Player");
-		if (texture)
-			texture->Bind(eShaderStage::PS, 0);
+		material->SetAlbedoTexture(texture);
+		material->Bind();
 
 		mContext->DrawIndexed(6, 0, 0);
 
