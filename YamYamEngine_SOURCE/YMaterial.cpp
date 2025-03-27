@@ -5,7 +5,7 @@ namespace yam
 	Material::Material()
 		:Resource(enums::eResourceType::Material)
 		, mMode(graphics::eRenderingMode::Opaque)
-		, mShader {nullptr}
+		, mShader(nullptr)
 	{
 	}
 	Material::~Material()

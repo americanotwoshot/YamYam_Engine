@@ -13,8 +13,6 @@ namespace yam::renderer
 	
 	extern ConstantBuffer constantBuffer[(UINT)eCBType::End];
 
-	extern Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout;
-
 	void Initialize();
 	void Release();
 }

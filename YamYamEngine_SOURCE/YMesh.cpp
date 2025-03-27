@@ -42,8 +42,17 @@ namespace yam
 		return mIB.Create(mData.indices);
 	}
 
+	void Mesh::SetVertexBufferParams(D3D11_INPUT_ELEMENT_DESC* layout, UINT vertexCount
+		, const void* pShaderBytecodeWithInputSignature, SIZE_T BytecodeLength)
+	{
+		mInputLayout.CreateInputLayout(layout, vertexCount
+			, pShaderBytecodeWithInputSignature, BytecodeLength);
+	}
+
 	void Mesh::Bind()
 	{
+		mInputLayout.Bind();
+
 		mVB.Bind();
 		mIB.Bind();
 		graphics::GetDevice()->BindPrimitiveTopology(mData.mTopology);

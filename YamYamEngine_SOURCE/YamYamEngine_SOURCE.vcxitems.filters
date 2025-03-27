@@ -127,6 +127,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YIndexBuffer.cpp">
       <Filter>Graphics\GpuBuffer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YInputLayout.cpp">
+      <Filter>Graphics\InputLayout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -267,6 +270,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YConstantBuffer.h">
       <Filter>Graphics\GpuBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YInputLayout.h">
+      <Filter>Graphics\InputLayout</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -367,6 +373,9 @@
     </Filter>
     <Filter Include="Resource\Graphics\Mesh">
       <UniqueIdentifier>{63d4171e-f8b4-4290-aeb1-10b596e4fca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\InputLayout">
+      <UniqueIdentifier>{bbb85567-2011-4ad8-af32-4b9853485db2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
