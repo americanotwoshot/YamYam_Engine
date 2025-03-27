@@ -29,5 +29,11 @@
     <None Include="$(MSBuildThisFileDirectory)ConstantBuffers.hlsli">
       <Filter>Lib</Filter>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)Samplers.hlsli">
+      <Filter>Lib</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Textures.hlsli">
+      <Filter>Lib</Filter>
+    </None>
   </ItemGroup>
 </Project>

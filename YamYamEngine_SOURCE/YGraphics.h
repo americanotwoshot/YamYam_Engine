@@ -36,6 +36,15 @@ namespace yam::graphics
 		End,
 	};
 
+	enum class eSamplerType
+	{
+		Point,
+		Linear,
+		Anisotropic,
+		PostProcess,
+		End,
+	};
+
 	struct GpuBuffer
 	{
 		Microsoft::WRL::ComPtr<ID3D11Buffer> buffer = nullptr;
