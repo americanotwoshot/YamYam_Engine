@@ -2,7 +2,6 @@
 #include "YCamera.h"
 #include "YGraphicDevice_DX11.h"
 
-#include "YMesh.h"
 #include "YConstantBuffer.h"
 
 using namespace yam::math;
@@ -12,10 +11,9 @@ namespace yam::renderer
 {
 	extern Camera* mainCamera;
 	
-	extern Mesh* mesh;
 	extern ConstantBuffer constantBuffer[(UINT)eCBType::End];
 
-	extern ID3D11InputLayout* inputLayouts;
+	extern Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout;
 
 	void Initialize();
 	void Release();

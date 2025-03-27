@@ -3,16 +3,17 @@
 
 #include "YResources.h"
 #include "YShader.h"
+#include "YMaterial.h"
+#include "YMesh.h"
 
 namespace yam::renderer
 {
 	Camera* mainCamera = nullptr;
 
-	Mesh* mesh = nullptr;
 	ConstantBuffer constantBuffer[(UINT)eCBType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerStates[(UINT)eSamplerType::End] = {};
 
-	ID3D11InputLayout* inputLayouts = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout = nullptr;
 	
 	void LoadStates()
 	{
@@ -64,7 +65,7 @@ namespace yam::renderer
 
 	void LoadTriangleMesh()
 	{
-		mesh = new Mesh();
+		Mesh* mesh = new Mesh();
 
 		std::vector<graphics::Vertex> vertexes = {};
 		std::vector<UINT> indices;
@@ -86,11 +87,13 @@ namespace yam::renderer
 
 		mesh->CreateVB(vertexes);
 		mesh->CreateIB(indices);
+
+		yam::Resources::Insert(L"TriangleMesh", mesh);
 	}
 
 	void LoadRectMesh()
 	{
-		mesh = new Mesh();
+		Mesh* mesh = new Mesh();
 
 		std::vector<graphics::Vertex> vertexes = {};
 		std::vector<UINT> indices;
@@ -123,12 +126,22 @@ namespace yam::renderer
 
 		mesh->CreateVB(vertexes);
 		mesh->CreateIB(indices);
+
+		yam::Resources::Insert(L"RectMesh", mesh);
 	}
 
 	void LoadMeshes()
 	{
 		LoadTriangleMesh();
 		LoadRectMesh();
+	}
+
+	void LoadMaterials()
+	{
+		Material* spriteMaterial = new Material();
+		yam::Resources::Insert(L"SpriteMaterial", spriteMaterial);
+
+		spriteMaterial->SetShader(yam::Resources::Find<graphics::Shader>(L"SpriteShader"));
 	}
 
 	void LoadShaders()
@@ -149,12 +162,12 @@ namespace yam::renderer
 		LoadStates();
 		LoadMeshes();
 		LoadShaders();
+		LoadMaterials();
 		LoadConstantBuffers();
 	}
 
 	void Release()
 	{
-		inputLayouts->Release();
-		delete mesh;
+		
 	}
 }
