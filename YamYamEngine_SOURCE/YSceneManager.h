@@ -11,7 +11,7 @@ namespace yam
 		{
 			T* scene = new T();
 			scene->SetName(name);
-			mActiveScene = scene;
+
 			scene->Initialize();
 
 			mScene.insert(std::make_pair(name, scene));

@@ -38,9 +38,16 @@ namespace yam::graphics
 		void BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 		void BindSampler(eShaderStage stage, UINT StartSlot, UINT NumSamplers, ID3D11SamplerState* const* ppSamplers);
 		void BindSamplers(UINT StartSlot, UINT NumSamplers, ID3D11SamplerState* const* ppSamplers);
+		void BindViewPort();
+		void BindDefaultRenderTarget();
+
+		void ClearRenderTargetView();
+		void ClearDepthStencilView();
 
 		void Initialize();
 		void Draw();
+		void DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
+		void Present();
 
 	public:
 		Microsoft::WRL::ComPtr<ID3D11Device> GetID3D11Device() { return mDevice; }

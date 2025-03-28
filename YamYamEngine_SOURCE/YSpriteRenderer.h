@@ -2,6 +2,8 @@
 #include "YEntity.h"
 #include "YComponent.h"
 #include "YTexture.h"
+#include "YMaterial.h"
+#include "YMesh.h"
 
 namespace yam
 {
@@ -16,12 +18,14 @@ namespace yam
 		void LateUpdate() override;
 		void Render() override;
 
-		void SetTexture(graphics::Texture* texture) { mTexture = texture; }
-		void SetSize(math::Vector2 size) { mSize = size; }
+		void SetSprite(graphics::Texture* sprite) { mSprite = sprite; }
+		void SetMaterial(Material* material) { mMaterial = material; }
+		void SetMesh(Mesh* mesh) { mMesh = mesh; }
 
 	private:
-		graphics::Texture* mTexture;
-		math::Vector2 mSize;
+		graphics::Texture* mSprite;
+		Material* mMaterial;
+		Mesh* mMesh;
 	};
 }
 

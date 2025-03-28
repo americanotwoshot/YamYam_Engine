@@ -22,9 +22,18 @@ namespace yam
 	}
 	void Material::Bind()
 	{
+		BindShader();
+		BindTextures();
+	}
+
+	void Material::BindShader()
+	{
 		if (mShader)
 			mShader->Bind();
+	}
 
+	void Material::BindTextures()
+	{
 		if (mAlbedoTexture)
 			mAlbedoTexture->Bind(graphics::eShaderStage::PS, (UINT)graphics::eTextureType::Albedo);
 	}

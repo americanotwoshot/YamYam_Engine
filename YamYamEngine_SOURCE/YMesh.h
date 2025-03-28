@@ -31,6 +31,8 @@ namespace yam
 			, const void* pShaderBytecodeWithInputSignature, SIZE_T BytecodeLength);
 		void Bind();
 
+		UINT GetIndexCount() const { return mIB.GetIndexCount(); }
+
 	private:
 		graphics::InputLayout mInputLayout;
 		graphics::VertexBuffer mVB;

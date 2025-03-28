@@ -61,6 +61,7 @@ namespace yam::graphics
 		Specular,
 		Smoothness,
 		Metallic,
+		Sprite,
 		End,
 	};
 
