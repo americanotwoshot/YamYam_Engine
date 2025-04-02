@@ -33,12 +33,6 @@
     <ClInclude Include="YCat.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="YCatScript.h">
-      <Filter>Scripts</Filter>
-    </ClInclude>
-    <ClInclude Include="YToolScene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="YTile.h">
       <Filter>Contents</Filter>
     </ClInclude>
@@ -47,9 +41,6 @@
     </ClInclude>
     <ClInclude Include="YFloor.h">
       <Filter>Contents</Filter>
-    </ClInclude>
-    <ClInclude Include="YFloorScript.h">
-      <Filter>Scripts</Filter>
     </ClInclude>
     <ClInclude Include="YLoadingScene.h">
       <Filter>Scenes</Filter>
@@ -74,12 +65,6 @@
     <ClCompile Include="YCat.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
-    <ClCompile Include="YCatScript.cpp">
-      <Filter>Scripts</Filter>
-    </ClCompile>
-    <ClCompile Include="YToolScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="YTile.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
@@ -88,9 +73,6 @@
     </ClCompile>
     <ClCompile Include="YFloor.cpp">
       <Filter>Contents</Filter>
-    </ClCompile>
-    <ClCompile Include="YFloorScript.cpp">
-      <Filter>Scripts</Filter>
     </ClCompile>
     <ClCompile Include="YLoadingScene.cpp">
       <Filter>Scenes</Filter>

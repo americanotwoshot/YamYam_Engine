@@ -21,7 +21,7 @@ namespace yam::object
 	}
 
 	template <typename T>
-	static T* Instantiate(yam::enums::eLayerType type, math::Vector2 position)
+	static T* Instantiate(yam::enums::eLayerType type, math::Vector3 position)
 	{
 		T* gameObject = new T();
 		Scene* activeScene = SceneManager::GetActiveScene();

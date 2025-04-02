@@ -79,5 +79,6 @@ void yam::LoadingScene::resourcesLoad(std::mutex& m)
 	}
 	m.unlock();
 
+	SceneManager::SetActiveScene(L"LoadingScene");
 	mbLoadCompleted = true;
 }

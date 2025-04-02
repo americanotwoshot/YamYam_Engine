@@ -8,6 +8,11 @@
 
 #include "CommonInclude.h"
 
+#define CB_GETBINDSLOT(name) __CBUFFERBINDSLOT__##name##__
+#define CBUFFER(name, slot) static const int CB_GETBINDSLOT(name) = slot; struct alignas(16) name
+
+#define CBSLOT_TRANSFORM		0
+
 namespace yam::graphics
 {
 	struct Vertex
@@ -95,5 +100,13 @@ namespace yam::graphics
 
 		GpuBuffer() = default;
 		virtual ~GpuBuffer() = default;
+	};
+
+	// Constant Buffer
+	CBUFFER(TransformCB, CBSLOT_TRANSFORM)
+	{
+		math::Matrix world;
+		math::Matrix view;
+		math::Matrix projection;
 	};
 }

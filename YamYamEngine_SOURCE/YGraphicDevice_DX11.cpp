@@ -437,35 +437,9 @@ namespace yam::graphics
 			assert(NULL && "Create depthstencilview Failed!");
 	}
 
-	void GraphicDevice_DX11::Draw() 
+	void GraphicDevice_DX11::Draw(UINT VertexCount, UINT StartVertexLocation)
 	{
-		// Draw Rect
-		Mesh* mesh = Resources::Find<Mesh>(L"RectMesh");
-		mesh->Bind();
-
-		Vector4 pos(-0.5f, 0.0f, 0.0f, 1.0f);
-		renderer::constantBuffer[(UINT)eCBType::Transform].SetData(&pos);
-		renderer::constantBuffer[(UINT)eCBType::Transform].Bind(eShaderStage::VS);
-
-		Material* material = yam::Resources::Find<Material>(L"SpriteMaterial");
-		graphics::Texture* texture = Resources::Find<graphics::Texture>(L"Player");
-		material->SetAlbedoTexture(texture);
-		material->Bind();
-
-		mContext->DrawIndexed(6, 0, 0);
-
-		// Draw Triangle
-		mesh = Resources::Find<Mesh>(L"TriangleMesh");
-		mesh->Bind();
-
-		pos = Vector4(0.5f, 0.0f, 0.0f, 1.0f);
-		renderer::constantBuffer[(UINT)eCBType::Transform].SetData(&pos);
-		renderer::constantBuffer[(UINT)eCBType::Transform].Bind(eShaderStage::VS);
-
-		material = yam::Resources::Find<Material>(L"TriangleMaterial");
-		material->Bind();
-
-		mContext->DrawIndexed(3, 0, 0);
+		mContext->Draw(VertexCount, StartVertexLocation);
 	}
 
 	void GraphicDevice_DX11::DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation)

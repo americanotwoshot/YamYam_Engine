@@ -4,6 +4,7 @@
 #include "YTexture.h"
 #include "YRenderer.h"
 #include "YResources.h"
+#include "YTransform.h"
 
 namespace yam
 {
@@ -29,6 +30,10 @@ namespace yam
 	}
 	void SpriteRenderer::Render()
 	{
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		if (tr)
+			tr->Bind();
+
 		// VB, IB, InputLayout : 정점 정보 바인드
 		if (mMesh)
 			mMesh->Bind();

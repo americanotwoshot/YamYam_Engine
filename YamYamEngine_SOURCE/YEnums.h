@@ -20,9 +20,6 @@ namespace yam::enums
 	{
 		None,
 		BackGround,
-		Tile,
-		// tree
-		Animal,
 		Player,
 		Floor,
 		UI,

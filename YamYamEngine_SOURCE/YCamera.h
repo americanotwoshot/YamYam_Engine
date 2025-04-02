@@ -7,8 +7,16 @@ namespace yam
 	class Camera : public Component
 	{
 	public:
-		Vector2 CalculatePosition(Vector2 pos) { return pos - mDistance; }
-		Vector2 CalculateTilePosition(Vector2 pos) { return pos + mDistance; }
+		enum class eProjectionType
+		{
+			Perspective,
+			Orthographic,
+		};
+
+		static Matrix GetGpuViewMatrix() { return ViewMatrix; }
+		static Matrix GetGpuProjectionMatrix() { return ProjectionMatrix; }
+		static void SetGpuViewMatrix(Matrix matrix) { ViewMatrix = matrix; }
+		static void SetGpuProjectionMatrix(Matrix matrix) { ProjectionMatrix = matrix; }
 
 		Camera();
 		~Camera();
@@ -18,13 +26,24 @@ namespace yam
 		void LateUpdate() override;
 		void Render() override;
 
-		void SetTarget(GameObject* target) { mTarget = target; }
+		void CreateViewMatrix();
+		void CreateProjectionMatrix(eProjectionType type);
+
+		void SetProjectionType(eProjectionType type) { mProjectionType = type; }
+		void SetSize(float size) { mSize = size; }
 
 	private:
-		class GameObject* mTarget;	// 카메라가 따라다니는 대상
-		Vector2 mDistance;			// 카메라까지의 거리
-		Vector2 mResolution;		// 화면 해상도
-		Vector2 mLookPosition;		// 카메라가 보는 방향
+		static Matrix ViewMatrix;
+		static Matrix ProjectionMatrix;
+
+		eProjectionType mProjectionType;
+
+		Matrix mViewMatrix;
+		Matrix mProjectionMatrix;
+		float mAspectRatio;
+		float mNear;
+		float mFar;
+		float mSize;
 	};
 }
 

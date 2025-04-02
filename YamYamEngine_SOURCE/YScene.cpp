@@ -1,5 +1,6 @@
 #include "YScene.h"
 #include "YCollisionManager.h"
+#include "YSceneManager.h"
 
 namespace yam
 {
@@ -19,14 +20,8 @@ namespace yam
 
 	void Scene::Initialize()
 	{
-		for (Layer* layer : mLayers)
-		{
-			if (layer == nullptr)
-				continue;
-
-			layer->Initialize();
-		}
-
+		const std::wstring& sceneName = GetName();
+		SceneManager::SetActiveScene(sceneName);
 	}
 	void Scene::Update()
 	{

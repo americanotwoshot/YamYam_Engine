@@ -145,10 +145,8 @@ copy "$(SolutionDir)\External\Library\Release\fmodstudio.dll" "$(SolutionDir)\x6
   <ItemGroup>
     <ClInclude Include="YCameraScript.h" />
     <ClInclude Include="YCat.h" />
-    <ClInclude Include="YCatScript.h" />
     <ClInclude Include="YEndScene.h" />
     <ClInclude Include="YFloor.h" />
-    <ClInclude Include="YFloorScript.h" />
     <ClInclude Include="YLoadingScene.h" />
     <ClInclude Include="YLoadScene.h" />
     <ClInclude Include="YPlayer.h" />
@@ -156,22 +154,18 @@ copy "$(SolutionDir)\External\Library\Release\fmodstudio.dll" "$(SolutionDir)\x6
     <ClInclude Include="YPlayScene.h" />
     <ClInclude Include="YTile.h" />
     <ClInclude Include="YTitleScene.h" />
-    <ClInclude Include="YToolScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YCameraScript.cpp" />
     <ClCompile Include="YCat.cpp" />
-    <ClCompile Include="YCatScript.cpp" />
     <ClCompile Include="YEndScene.cpp" />
     <ClCompile Include="YFloor.cpp" />
-    <ClCompile Include="YFloorScript.cpp" />
     <ClCompile Include="YLoadingScene.cpp" />
     <ClCompile Include="YPlayer.cpp" />
     <ClCompile Include="YPlayerScript.cpp" />
     <ClCompile Include="YPlayScene.cpp" />
     <ClCompile Include="YTile.cpp" />
     <ClCompile Include="YTitleScene.cpp" />
-    <ClCompile Include="YToolScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

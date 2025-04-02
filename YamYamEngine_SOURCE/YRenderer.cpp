@@ -10,7 +10,7 @@ namespace yam::renderer
 {
 	Camera* mainCamera = nullptr;
 
-	ConstantBuffer constantBuffer[(UINT)eCBType::End] = {};
+	ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerStates[(UINT)eSamplerType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[(UINT)eRasterizerState::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBlendState::End] = {};
@@ -277,7 +277,8 @@ namespace yam::renderer
 
 	void LoadConstantBuffers()
 	{
-		constantBuffer[(UINT)eCBType::Transform].Create(eCBType::Transform, sizeof(Vector4));
+		constantBuffer[CBSLOT_TRANSFORM] = new ConstantBuffer(eCBType::Transform);
+		constantBuffer[CBSLOT_TRANSFORM]->Create(sizeof(TransformCB));
 	}
 
 	void Initialize()
@@ -291,6 +292,10 @@ namespace yam::renderer
 
 	void Release()
 	{
-		
+		for (UINT i = 0; i < (UINT)eCBType::End; i++)
+		{
+			delete constantBuffer[i];
+			constantBuffer[i] = nullptr;
+		}
 	}
 }

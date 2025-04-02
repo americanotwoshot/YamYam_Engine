@@ -16,18 +16,35 @@ namespace yam
 		void LateUpdate() override;
 		void Render() override;
 
-		Vector2 GetPosition() const { return mPosition; }
-		float GetRotation() const { return mRotation; }
-		Vector2 GetScale() const { return mScale; }
+		void Bind();
 
-		void SetPosition(Vector2 pos){ mPosition.x = pos.x; mPosition.y = pos.y; }
-		void SetRotation(float rotate) { mRotation = rotate; }
-		void SetScale(Vector2 scale) { mScale = scale; }
+		Matrix GetWorldMatrix() const { return mWorldMatrix; }
+
+		Vector3 GetPosition() const { return mPosition; }
+		Vector3 GetRotation() const { return mRotation; }
+		Vector3 GetScale() const { return mScale; }
+
+		void SetPosition(Vector3 position){ mPosition = position; }
+		void SetPosition(float x, float y, float z) { mPosition = Vector3(x, y, z); }
+		void SetRotation(Vector3 rotation) { mRotation = rotation; }
+		void SetRotation(float x, float y, float z) { mRotation = Vector3(x, y, z); }
+		void SetScale(Vector3 scale) { mScale = scale; }
+		void SetScale(float x, float y, float z) { mScale = Vector3(x, y, z); }
+
+		Vector3 Forward() const { return mForward; }
+		Vector3 Right() const { return mRight; }
+		Vector3 Up() const { return mUp; }
 
 	private:
-		Vector2 mPosition;
-		Vector2 mScale;
-		float mRotation;
+		Matrix mWorldMatrix;
+
+		Vector3 mPosition;
+		Vector3 mRotation;
+		Vector3 mScale;
+
+		Vector3 mForward;
+		Vector3 mRight;
+		Vector3 mUp;
 	};
 }
 

@@ -10,7 +10,6 @@
 #include "..\\YamYamEngine_SOURCE\\YSceneManager.h"
 
 #include "..\\YamYamEngine_WINDOW\\YLoadScene.h"
-#include "..\\YamYamEngine_WINDOW\\YToolScene.h"
 
 #include <wincodec.h>
 #include <wrl/client.h>
@@ -54,7 +53,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램 인스턴스 핸
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_EDITORWINDOW, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance, szWindowClass, WndProc);
-    MyRegisterClass(hInstance, L"TILEWINDOW", WndTileProc);
 
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
@@ -154,40 +152,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
-   //ShowWindow(ToolHWnd, nCmdShow);
-   //UpdateWindow(ToolHWnd);
-
-   //Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
-
-   //load scene
-   //yam::LoadResources(); -> loadingScene에서 로딩
-
-   //int a = 0;
-   //srand((unsigned int)(&a));
    application.Initialize(hWnd, width, height);
-
-   //yam::Scene* activeScene = yam::SceneManager::GetActiveScene();
-   //std::wstring name = activeScene->GetName();
-   //if (name == L"ToolScene")
-   //{
-   //    HWND ToolHWnd = CreateWindowW(L"TILEWINDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
-   //        0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
-
-   //    // Tile Window 크기 조정 -- TOOL
-   //    yam::graphics::Texture* texture =
-   //        yam::Resources::Find<yam::graphics::Texture>(L"SpringFloor");
-
-   //    RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight() };
-   //    AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
-
-   //    UINT toolWidth = rect.right - rect.left;
-   //    UINT toolHeight = rect.bottom - rect.top;
-
-   //    SetWindowPos(ToolHWnd, nullptr, width, 0,
-   //        toolWidth, toolHeight, 0);
-   //    ShowWindow(ToolHWnd, true);
-   //    UpdateWindow(ToolHWnd);
-   //}
 
    return TRUE;
 }

@@ -11,7 +11,7 @@ namespace yam::renderer
 {
 	extern Camera* mainCamera;
 	
-	extern ConstantBuffer constantBuffer[(UINT)eCBType::End];
+	extern ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	extern 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerStates[(UINT)eSamplerType::End];
 	extern 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[(UINT)eRasterizerState::End];

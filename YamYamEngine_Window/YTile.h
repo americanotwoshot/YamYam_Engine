@@ -11,8 +11,6 @@ namespace yam
 		void LateUpdate() override;
 		void Render() override;
 
-		void SetPosition(int x, int y);
-
 	private:
 
 	};

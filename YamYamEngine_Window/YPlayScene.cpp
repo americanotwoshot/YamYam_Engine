@@ -14,7 +14,6 @@
 #include "YRenderer.h"
 #include "YAnimator.h"
 #include "YCat.h"
-#include "YCatScript.h"
 #include "YBoxCollider2D.h"
 #include "YCollisionManager.h"
 #include "YCircleCollider2D.h"
@@ -22,12 +21,12 @@
 #include "YTile.h"
 #include "YRigidbody.h"
 #include "YFloor.h"
-#include "YFloorScript.h"
 #include "YAudioClip.h"
 #include "YAudioListener.h"
 #include "YAudioSource.h"
 #include "YGraphicDevice_DX11.h"
 #include "YMaterial.h"
+#include "YCameraScript.h"
 
 namespace yam
 {
@@ -40,11 +39,17 @@ namespace yam
 	}
 	void PlayScene::Initialize()
 	{
-		//// main Camera
-		//GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector2(343.0f, 442.0f));
-		//Camera* cameraComp = camera->AddComponent<Camera>();
-		//renderer::mainCamera = cameraComp;
-		////camera->AddComponent<PlayerScript>();
+		Scene::Initialize();
+		
+		// main Camera
+		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector3(0.0f, 0.0f, -10.0f));
+		Camera* cameraComp = camera->AddComponent<Camera>();
+		cameraComp->SetProjectionType(Camera::eProjectionType::Orthographic);
+		cameraComp->SetSize(200.0f);
+		
+		CameraScript* cameraScript = camera->AddComponent<CameraScript>();
+		renderer::mainCamera = cameraComp;
+		
 
 		// player
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
@@ -54,7 +59,6 @@ namespace yam
 		sr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
 		sr->SetSprite(Resources::Find<graphics::Texture>(L"Player"));
 
-		Scene::Initialize();
 	}
 	void PlayScene::Update()
 	{

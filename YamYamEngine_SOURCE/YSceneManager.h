@@ -10,14 +10,15 @@ namespace yam
 		static Scene* CreateScene(const std::wstring& name)
 		{
 			T* scene = new T();
-			scene->SetName(name);
+			mScene.insert(std::make_pair(name, scene));
 
+			scene->SetName(name);
 			scene->Initialize();
 
-			mScene.insert(std::make_pair(name, scene));
 
 			return scene;
 		}
+		static bool SetActiveScene(const std::wstring& name);
 		static Scene* LoadScene(const std::wstring& name);
 		static Scene* GetActiveScene() { return mActiveScene; }
 		static Scene* GetDontDestroyOnLoad() { return mDontDestroyOnLoad; }
