@@ -92,7 +92,7 @@ namespace yam::renderer
 		rsDesc.FillMode = D3D11_FILL_MODE::D3D11_FILL_WIREFRAME;
 		rsDesc.CullMode = D3D11_CULL_MODE::D3D11_CULL_NONE;
 		GetDevice()->CreateRasterizerState(&rsDesc
-			, rasterizerStates[(UINT)eRasterizerState::WireFrame].GetAddressOf());
+			, rasterizerStates[(UINT)eRasterizerState::Wireframe].GetAddressOf());
 #pragma endregion
 #pragma region blend state
 		D3D11_BLEND_DESC bsDesc = {};
@@ -237,7 +237,7 @@ namespace yam::renderer
 		inputLayoutDesces[2].SemanticName = "TEXCOORD";
 		inputLayoutDesces[2].SemanticIndex = 0;
 
-		graphics::Shader* spriteShader = Resources::Find<graphics::Shader>(L"SpriteShader");
+		graphics::Shader* spriteShader = Resources::Find<graphics::Shader>(L"SpriteDefaultShader");
 		mesh->SetVertexBufferParams(inputLayoutDesces, 3
 			, spriteShader->GetVSBlob()->GetBufferPointer()
 			, spriteShader->GetVSBlob()->GetBufferSize());
@@ -264,15 +264,17 @@ namespace yam::renderer
 		Material* spriteMaterial = new Material();
 		yam::Resources::Insert(L"SpriteMaterial", spriteMaterial);
 
-		spriteMaterial->SetShader(yam::Resources::Find<graphics::Shader>(L"SpriteShader"));
+		spriteMaterial->SetShader(yam::Resources::Find<graphics::Shader>(L"SpriteDefaultShader"));
 	}
 
 	void LoadShaders()
 	{
 		yam::Resources::Load<graphics::Shader>(L"TriangleShader"
 			, L"..\\Shaders_SOURCE\\Triangle");
-		yam::Resources::Load<graphics::Shader>(L"SpriteShader"
-			, L"..\\Shaders_SOURCE\\Sprite");
+		yam::Resources::Load<graphics::Shader>(L"SpriteDefaultShader"
+			, L"..\\Shaders_SOURCE\\SpriteDefault");
+		yam::Resources::Load<graphics::Shader>(L"WireframeShader"
+			, L"..\\Shaders_SOURCE\\Wireframe");
 	}
 
 	void LoadConstantBuffers()

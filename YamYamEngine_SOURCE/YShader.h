@@ -19,17 +19,25 @@ namespace yam::graphics
 
 		void Bind();
 
-		Microsoft::WRL::ComPtr<ID3DBlob> GetVSBlob() { return mVSBlob; }
-		Microsoft::WRL::ComPtr<ID3DBlob> GetHSBlob() { return mHSBlob; }
-		Microsoft::WRL::ComPtr<ID3DBlob> GetDSBlob() { return mDSBlob; }
-		Microsoft::WRL::ComPtr<ID3DBlob> GetGSBlob() { return mGSBlob; }
-		Microsoft::WRL::ComPtr<ID3DBlob> GetPSBlob() { return mPSBlob; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3DBlob> GetVSBlob() { return mVSBlob; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3DBlob> GetHSBlob() { return mHSBlob; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3DBlob> GetDSBlob() { return mDSBlob; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3DBlob> GetGSBlob() { return mGSBlob; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3DBlob> GetPSBlob() { return mPSBlob; }
+
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3D11VertexShader>	GetVS() { return mVS; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3D11HullShader>		GetHS() { return mHS; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3D11DomainShader>	GetDS() { return mDS; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3D11GeometryShader>	GetGS() { return mGS; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3D11PixelShader>		GetPS() { return mPS; }
 
 		void SetRasterizerState(const eRasterizerState state) { mRasterizerState = state; }
 		void SetBlendState(const eBlendState state) { mBlendState = state; }
 		void SetDepthStencilState(const eDepthStencilState state) { mDepthStencilState = state; }
 
 	private:
+		static bool bWireframe;
+
 		Microsoft::WRL::ComPtr<ID3DBlob> mVSBlob;
 		Microsoft::WRL::ComPtr<ID3DBlob> mHSBlob;
 		Microsoft::WRL::ComPtr<ID3DBlob> mDSBlob;

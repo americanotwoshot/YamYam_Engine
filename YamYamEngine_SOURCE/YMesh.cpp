@@ -2,13 +2,13 @@
 
 namespace yam
 {
-	Mesh::Data::Data()
+	Mesh::MeshData::MeshData()
 		: mTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
 		, vertices{}
 		, indices{}
 	{
 	}
-	Mesh::Data::~Data()
+	Mesh::MeshData::~MeshData()
 	{
 	}
 

@@ -1,8 +1,11 @@
 #include "YShader.h"
 #include "YRenderer.h"
+#include "YResources.h"
 
 namespace yam::graphics
 {
+	bool Shader::bWireframe = false;
+
 	Shader::Shader()
 		: Resource(enums::eResourceType::Shader)
 		, mRasterizerState(eRasterizerState::SolidBack)
@@ -65,6 +68,24 @@ namespace yam::graphics
 
 	void Shader::Bind()
 	{
+		if (bWireframe)
+		{
+			Shader* wireframeShader = Resources::Find<Shader>(L"WireframeShader");
+			Microsoft::WRL::ComPtr<ID3D11VertexShader> wireframeShaderVS = wireframeShader->GetVS();
+			Microsoft::WRL::ComPtr<ID3D11PixelShader> wireframeShaderPS = wireframeShader->GetPS();
+			Microsoft::WRL::ComPtr<ID3D11RasterizerState> wireframeRasterizerState
+				= renderer::rasterizerStates[(UINT)eRasterizerState::Wireframe];
+
+			GetDevice()->BindVS(wireframeShaderVS.Get());
+			GetDevice()->BindPS(wireframeShaderPS.Get());
+
+			GetDevice()->BindRasterizerState(wireframeRasterizerState.Get());
+			GetDevice()->BindBlendState(renderer::blendStates[(UINT)mBlendState].Get(), nullptr, 0xffffff);
+			GetDevice()->BindDepthStencilState(renderer::depthStencilStates[(UINT)mDepthStencilState].Get(), 0);
+
+			return;
+		}
+
 		if (mVS)
 			GetDevice()->BindVS(mVS.Get());
 		if (mPS)
