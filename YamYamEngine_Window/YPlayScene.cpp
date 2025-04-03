@@ -31,7 +31,6 @@
 namespace yam
 {
 	PlayScene::PlayScene()
-		: mPlayer(nullptr)
 	{
 	}
 	PlayScene::~PlayScene()
@@ -44,7 +43,7 @@ namespace yam
 		// main Camera
 		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector3(0.0f, 0.0f, -10.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
-		cameraComp->SetProjectionType(Camera::eProjectionType::Orthographic);
+		cameraComp->SetProjectionType(Camera::eProjectionType::Perspective);
 		cameraComp->SetSize(200.0f);
 		
 		CameraScript* cameraScript = camera->AddComponent<CameraScript>();
@@ -52,13 +51,14 @@ namespace yam
 		
 
 		// player
-		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
-		object::DontDestroyOnLoad(mPlayer);
+		GameObject* player = object::Instantiate<Player>(enums::eLayerType::Player);
+		object::DontDestroyOnLoad(player);
 		
-		SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
+		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		sr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
 		sr->SetSprite(Resources::Find<graphics::Texture>(L"Player"));
 
+		renderer::selectedObject = player;
 	}
 	void PlayScene::Update()
 	{

@@ -1,6 +1,5 @@
 ﻿// Editor_Window.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
-
 #include "framework.h"
 #include "Editor_Window.h"
 
@@ -9,12 +8,22 @@
 #include "..\\YamYamEngine_SOURCE\\YResources.h"
 #include "..\\YamYamEngine_SOURCE\\YTexture.h"
 #include "..\\YamYamEngine_SOURCE\\YSceneManager.h"
+#include "..\\YamYamEngine_SOURCE\\YRenderer.h"
+#include "..\\YamYamEngine_SOURCE\\YGameObject.h"
+#include "..\\YamYamEngine_SOURCE\\YTransform.h"
 
 #include "..\\YamYamEngine_WINDOW\\YLoadScene.h"
 
+#define IMGUI_DEFINE_MATH_OPERATORS
 #include "imgui.h"
 #include "imgui_impl_dx11.h"
 #include "imgui_impl_win32.h"
+
+#include "ImGuizmo.h"
+#include "ImSequencer.h"
+#include "ImZoomSlider.h"
+#include "ImCurveEdit.h"
+#include "GraphEditor.h"
 
 yam::Application application;
 
@@ -156,6 +165,46 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램 인스턴스 핸
             ImGui_ImplWin32_NewFrame();
             ImGui::NewFrame();
 
+            //imGuizmo
+            ImGuiIO& io = ImGui::GetIO();
+
+            ImGuizmo::SetOrthographic(false/*!isPerspective*/);
+            ImGuizmo::SetDrawlist(ImGui::GetCurrentWindow()->DrawList);
+
+            ImGuizmo::BeginFrame();
+
+            UINT width = application.GetWidth();
+            UINT height = application.GetHeight();
+            float windowWidth = (float)ImGui::GetWindowWidth();
+            float windowHeight = (float)ImGui::GetWindowHeight();
+
+            RECT rect = { 0, 0, 0, 0 };
+            ::GetClientRect(application.GetHwnd(), &rect);
+
+            // Transform start
+            //ImGuizmo::SetRect(0, 0, width, height);
+            ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
+
+            Matrix viewMatirx;
+            Matrix projectionMatirx;
+
+            if (yam::renderer::mainCamera)
+            {
+                viewMatirx = yam::renderer::mainCamera->GetViewMatrix();
+                projectionMatirx = yam::renderer::mainCamera->GetProjectionMatrix();
+            }
+
+            Matrix modelMatrix;
+            if (yam::renderer::selectedObject)
+            {
+                modelMatrix = yam::renderer::selectedObject->GetComponent<yam::Transform>()->GetWorldMatrix();
+            }
+
+            ImGuizmo::Manipulate(*viewMatirx.m, *projectionMatirx.m,
+                ImGuizmo::OPERATION::TRANSLATE, ImGuizmo::LOCAL, *modelMatrix.m);
+
+            //ImGuizmo::SetDrawlist(ImGui::GetCurrentWindow()->DrawList);
+
             // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
             if (show_demo_window)
                 ImGui::ShowDemoWindow(&show_demo_window);
@@ -253,7 +302,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    const UINT height = 900;
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
+      0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
 
    if (!hWnd)

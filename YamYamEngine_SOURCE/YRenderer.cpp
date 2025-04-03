@@ -9,6 +9,7 @@
 namespace yam::renderer
 {
 	Camera* mainCamera = nullptr;
+	GameObject* selectedObject = nullptr;
 
 	ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerStates[(UINT)eSamplerType::End] = {};

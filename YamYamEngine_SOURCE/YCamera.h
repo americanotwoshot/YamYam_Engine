@@ -29,6 +29,8 @@ namespace yam
 		void CreateViewMatrix();
 		void CreateProjectionMatrix(eProjectionType type);
 
+		Matrix GetViewMatrix() const { return mViewMatrix; }
+		Matrix GetProjectionMatrix() const { return mProjectionMatrix; }
 		void SetProjectionType(eProjectionType type) { mProjectionType = type; }
 		void SetSize(float size) { mSize = size; }
 

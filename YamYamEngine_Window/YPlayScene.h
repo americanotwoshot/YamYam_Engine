@@ -18,7 +18,6 @@ namespace yam
 		void OnExit() override;
 	
 	private:
-		class Player* mPlayer;
 	};
 }
 

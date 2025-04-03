@@ -10,7 +10,7 @@ using namespace yam::graphics;
 namespace yam::renderer
 {
 	extern Camera* mainCamera;
-	
+	extern GameObject* selectedObject;
 	extern ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	extern 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerStates[(UINT)eSamplerType::End];
