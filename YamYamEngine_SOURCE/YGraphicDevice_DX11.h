@@ -59,7 +59,8 @@ namespace yam::graphics
 		void Present();
 
 	public:
-		Microsoft::WRL::ComPtr<ID3D11Device> GetID3D11Device() { return mDevice; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3D11Device> GetID3D11Device() { return mDevice; }
+		[[nodiscard]] Microsoft::WRL::ComPtr<ID3D11DeviceContext> GetID3D11DeviceContext() { return mContext; }
 
 	private:
 		Microsoft::WRL::ComPtr<ID3D11Device> mDevice;

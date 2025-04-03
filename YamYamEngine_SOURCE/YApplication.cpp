@@ -82,6 +82,10 @@ namespace yam
 		UIManager::Render();
 		SceneManager::Render();
 
+	}
+
+	void Application::Present()
+	{
 		graphics::GetDevice()->Present();
 	}
 
