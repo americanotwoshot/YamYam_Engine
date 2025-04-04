@@ -20,11 +20,11 @@ namespace gui
 		Entity();
 		virtual ~Entity();
 
-		void SetName(const std::wstring& name) { mName = name; }
-		std::wstring& GetName() { return mName; }
+		void SetName(const std::string& name) { mName = name; }
+		std::string& GetName() { return mName; }
 
 	private:
-		std::wstring mName;
+		std::string mName;
 	};
 }
 

@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="imgui">
-      <UniqueIdentifier>{12d33d2b-5a6d-4af5-a4fc-4cf9ce5a9c02}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="imgui\impl">
-      <UniqueIdentifier>{099c4466-e9f6-4c37-90f5-fefc5cb19071}</UniqueIdentifier>
-    </Filter>
     <Filter Include="imguizmo">
       <UniqueIdentifier>{09617b07-dd3c-4872-8936-0d73cef45ff1}</UniqueIdentifier>
     </Filter>
@@ -34,32 +28,17 @@
     <Filter Include="GUI\Component\Transform">
       <UniqueIdentifier>{fec67e41-9c51-465a-8629-2bacaee9a933}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GUI\View">
+      <UniqueIdentifier>{9fea3c9e-a9bd-48cf-93fe-49848b2001bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{8071f718-3c9c-4bdc-81be-66d8c6670795}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui\impl">
+      <UniqueIdentifier>{f52f8a40-2910-42e1-9db1-0be1fe7504a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)imconfig.h">
-      <Filter>imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)imgui.h">
-      <Filter>imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)imgui_internal.h">
-      <Filter>imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)imstb_rectpack.h">
-      <Filter>imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)imstb_textedit.h">
-      <Filter>imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)imstb_truetype.h">
-      <Filter>imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)imgui_impl_dx11.h">
-      <Filter>imgui\impl</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)imgui_impl_win32.h">
-      <Filter>imgui\impl</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)GraphEditor.h">
       <Filter>imguizmo</Filter>
     </ClInclude>
@@ -99,29 +78,35 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)guiTransform.h">
       <Filter>GUI\Component\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)guiInspectorWindow.h">
+      <Filter>GUI\View</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)imgui_impl_dx11.h">
+      <Filter>imgui\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)imgui_impl_win32.h">
+      <Filter>imgui\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)imstb_rectpack.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)imstb_textedit.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)imstb_truetype.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)imgui.cpp">
-      <Filter>imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_demo.cpp">
-      <Filter>imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_draw.cpp">
-      <Filter>imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_tables.cpp">
-      <Filter>imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_widgets.cpp">
-      <Filter>imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_impl_dx11.cpp">
-      <Filter>imgui\impl</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_impl_win32.cpp">
-      <Filter>imgui\impl</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)GraphEditor.cpp">
       <Filter>imguizmo</Filter>
     </ClCompile>
@@ -157,6 +142,30 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)guiTransform.cpp">
       <Filter>GUI\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)guiInspectorWindow.cpp">
+      <Filter>GUI\View</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_impl_dx11.cpp">
+      <Filter>imgui\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_impl_win32.cpp">
+      <Filter>imgui\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_tables.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)imgui_widgets.cpp">
+      <Filter>imgui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
