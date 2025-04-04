@@ -72,8 +72,6 @@ void yam::LoadingScene::resourcesLoad(std::mutex& m)
 		Resources::Load<graphics::Texture>(L"Player",
 			L"..\\Resources\\CloudOcean.png");
 
-		renderer::Initialize();
-
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 	}
