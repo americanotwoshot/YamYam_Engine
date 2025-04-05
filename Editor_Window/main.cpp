@@ -56,7 +56,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램 인스턴스 핸
     // PeekMessage : 메세지 큐의 메세지 유무에 상관없이 함수가 리턴된다.
     //              메세지가 있는 경우 리턴값이 true, 없는 경우 리턴값이 false
 
-    while (true)
+    while (application.IsRunning())
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
@@ -131,7 +131,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    const UINT height = 900;
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT, CW_USEDEFAULT, width, height, nullptr, nullptr, hInstance, nullptr);
 
 
    if (!hWnd)
@@ -184,6 +184,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
+        }
+        break;
+    case WM_SIZE:
+        {
+        application.ResizeGraphicDevice();
         }
         break;
     case WM_PAINT:
