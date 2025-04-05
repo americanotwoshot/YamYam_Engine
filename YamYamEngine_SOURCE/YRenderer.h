@@ -3,6 +3,7 @@
 #include "YGraphicDevice_DX11.h"
 
 #include "YConstantBuffer.h"
+#include "YRenderTarget.h"
 
 using namespace yam::math;
 using namespace yam::graphics;
@@ -17,6 +18,8 @@ namespace yam::renderer
 	extern 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[(UINT)eRasterizerState::End];
 	extern 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBlendState::End];
 	extern 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDepthStencilState::End];
+
+	extern RenderTarget* FrameBuffer;
 
 	void Initialize();
 	void Release();

@@ -2,6 +2,8 @@
 #include "guiEditor.h"
 #include "guiEditorWindow.h"
 
+#include "..\\YamYamEngine_SOURCE\\YRenderTarget.h"
+
 namespace gui
 {
 	class EditorApplication
@@ -34,17 +36,25 @@ namespace gui
 		static void NewScene();
 		static void SaveScene();
 		static void SaveSceneAs();
+		static void OpenScene(const std::filesystem::path& path);
 
 	private:
 		static bool imGuiInitialize();
 		static void imGuiRender();
 
+		static std::map<std::wstring, EditorWindow*> mEditorWindows;
+		
 		static ImGuiWindowFlags mFlag;
 		static ImGuiDockNodeFlags mDockspaceFlags;
 		static eState mState;
 		static bool mFullScreen;
 
-		static std::map<std::wstring, EditorWindow*> mEditorWindows;
+		static yam::math::Vector2 mViewportBounds[2];
+		static yam::math::Vector2 mViewportSize;
+		static bool mViewportFocused;
+		static bool mViewportHovered;
+
+		static yam::graphics::RenderTarget* mFrameBuffer;
 	};
 }
 

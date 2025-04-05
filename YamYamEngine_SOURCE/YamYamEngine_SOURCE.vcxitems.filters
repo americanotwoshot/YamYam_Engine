@@ -130,6 +130,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YInputLayout.cpp">
       <Filter>Graphics\InputLayout</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YRenderTarget.cpp">
+      <Filter>Graphics\RenderTarget</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -273,6 +276,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YInputLayout.h">
       <Filter>Graphics\InputLayout</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YRenderTarget.h">
+      <Filter>Graphics\RenderTarget</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -376,6 +382,9 @@
     </Filter>
     <Filter Include="Graphics\InputLayout">
       <UniqueIdentifier>{bbb85567-2011-4ad8-af32-4b9853485db2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RenderTarget">
+      <UniqueIdentifier>{334942ac-116d-4c02-87b7-45b55515bdc8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

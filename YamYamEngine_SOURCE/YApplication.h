@@ -12,6 +12,7 @@ namespace yam
 		~Application();
 
 		void Initialize(HWND hwnd, int width, int height);
+		void InitializeWindow(HWND hwnd);
 		void AdjustWindowRect(HWND hwnd, int width, int height);
 		void ResizeGraphicDevice();
 		void InitializeEtc();
@@ -43,14 +44,16 @@ namespace yam
 		HWND mHwnd;
 		HDC mHdc;
 
-		HDC mBackHdc;
-		HBITMAP mBackBitmap;
+		// window size
+		UINT mWindowWidth;
+		UINT mWindowHeight;
 
+		// client size
 		UINT mWidth;
 		UINT mHeight;
 
-		// std::vector<Scene*> mScenes;
-		//std::vector<GameObject*> mGameObjects;
+		// window position
+		UINT mX, mY;
 	};
 }
 

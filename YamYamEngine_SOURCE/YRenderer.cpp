@@ -5,6 +5,9 @@
 #include "YShader.h"
 #include "YMaterial.h"
 #include "YMesh.h"
+#include "YApplication.h"
+
+extern yam::Application application;
 
 namespace yam::renderer
 {
@@ -16,6 +19,8 @@ namespace yam::renderer
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[(UINT)eRasterizerState::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBlendState::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDepthStencilState::End] = {};
+
+	RenderTarget* FrameBuffer = nullptr;
 
 	void LoadStates()
 	{
@@ -284,6 +289,16 @@ namespace yam::renderer
 		constantBuffer[CBSLOT_TRANSFORM]->Create(sizeof(TransformCB));
 	}
 
+	void LoadFrameBuffer()
+	{
+		RenderTargetSpecification spec;
+		spec.Attachments = { eRenderTargetFormat::RGBA8, eRenderTargetFormat::Depth };
+		spec.Width = application.GetWidth();
+		spec.Height = application.GetHeight();
+
+		FrameBuffer = RenderTarget::Create(spec);
+	}
+
 	void Initialize()
 	{
 		LoadStates();
@@ -291,10 +306,14 @@ namespace yam::renderer
 		LoadMeshes();
 		LoadMaterials();
 		LoadConstantBuffers();
+		LoadFrameBuffer();
 	}
 
 	void Release()
 	{
+		delete FrameBuffer;
+		FrameBuffer = nullptr;
+
 		for (UINT i = 0; i < (UINT)eCBType::End; i++)
 		{
 			delete constantBuffer[i];
